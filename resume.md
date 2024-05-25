@@ -55,11 +55,13 @@ Bachelor in *Computer Engineering*
 
 ### CGI Advanced Analytics Solutions
 
-### Zoined Oy
+### Zoined Oy (2/2021 - 11/2022)
 
-### Futurice Oy
 
-### Lips
+
+### Futurice Oy (5/2017 - 1/2021)
+
+### Lips (6/2014 - 6/2016)
 
 ### Microsoft
 
@@ -77,11 +79,11 @@ Bachelor in *Computer Engineering*
 
 - Home Lab: building my own home server, and saving money from cloud services
 
-<style scoped>
+<style module>
 img[src$="#avatar"] {
   display: block;
   margin: 0 auto;
   border-radius: 50%;
-  max-width: 50%;
+  max-width: 20%;
 }
 </style>
