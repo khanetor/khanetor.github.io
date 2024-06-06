@@ -15,14 +15,16 @@ export default defineConfig({
       {
         text: "About me",
         items: [
-          { text: "Resume", link: "/resume"},
+          { text: "Resume", link: "/resume" },
           // { text: "Markdown Examples", link: "/markdown-examples" },
           // { text: "Runtime API Examples", link: "/api-examples" }
         ]
       },
       {
         text: "Personal projects",
-        items: []
+        items: [
+          { text: "Fresh", link: "/fresh" }
+        ]
       }
     ],
 

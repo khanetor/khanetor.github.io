@@ -53,19 +53,29 @@ Bachelor in *Computer Engineering*
 
 ## Experiences
 
-### CGI Advanced Analytics Solutions
+### CGI Advanced Analytics Solutions (12/2022 - 6/2024)
+
+*Title*: Senior Data Scientist
 
 ### Zoined Oy (2/2021 - 11/2022)
 
-
+*Title*: Senior Data Scientist
 
 ### Futurice Oy (5/2017 - 1/2021)
 
+*Title*: Senior Software Developer
+
 ### Lips (6/2014 - 6/2016)
+
+*Title*: CTO
 
 ### Microsoft
 
+*Title*: Software Developer Engineer
+
 ### T-Mobile USA
+
+*Title*: Software Developer
 
 ## Miscellaneous
 

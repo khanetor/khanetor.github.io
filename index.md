@@ -10,9 +10,9 @@ hero:
     - theme: brand
       text: Resume
       link: /resume
-    # - theme: alt
-    #   text: API Examples
-    #   link: /api-examples
+    - theme: alt
+      text: Fresh Kitchen
+      link: /fresh
 
 # features:
 #   - title: Feature A
