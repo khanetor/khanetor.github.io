@@ -1,4 +1,16 @@
-import { defineConfig } from "vitepress"
+import { HeadConfig, defineConfig } from "vitepress"
+
+const umamiScript: HeadConfig = ["script", {
+  defer: "true",
+  src: "https://analytics.khanetor.xyz/script.js",
+  "data-website-id": "154796bd-4dbd-4898-9e0d-115ed8cd5dd4"
+}]
+
+const baseHeaders: HeadConfig[] = []
+
+const headers = process.env.NODE_ENV === "production" ?
+  [...baseHeaders, umamiScript] :
+  baseHeaders
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -37,11 +49,5 @@ export default defineConfig({
       lazyLoading: true,
     }
   },
-  head: [
-    ["script", {
-      defer: "true",
-      src: "https://analytics.khanetor.xyz/script.js",
-      "data-website-id": "154796bd-4dbd-4898-9e0d-115ed8cd5dd4"
-    }]
-  ]
+  head: headers
 })
