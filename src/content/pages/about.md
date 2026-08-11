@@ -7,7 +7,7 @@ Hi, I'm **Kha Nguyen** (nickname: **Khanetor**).
 
 ![Portrait of Kha Nguyen](@/assets/images/portrait.webp)
 
-I'm a software developer and data scientist based in Helsinki, Finland, born and raised in Vietnam.
+I'm a software developer and data scientist based in Helsinki, Finland, born and raised in Vietnam. I'm currently a consultant at [Reaktor](https://www.reaktor.com/) Oy since September 2025.
 
 ## What I work with
 
