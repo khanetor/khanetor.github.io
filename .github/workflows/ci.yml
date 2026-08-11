@@ -1,46 +1,41 @@
-name: CI
+name: Build & Deploy to Codeberg Pages
 
 permissions:
   contents: read
 
 on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
-  workflow_call:
+  push:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
-    name: Code standards & build
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
+    runs-on: codeberg-small
+    timeout-minutes: 10
 
     steps:
-      - name: "☁️ Checkout repository"
-        uses: actions/checkout@v4
+      - name: "Checkout repository"
+        uses: https://data.forgejo.org/actions/checkout@v6
 
-      - name: "📦 Install pnpm"
-        uses: pnpm/action-setup@v4
+      - name: "Set up Node.js"
+        uses: https://data.forgejo.org/actions/setup-node@v4
         with:
-          version: "11.3.0"
+          node-version: "22"
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - name: "Install bun"
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo "$HOME/.bun/bin" >> "$GITHUB_PATH"
+
+      - name: "Install dependencies"
+        run: bun install --frozen-lockfile
+
+      - name: "Build the site"
+        run: bun run build
+
+      - name: "Deploy to Codeberg Pages"
+        uses: https://codeberg.org/git-pages/action@v2
         with:
-          node-version: "24"
-          cache: "pnpm"
-
-      - name: "📦 Install dependencies"
-        run: pnpm install --frozen-lockfile
-
-      - name: "🔎 Lint code"
-        run: pnpm run lint
-
-      - name: "📝 Checking code format"
-        run: pnpm run format:check
-
-      - name: "🚀 Build the project"
-        run: pnpm run build
+          site: https://${{ forge.repository_owner }}.codeberg.page/
+          token: ${{ forge.token }}
+          source: dist/
