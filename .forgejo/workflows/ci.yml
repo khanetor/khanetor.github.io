@@ -1,8 +1,5 @@
 name: Build & Deploy to Codeberg Pages
 
-permissions:
-  contents: read
-
 on:
   push:
     branches: [main]
