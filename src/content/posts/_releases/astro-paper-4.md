@@ -2,6 +2,7 @@
 author: Sat Naing
 pubDatetime: 2024-01-04T09:30:41.816Z
 title: AstroPaper 4.0
+draft: true
 slug: "astro-paper-v4"
 featured: false
 ogImage: ../../../assets/images/AstroPaper-v4.png
