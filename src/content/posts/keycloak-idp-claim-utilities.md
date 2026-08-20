@@ -12,11 +12,12 @@ tags:
 description: A small Keycloak extension with conditional claim authenticators and a deny-redirect authenticator, for gating broker logins on the claims an identity provider delivers.
 ---
 
-When you brokered a login through an identity provider, Keycloak stores the claims the IdP
-sent back as brokered user attributes — email, name, whatever the provider delivers. That
-context is usually only useful to stuff a few attributes into the user profile. But the
-claims an IdP delivers are not a contract: they can change, or be missing entirely, and
-then your realm has to decide what to do.
+When someone signs in to your app with a social or enterprise account — Google, Facebook,
+a company IdP — Keycloak brokers that login and stores whatever the identity provider sent
+back as brokered user attributes: email, name, and so on. Those claims are usually only
+good for stuffing a few attributes into the user profile. But what an IdP delivers is not
+a contract: it can change, or be missing entirely, and then your realm has to decide what
+to do.
 
 <figure>
   <img
@@ -110,17 +111,20 @@ raw value is passed through rather than replaced.
 
 The extension ships as a single JAR published to Codeberg Packages. Add it to a Keycloak
 container image by placing it in `/opt/keycloak/providers/` (the default provider
-directory): in a `Dockerfile`, fetch it from the Maven repository during the build:
+directory): in a `Dockerfile`, fetch it from the Maven repository during the build,
+substituting the version you want for `<version>`:
 
 ```dockerfile
 ADD --chown=keycloak:keycloak --chmod=644 \
-  https://codeberg.org/api/packages/khanetor/maven/me/khanetor/keycloak-idp-claim-utilities/2.0.2/keycloak-idp-claim-utilities-2.0.2.jar \
+  https://codeberg.org/api/packages/khanetor/maven/me/khanetor/keycloak-idp-claim-utilities/<version>/keycloak-idp-claim-utilities-<version>.jar \
   /opt/keycloak/providers/keycloak-idp-claim-utilities.jar
 ```
 
 Then start Keycloak as usual; the new provider IDs appear in the authentication flows or
-identity-provider settings. For the latest version number and build/development details,
-see the [repository README](https://codeberg.org/khanetor/keycloak-idp-claim-utilities).
+identity-provider settings. To see the available versions, browse the
+[Maven package](https://codeberg.org/api/packages/khanetor/maven/me/khanetor/keycloak-idp-claim-utilities);
+for build and development details, see the
+[repository README](https://codeberg.org/khanetor/keycloak-idp-claim-utilities).
 
 ## Why `deny-redirect` over `Deny Access`
 
