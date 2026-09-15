@@ -95,6 +95,22 @@ compiles to `INSERT ... ON DUPLICATE KEY UPDATE col = VALUES(col)`. Because it s
 `SqlClient` interface, everything else in `@effect/sql` — `SqlResolver`, `SqlSchema`,
 migrations tooling — drops in without adaptation.
 
+One MariaDB quirk gets first-class treatment: the boolean schema. MariaDB (like
+MySQL) has no native `BOOLEAN` type — it's `TINYINT(1)`, so queries return `0`/`1`
+and your `Schema.Boolean` validation fails on every row. The package ships
+`MariadbSchema.MariaBool`, a transform that decodes `0`/`1` into `boolean` and
+encodes `true`/`false` back to `1`/`0`, rejecting anything in between — so a
+column holding `2` or a stray string fails loudly instead of silently coercing:
+
+```ts
+import { MariadbSchema } from "effect-sql-mariadb"
+
+const Person = Schema.Struct({
+  name: Schema.String,
+  active: MariadbSchema.MariaBool,
+})
+```
+
 The unit tests don't touch the network: the driver's pool is replaced with an in-process
 fake, so `bun test` runs anywhere, including CI without a database.
 
