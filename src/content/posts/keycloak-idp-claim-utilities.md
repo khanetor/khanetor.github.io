@@ -60,10 +60,10 @@ brokered user attributes.
 
 ## Authenticators
 
-| Provider ID  | Type           | What it does                                                   |
-|--------------|----------------|----------------------------------------------------------------|
-| `claim-presence` | Conditional | Matches when a configured claim is present (non-blank).        |
-| `claim-value`    | Conditional | Matches when a claim's value equals an expected value (optionally a regex). |
+| Provider ID      | Type        | What it does                                                                       |
+| ---------------- | ----------- | ---------------------------------------------------------------------------------- |
+| `claim-presence` | Conditional | Matches when a configured claim is present (non-blank).                            |
+| `claim-value`    | Conditional | Matches when a claim's value equals an expected value (optionally a regex).        |
 | `deny-redirect`  | Regular     | Terminates login, redirecting back to the app's redirect URI with `?error=<code>`. |
 
 The conditional authenticators read the brokered context from both the
@@ -75,7 +75,7 @@ first-broker-login and post-broker-login flows, and each supports an optional
 Matches when the configured claim is present with at least one non-blank value. This is
 the one you want for the Facebook email case above: gate the flow on `email` being present,
 and route the "no email" branch to denial. The **Negate output** toggle inverts it, e.g.
-to match when a claim is *absent*.
+to match when a claim is _absent_.
 
 ### `claim-value`
 
@@ -94,15 +94,15 @@ the error instead of an authorization code.
 The **Error code** dropdown offers standard OAuth2/OIDC authorization-error codes so the
 client app can map a code to a localized message instead of rendering raw text:
 
-| Code | Meaning |
-|------|---------|
-| `access_denied` (default) | Generic deny; fallback for any failed claim check. |
-| `claim_missing` | A required identity claim (e.g. email) was absent from the IdP login. |
-| `interaction_required` | Additional user interaction needed before access is granted. |
-| `invalid_request` | Request missing a required parameter or otherwise malformed. |
-| `invalid_scope` | Requested scope is invalid, unknown, or malformed. |
-| `server_error` | Server-side failure. |
-| `unauthorized_client` | Client not permitted to use this flow. |
+| Code                      | Meaning                                                               |
+| ------------------------- | --------------------------------------------------------------------- |
+| `access_denied` (default) | Generic deny; fallback for any failed claim check.                    |
+| `claim_missing`           | A required identity claim (e.g. email) was absent from the IdP login. |
+| `interaction_required`    | Additional user interaction needed before access is granted.          |
+| `invalid_request`         | Request missing a required parameter or otherwise malformed.          |
+| `invalid_scope`           | Requested scope is invalid, unknown, or malformed.                    |
+| `server_error`            | Server-side failure.                                                  |
+| `unauthorized_client`     | Client not permitted to use this flow.                                |
 
 Configs holding an older free-text value (not one of the above) are still honored — the
 raw value is passed through rather than replaced.
@@ -133,5 +133,3 @@ The useful bit is the redirect. Keycloak's **Deny Access** ends login at its own
 the flow in your app's hands — your UI renders whatever the error code means in this
 context, in the user's own language, and can offer alternatives (e.g. "log in with a
 different provider") instead of a dead end.
-
-

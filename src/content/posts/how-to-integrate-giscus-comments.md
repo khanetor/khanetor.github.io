@@ -88,7 +88,8 @@ Simply add that to the source code of the site. Most likely, if you're using _As
       data-repo="[ENTER REPO HERE]"
       data-repo-id="[ENTER REPO ID HERE]"
       data-category="[ENTER CATEGORY NAME HERE]"
-      data-category-id="[ENTER CATEGORY ID HERE]"></script>
+      data-category-id="[ENTER CATEGORY ID HERE]"
+    ></script>
   </main>
   <Footer />
 </Layout>

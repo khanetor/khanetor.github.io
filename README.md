@@ -25,14 +25,14 @@ Alternatively, `docker compose up` runs the dev server in a container with hot r
 
 ## 🧞 Commands
 
-| Command          | Action                                                                            |
-| :--------------- | :-------------------------------------------------------------------------------- |
-| `pnpm dev`       | Starts local dev server at `localhost:4321`                                       |
-| `pnpm build`     | Type-checks, builds the site, runs Pagefind indexing, copies index to `public/`   |
-| `pnpm preview`   | Preview your build locally, before deploying                                      |
-| `pnpm sync`      | Generates TypeScript types for all Astro modules                                  |
-| `pnpm lint`      | Runs ESLint                                                                       |
-| `pnpm format`    | Formats code with Prettier                                                        |
+| Command        | Action                                                                          |
+| :------------- | :------------------------------------------------------------------------------ |
+| `pnpm dev`     | Starts local dev server at `localhost:4321`                                     |
+| `pnpm build`   | Type-checks, builds the site, runs Pagefind indexing, copies index to `public/` |
+| `pnpm preview` | Preview your build locally, before deploying                                    |
+| `pnpm sync`    | Generates TypeScript types for all Astro modules                                |
+| `pnpm lint`    | Runs ESLint                                                                     |
+| `pnpm format`  | Formats code with Prettier                                                      |
 
 ## 🚢 Deployment
 

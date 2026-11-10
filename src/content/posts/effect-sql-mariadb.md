@@ -18,7 +18,7 @@ hosting choice, or preference for what MariaDB does with its forks of MySQL feat
 the Effect ecosystem has quietly had a gap: [`@effect/sql`](https://github.com/Effect-TS/effect/tree/main/packages/sql)
 ships adapters for MySQL, PostgreSQL, SQLite, MSSQL, even ClickHouse, but not MariaDB.
 The usual workaround is to use the MySQL adapter, since every MySQL client library will
-*happily* connect to a MariaDB server. It works, mostly. It's just that "mostly" carries
+_happily_ connect to a MariaDB server. It works, mostly. It's just that "mostly" carries
 a small asterisk, which I'll get to.
 
 <figure>
@@ -47,27 +47,27 @@ from a scoped layer, tagged templates for statements, and the rest of the `@effe
 toolkit — schema-validated queries, streaming, transactions — on top:
 
 ```ts
-import { SqlClient } from "@effect/sql"
-import { Effect, Schema } from "effect"
-import { MariadbClient } from "effect-sql-mariadb"
+import { SqlClient } from "@effect/sql";
+import { Effect, Schema } from "effect";
+import { MariadbClient } from "effect-sql-mariadb";
 
 const program = Effect.gen(function* () {
-  const sql = yield* SqlClient.SqlClient
+  const sql = yield* SqlClient.SqlClient;
 
   const Person = Schema.Struct({
     name: Schema.String,
     age: Schema.Number,
-  })
+  });
 
   const findAdults = SqlSchema.findAll({
     Request: Schema.Struct({ minAge: Schema.Number }),
     Result: Person,
     execute: ({ minAge }) =>
       sql`SELECT name, age FROM people WHERE age >= ${minAge} ORDER BY age DESC`,
-  })
+  });
 
-  return yield* findAdults({ minAge: 18 })
-})
+  return yield* findAdults({ minAge: 18 });
+});
 
 const MariaLive = MariadbClient.layer({
   host: "127.0.0.1",
@@ -76,9 +76,9 @@ const MariaLive = MariadbClient.layer({
   password: "secret",
   database: "app",
   connectionLimit: 5,
-})
+});
 
-Effect.runPromise(Effect.provide(program, MariaLive))
+Effect.runPromise(Effect.provide(program, MariaLive));
 ```
 
 `MariadbClient.layer` accepts the `mariadb` driver's `PoolConfig` directly — there is no
@@ -103,12 +103,12 @@ encodes `true`/`false` back to `1`/`0`, rejecting anything in between — so a
 column holding `2` or a stray string fails loudly instead of silently coercing:
 
 ```ts
-import { MariadbSchema } from "effect-sql-mariadb"
+import { MariadbSchema } from "effect-sql-mariadb";
 
 const Person = Schema.Struct({
   name: Schema.String,
   active: MariadbSchema.MariaBool,
-})
+});
 ```
 
 The unit tests don't touch the network: the driver's pool is replaced with an in-process
@@ -145,7 +145,7 @@ not ancient history, and it is not cosmetic:
   suite pass against MariaDB 11.8 — before it, "current master fails 19 test files"
   against that server. The failures are instructive: `UNIX_TIMESTAMP()` returning
   integer on MariaDB but a decimal string on MySQL, MariaDB's JSON validity errors
-  carrying errno 4025 which maps to a *different* error name in mysql2's MySQL-derived
+  carrying errno 4025 which maps to a _different_ error name in mysql2's MySQL-derived
   error table, and server variables named differently
   (`max_recursive_iterations` vs `cte_max_recursion_depth`).
 
