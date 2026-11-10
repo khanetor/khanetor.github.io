@@ -14,16 +14,22 @@ jobs:
       - name: "Checkout repository"
         uses: https://data.forgejo.org/actions/checkout@v6
 
-      - name: "Install bun"
-        run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo "$HOME/.bun/bin" >> "$GITHUB_PATH"
+      - name: "Set up pnpm"
+        uses: https://github.com/pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: "Set up Node"
+        uses: https://github.com/actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
 
       - name: "Install dependencies"
-        run: bun install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: "Build the site"
-        run: bun run build
+        run: pnpm run build
 
       - name: "Deploy to Codeberg Pages"
         uses: https://codeberg.org/git-pages/action@v2
