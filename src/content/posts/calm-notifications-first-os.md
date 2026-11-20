@@ -11,7 +11,7 @@ tags:
   - concept
   - privacy
   - ai
-description: A concept for a phone OS that owns the attention layer instead of the apps — notifications-first home screen, web-like app distribution without a store gate, and an OS-owned, quota'd AI layer. Why it failed before, and how to enter through a small market.
+description: A concept for a phone OS that owns the attention layer instead of the apps — notifications-first home screen, web-like app distribution without a store gate, and an OS-owned, quota'd AI layer. Why past attempts failed, and how to enter through a small market instead.
 ---
 
 I was a Microsoft employee while Windows Phone was being pushed, and I've been thinking about
@@ -21,10 +21,10 @@ calm. And design aside, the real killer was the app gap: there simply weren't th
 needed. That's the lesson I keep coming back to: **an OS doesn't win on vision, it wins on
 having the few apps that matter in the market you enter.**
 
-This post is the concept I've been developing from a long discussion: a phone OS where the
-**OS owns the attention layer**, apps are **distributed like web apps** (no store as a gate),
-and **AI is an OS service with quotas and privacy by default** — all enforced by one broker
-that treats every app with per-app budgets and verified trust tiers.
+This post is the concept I've been developing over a long series of discussions: a phone OS
+where the **OS owns the attention layer**, apps are **distributed like web apps** (no store as
+a gate), and **AI is an OS service with quotas and privacy by default** — all enforced by one
+broker that applies per-app budgets and verified trust tiers to every app.
 
 ## The core idea: the OS owns notifications
 
@@ -43,6 +43,10 @@ through a structured protocol. The home screen is notifications-first, with thre
 - **Schedule** — notifications placed on your timeline by deadline, with live items (a
   delivery window) updating their own slots and quiet days shown as quiet.
 
+I prototyped these three views as an interactive mockup while developing the concept, with
+the quota mechanics and example senders (an OP Bank security alert, a live Posti delivery
+window, an over-quota Zalando card) wired in.
+
 The mechanics that make it work are quotas, not vibes: each sender gets a budget, verified
 senders (banks, government, health services) get a higher tier and a badge, security-critical
 items are never deferrable, and everything else decays. The design principle is **calm by
@@ -57,7 +61,7 @@ review, discovery, and trust badges — but also review delays, 15–30% fees, a
 fragmented across many installed versions, which makes backward compatibility and API
 versioning a permanent chore.
 
-So the concept pushes the store to be more like the web: an **app is a signed package +
+So the concept pushes the store to be more like the web: an **app is a signed package and
 manifest addressed by a URL**, served from any host. "Installing" just pins it and grants its
 declared capabilities; launching does stale-while-revalidate and atomically swaps the package,
 so users converge to the latest version within hours. The store remains as an _optional_
@@ -72,7 +76,9 @@ shouldn't copy them wholesale:
   hybrids (JS logic + webview UI) with per-vendor dialects, standardized by a W3C working
   group that closed in 2026, and in Europe only Huawei devices ship the framework. Adopting it
   would tie a European-sovereignty OS to a Chinese-OEM-controlled format with PWA's richness
-  ceiling. We borrow the packaging/lifecycle _concept_, not the runtime.
+  ceiling. We borrow the packaging/lifecycle _concept_, not the runtime. (For the record, the
+  W3C MiniApps work lives under the [MiniApp white paper](https://www.w3.org/TR/mini-app-white-paper/)
+  and the [OW2 Quick App Initiative](https://quick-app-initiative.ow2.io/page/context/).)
 - **Why not just PWA**: in 2026 the capability gap is still sharp — iOS has no Web
   Bluetooth/NFC/USB/background sync, push only works for installed PWAs, and Apple actually
   removed standalone home-screen web apps in the EU. PWA is the fallback tier, not the main
@@ -80,27 +86,31 @@ shouldn't copy them wholesale:
 - **What to build on**: **React Native as an out-of-tree platform** on a Linux-based OS.
   Developers already know JS/React — asking them to learn Rust, QML, or Dart would kill
   adoption. RN's New Architecture (Fabric + JSI + TurboModules, default since 0.76) was
-  explicitly designed to make out-of-tree platforms maintainable — react-native-windows,
-  -macos, -web and react-native-skia (Linux/macOS) prove the seams. Apps ship **Hermes
+  explicitly designed to make [out-of-tree platforms](https://reactnative.dev/docs/out-of-tree-platforms)
+  maintainable — react-native-windows, -macos, -web and
+  [react-native-skia](https://github.com/Shopify/react-native-skia) (Linux/macOS) prove the
+  seams. Apps ship **Hermes
   bytecode bundles** loaded from a URL, which _is_ the web-like distribution model; rendering
   goes through **Skia/Graphite** (via react-native-skia, now on the WebGPU-based Graphite
   backend) so there's one GPU path instead of per-widget native views; OS capabilities
   (camera, NFC, push, background) are exposed once as TurboModules through the capability
-  broker; and **Wasm/WASI (WASI-NN)** covers sandboxed logic. The EU's DMA — alternative
-  marketplaces, sideloading, and web distribution on iOS in the EU — is the regulatory
-  tailwind that makes "store optional" legally established in our target market.
+  broker; and **Wasm/WASI ([WASI-NN](https://github.com/WebAssembly/wasi-nn))** covers
+  sandboxed logic. The EU's [DMA](https://digital-markets-act.ec.europa.eu/developer-portal/app-distribution_en)
+  — alternative marketplaces, sideloading, and web distribution on iOS in the EU — is the
+  regulatory tailwind that makes "store optional" legally established in our target market.
 
 ## AI: an OS service with quotas, private by default
 
 AI is becoming a necessity, and if it's shared by all apps, the OS must be the one enforcing
 safety, privacy, and efficiency — otherwise one app can hog the NPU or drain the battery.
 
-The precedent exists: Android's **AICore** system service manages the shared on-device model
-(Gemini Nano) with per-app quotas, foreground-only inference by default, and battery-linked
-daily caps; Apple exposes its on-device model via the Foundation Models framework with Private
-Cloud Compute as an auditable cloud tier. Hardware is ready — 2026 flagship NPUs deliver
-40–70+ TOPS, 3B models run at 40–50 tok/s on-device via **ExecuTorch** (GA since late 2025,
-12+ backends) or MLX.
+The precedent exists: Android's [**AICore**](https://developer.android.com/ai/gemini-nano)
+system service manages the shared on-device model (Gemini Nano) with per-app quotas,
+foreground-only inference by default, and battery-linked daily caps; Apple exposes its
+on-device model via the Foundation Models framework with Private Cloud Compute as an
+auditable cloud tier. Hardware is ready — 2026 flagship NPUs deliver 40–70+ TOPS, 3B models
+run at 40–50 tok/s on-device via [**ExecuTorch**](https://pytorch.org/executorch/) (GA since
+late 2025, 12+ backends) or MLX.
 
 Our version would be a **System AI Service** that owns the model set (open-weight, INT4-
 quantized, distributed over the OS's signed update channel — verifiable, and no vendor
@@ -144,7 +154,8 @@ sovereignty budgets.
 Enter through a small market's must-have apps first — in Finland that's concentrated and
 institutionally motivated: bank apps (OP/Nordea), Kanta health, Suomi.fi government services,
 Posti/Matkahuolto shipping, payments, then messaging (WhatsApp is the genuinely hard one).
-Then partner with a real OEM — **big enough to ship volume, small enough to need a story**.
+That same list is the sender-conversion list for the notification protocol in both variants
+below. Then partner with a real OEM — **big enough to ship volume, small enough to need a story**.
 HMD/Nokia is the natural cultural fit; Vivo/Honor have the hardware but are structurally
 committed to their own skins. Skip Sailfish/Jolla-style software-only plays (a decade proves
 they don't move the market) and skip pure Android overlays ("if it's optional, why bother" —
@@ -180,7 +191,7 @@ from zero.
 
 This is a concept, not a roadmap — but the pieces are all real in 2026: OS-owned notification
 channels with quotas, Hermes-bytecode app distribution, Skia-rendered RN on a custom platform,
-and quota'd on-device AI on 45–70 TOPS NPUs. The failure modes of the past (Windows Phone, Sailfish)
+and quota'd on-device AI on 40–70+ TOPS NPUs. The failure modes of the past (Windows Phone, Sailfish)
 were ecosystem and timing, not vision. The next concrete step would be the same one as always:
 a very short list of wedge entities whose senders we convert first, and one mid-tier OEM who
 ships it as default.
