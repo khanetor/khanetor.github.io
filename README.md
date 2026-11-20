@@ -1,6 +1,6 @@
 # pages 📄
 
-Personal blog of Kha Nguyen — [khanetor.codeberg.page](https://khanetor.codeberg.page). Thoughts, projects and notes.
+Personal blog of Kha Nguyen — [khanetor.github.io](https://khanetor.github.io). Thoughts, projects and notes.
 
 Built with [Astro](https://astro.build/) on top of the [AstroPaper](https://github.com/satnaing/astro-paper) theme: static site, MDX posts, Pagefind search, RSS, sitemap, light & dark mode, dynamic OG images, i18n support.
 
@@ -36,7 +36,7 @@ Alternatively, `docker compose up` runs the dev server in a container with hot r
 
 ## 🚢 Deployment
 
-Static output (`dist/`), deployed to [Codeberg Pages](https://docs.codeberg.org/codeberg-pages/). CI config in `.forgejo/workflows/`. A `Dockerfile` (multi-stage build served by nginx) is included for self-hosting.
+Static output (`dist/`), deployed to [GitHub Pages](https://docs.github.com/pages) by the workflow in `.github/workflows/`.
 
 ## 📜 License
 

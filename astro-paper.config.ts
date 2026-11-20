@@ -2,11 +2,11 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://khanetor.codeberg.page",
+    url: "https://khanetor.github.io",
     title: "Khanetor",
     description: "Personal blog of Kha Nguyen — thoughts, projects and notes.",
     author: "Kha Nguyen",
-    profile: "https://khanetor.codeberg.page/about/",
+    profile: "https://khanetor.github.io/about/",
     ogImage: "default-og.jpg",
     lang: "en",
     timezone: "Asia/Bangkok",
@@ -24,7 +24,7 @@ export default defineAstroPaperConfig({
     showBackButton: true,
     editPost: {
       enabled: true,
-      url: "https://codeberg.org/khanetor/pages/_edit/main/",
+      url: "https://github.com/khanetor/khanetor.github.io/edit/main/",
     },
     search: "pagefind",
   },
