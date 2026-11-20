@@ -9,22 +9,30 @@ tags:
   - mobile
   - os
   - concept
+  - notifications
   - privacy
   - ai
-description: A concept for a phone OS that owns the attention layer instead of the apps — notifications-first home screen, web-like app distribution without a store gate, and an OS-owned, quota'd AI layer. Why past attempts failed, and how to enter through a small market instead.
+description: A concept for a phone OS that owns the attention layer instead of the apps — notifications-first home screen, web-like app distribution without a store gate, and an OS-owned, fairly shared AI layer. Why past attempts failed, and how to enter through a small market instead.
 ---
 
-I was a Microsoft employee while Windows Phone was being pushed, and I've been thinking about
-why it failed ever since. The live tiles were actually notification-first — arguably ahead of
-their time — but the bright tiles on a dark background kept me alert and stressed rather than
-calm. And design aside, the real killer was the app gap: there simply weren't the apps people
-needed. That's the lesson I keep coming back to: **an OS doesn't win on vision, it wins on
-having the few apps that matter in the market you enter.**
+I was a Microsoft employee while Windows Phone was being pushed, and I've been thinking about why it failed ever since. The live tiles were actually notification-first — arguably ahead of their time — but the bright tiles on a dark background kept me alert and stressed rather than calm. And design aside, the real killer was the app gap: there simply weren't the apps people needed. That's the lesson I keep coming back to: **an OS doesn't win on vision, it wins on having the few apps that matter in the market you enter.**
+
+<figure>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Nokia_Lumia_730%2C_Startbildschirm.JPG/960px-Nokia_Lumia_730%2C_Startbildschirm.JPG"
+    alt="Windows Phone Start screen with live tiles on a Nokia Lumia 730"
+  />
+  <figcaption class="text-center">
+    Windows Phone's Start screen: live tiles, notification-first — but bright on dark. Photo via
+    <a href="https://commons.wikimedia.org/wiki/File:Nokia_Lumia_730,_Startbildschirm.JPG">Wikimedia Commons</a>
+    (CC BY-SA 4.0).
+  </figcaption>
+</figure>
 
 This post is the concept I've been developing over a long series of discussions: a phone OS
 where the **OS owns the attention layer**, apps are **distributed like web apps** (no store as
-a gate), and **AI is an OS service with quotas and privacy by default** — all enforced by one
-broker that applies per-app budgets and verified trust tiers to every app.
+a gate), and **AI is an OS service, shared fairly, private by default** — all enforced by one
+broker with per-app fair shares and verified trust tiers.
 
 ## The core idea: the OS owns notifications
 
@@ -43,9 +51,97 @@ through a structured protocol. The home screen is notifications-first, with thre
 - **Schedule** — notifications placed on your timeline by deadline, with live items (a
   delivery window) updating their own slots and quiet days shown as quiet.
 
-I prototyped these three views as an interactive mockup while developing the concept, with
-the quota mechanics and example senders (an OP Bank security alert, a live Posti delivery
-window, an over-quota Zalando card) wired in.
+<figure>
+  <svg
+    viewBox="0 0 960 400"
+    role="img"
+    aria-label="Mockup of the three home-screen views: Now, Inbox, Schedule"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <style>text { font-family: system-ui, sans-serif; }</style>
+    <!-- Phone 1: Now -->
+    <g>
+      <rect x="20" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
+      <rect x="120" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
+      <text x="160" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Now</text>
+      <rect x="44" y="80" width="232" height="24" rx="12" fill="#efe9da" />
+      <rect x="48" y="83" width="72" height="18" rx="9" fill="#2f6f4f" />
+      <text x="84" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Now</text>
+      <text x="160" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
+      <text x="236" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <rect x="44" y="116" width="232" height="64" rx="10" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="56" y="136" font-size="11" font-weight="600" fill="#2b2925">What matters now</text>
+      <text x="56" y="151" font-size="9" fill="#6b675e">2 actions suggested</text>
+      <rect x="56" y="158" width="86" height="16" rx="8" fill="#2f6f4f" />
+      <text x="99" y="169" text-anchor="middle" font-size="8" fill="#ffffff">Pay invoice</text>
+      <rect x="148" y="158" width="80" height="16" rx="8" fill="#e8e2d2" />
+      <text x="188" y="169" text-anchor="middle" font-size="8" fill="#2b2925">Track Posti</text>
+      <text x="44" y="200" font-size="10" font-weight="600" fill="#2b2925">By deadline</text>
+      <rect x="44" y="208" width="232" height="26" rx="8" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="54" y="225" font-size="9" fill="#2b2925">Helen invoice — due Fri 17:00</text>
+      <rect x="44" y="240" width="232" height="26" rx="8" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="54" y="257" font-size="9" fill="#2b2925">Posti delivery — live 14:00–16:00</text>
+      <rect x="44" y="272" width="232" height="26" rx="8" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="54" y="289" font-size="9" fill="#2b2925">Mimmi — 2 messages</text>
+      <text x="44" y="318" font-size="10" font-weight="600" fill="#8a857a">Filed for you</text>
+      <text x="54" y="334" font-size="9" fill="#8a857a">Zalando — blocked (over quota)</text>
+      <text x="54" y="350" font-size="9" fill="#8a857a">Vero — filed to next week · expired removed</text>
+    </g>
+    <!-- Phone 2: Inbox -->
+    <g>
+      <rect x="340" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
+      <rect x="440" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
+      <text x="480" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Inbox</text>
+      <rect x="364" y="80" width="232" height="24" rx="12" fill="#efe9da" />
+      <text x="404" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
+      <rect x="444" y="83" width="72" height="18" rx="9" fill="#2f6f4f" />
+      <text x="480" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Inbox</text>
+      <text x="556" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <rect x="364" y="116" width="232" height="40" rx="10" fill="#fbeae8" stroke="#e5b8b3" />
+      <text x="376" y="133" font-size="9" font-weight="600" fill="#8f1d14">OP Bank ✓ verified — new login</text>
+      <text x="376" y="147" font-size="8" fill="#8f1d14">Security-critical — cannot be deferred</text>
+      <rect x="364" y="164" width="232" height="30" rx="8" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="374" y="177" font-size="9" fill="#2b2925">Kanta ✓ — appointment reminder</text>
+      <text x="374" y="189" font-size="8" fill="#8a857a">due tomorrow · urgency high</text>
+      <rect x="364" y="200" width="232" height="30" rx="8" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="374" y="213" font-size="9" fill="#2b2925">Nordea ✓ — card notice</text>
+      <text x="374" y="225" font-size="8" fill="#8a857a">due in 4 days · urgency decaying</text>
+      <rect x="364" y="236" width="232" height="30" rx="8" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="374" y="249" font-size="9" fill="#2b2925">Suomi.fi — tax decision ready</text>
+      <text x="374" y="261" font-size="8" fill="#8a857a">due Fri · government sender</text>
+      <text x="364" y="290" font-size="9" fill="#8a857a">Every item shows its due date and a decaying</text>
+      <text x="364" y="304" font-size="9" fill="#8a857a">urgency rating; verified senders get a badge.</text>
+    </g>
+    <!-- Phone 3: Schedule -->
+    <g>
+      <rect x="660" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
+      <rect x="760" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
+      <text x="800" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Schedule</text>
+      <rect x="684" y="80" width="232" height="24" rx="12" fill="#efe9da" />
+      <text x="724" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
+      <text x="800" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
+      <rect x="840" y="83" width="72" height="18" rx="9" fill="#2f6f4f" />
+      <text x="876" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Schedule</text>
+      <text x="684" y="122" font-size="10" font-weight="600" fill="#2b2925">Today</text>
+      <rect x="684" y="130" width="232" height="30" rx="8" fill="#e8f0ea" stroke="#bcd6c6" />
+      <text x="694" y="143" font-size="9" fill="#2b2925">14:00–16:00 Posti delivery (live)</text>
+      <text x="694" y="155" font-size="8" fill="#2f6f4f">slot updates itself</text>
+      <rect x="684" y="166" width="232" height="30" rx="8" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="694" y="179" font-size="9" fill="#2b2925">17:00 Helen invoice due</text>
+      <text x="694" y="191" font-size="8" fill="#8a857a">reminder placed by deadline</text>
+      <text x="684" y="222" font-size="10" font-weight="600" fill="#2b2925">Saturday</text>
+      <rect x="684" y="230" width="232" height="30" rx="8" fill="#f1ede1" stroke="#e2dcc9" />
+      <text x="694" y="248" font-size="9" fill="#8a857a">Quiet day — nothing scheduled</text>
+      <text x="684" y="286" font-size="9" fill="#8a857a">Notifications are placed on your timeline by</text>
+      <text x="684" y="300" font-size="9" fill="#8a857a">deadline; quiet days are shown as quiet.</text>
+    </g>
+  </svg>
+  <figcaption class="text-center">
+    The three home-screen views — Now, Inbox, Schedule — as a static rendering of the interactive
+    mockup from the original discussion, with the quota mechanics and example senders (the OP Bank
+    security lane, a live Posti delivery window, an over-quota Zalando card) wired in.
+  </figcaption>
+</figure>
 
 The mechanics that make it work are quotas, not vibes: each sender gets a budget, verified
 senders (banks, government, health services) get a higher tier and a badge, security-critical
@@ -79,10 +175,11 @@ shouldn't copy them wholesale:
   ceiling. We borrow the packaging/lifecycle _concept_, not the runtime. (For the record, the
   W3C MiniApps work lives under the [MiniApp white paper](https://www.w3.org/TR/mini-app-white-paper/)
   and the [OW2 Quick App Initiative](https://quick-app-initiative.ow2.io/page/context/).)
-- **Why not just PWA**: in 2026 the capability gap is still sharp — iOS has no Web
-  Bluetooth/NFC/USB/background sync, push only works for installed PWAs, and Apple actually
-  removed standalone home-screen web apps in the EU. PWA is the fallback tier, not the main
-  one.
+- **Why not just PWA**: since we're building our own OS, platform quirks like iOS's missing Web
+  Bluetooth/NFC aren't the point — the point is depth of integration. HTML in a webview can't do
+  tight hardware and system integration (Bluetooth, NFC, background execution, OS-level
+  notification rendering) without a growing pile of permission prompts. PWA stays as the
+  fallback/web tier, not the main one.
 - **What to build on**: **React Native as an out-of-tree platform** on a Linux-based OS.
   Developers already know JS/React — asking them to learn Rust, QML, or Dart would kill
   adoption. RN's New Architecture (Fabric + JSI + TurboModules, default since 0.76) was
@@ -159,10 +256,11 @@ ranking, safeguarded accounts, and fast takedown (kill switch, public takedown l
 reporting). Shipping openness without those safeguards would be irresponsible; shipping them is
 the design.
 
-## AI: an OS service with quotas, private by default
+## AI: an OS service, shared fairly, private by default
 
 AI is becoming a necessity, and if it's shared by all apps, the OS must be the one enforcing
-safety, privacy, and efficiency — otherwise one app can hog the NPU or drain the battery.
+safety, privacy, and efficiency — otherwise one app can hog the NPU, overheat or drain the
+battery, or keep running AI in standby all night.
 
 The precedent exists: Android's [**AICore**](https://developer.android.com/ai/gemini-nano)
 system service manages the shared on-device model (Gemini Nano) with per-app quotas,
@@ -176,9 +274,11 @@ Our version would be a **System AI Service** that owns the model set (open-weigh
 quantized, distributed over the OS's signed update channel — verifiable, and no vendor
 black box), and brokers access through the same capability broker as notifications:
 
-- per-app **budgets**: tokens/sec, requests/day, NPU time-slices, memory, and an energy (mWh)
-  budget — enforced by an OS scheduler that owns NPU dispatch, batches across apps, and
-  throttles on thermal/battery state, with a per-app "AI usage" dashboard;
+- **fair-share scheduling, not rationing**: the OS scheduler owns NPU dispatch and batches
+  across apps, so each app gets a fair slice of the shared model and no single app can hog it —
+  your own AI usage is never capped. On top of that: thermal and battery guards that throttle
+  inference when the device is hot or the battery is low, no background/standby inference unless
+  the user opts in, and a per-app "AI usage" dashboard showing where the capacity went;
 - **priority lanes**: system/security (scam-call detection, OTP parsing) > user-initiated
   foreground > background (off unless opted in), with busy-error and graceful fallback to a
   smaller model;
@@ -189,7 +289,7 @@ black box), and brokers access through the same capability broker as notificatio
   per-task with explicit consent, through a verifiable private-compute tier (attestation,
   published images — the PCC model), default off.
 
-One broker, three resources: attention, apps, intelligence — each with per-app budgets,
+One broker, three resources: attention, apps, intelligence — each with per-app limits,
 verified trust tiers, and calm-by-default behavior.
 
 ## Why the EU has no OS, and why this can't wait for demand
@@ -244,14 +344,14 @@ from zero.
 | App chicken-and-egg                    | Finland wedge list: convert banks, Kanta, Posti first — a handful of entities covers daily necessity |
 | Google licensing pressure on Variant B | Ship Variant A in the EU where DMA cracks exist; keep protocol open                                  |
 | Version/compat tail                    | Web-like atomic distribution; OS-owned capability interface with shims                               |
-| AI abuse (hogging, battery drain)      | Hard quotas + energy budgets in the broker; per-app kill switch; audit log                           |
+| AI abuse (hogging, battery drain)      | Fair-share limits + thermal/battery guards in the broker; per-app kill switch; audit log             |
 | Privacy backlash                       | On-device by default, no training on user data, verifiable PCC for opt-in escalation                 |
 
 ## Where this goes next
 
 This is a concept, not a roadmap — but the pieces are all real in 2026: OS-owned notification
 channels with quotas, Hermes-bytecode app distribution, Skia-rendered RN on a custom platform,
-and quota'd on-device AI on 40–70+ TOPS NPUs. The failure modes of the past (Windows Phone, Sailfish)
+and fairly shared on-device AI on 40–70+ TOPS NPUs. The failure modes of the past (Windows Phone, Sailfish)
 were ecosystem and timing, not vision. The next concrete step would be the same one as always:
 a very short list of wedge entities whose senders we convert first, and one mid-tier OEM who
 ships it as default.
