@@ -152,6 +152,30 @@ Recognizable at 16 px.
 Wings at 50% length (Δ 0.5·(−34,34) / 0.5·(36,30)), bar nudged left to keep centering.
 More compact, but the K reads less clearly at 16 px.
 
+## Iterations on `mono-k` (round 6 — wings touch the bounding box)
+
+Wings run at the full original angle; each wing tip's butt cap is placed so its two
+corners land exactly on the K's imaginary bounding box — the upper wing touches the
+top edge and right edge, the lower wing the bottom edge and right edge (2 contact
+points each, no protrusion, no clipping). Stem is flush with the box's left/top/bottom.
+Accent bar moved much closer to the K.
+
+### R12. `iterations/mono-k-touch.svg` — Touch, bar h20 — **recommended**
+
+![mono-k-touch](iterations/mono-k-touch.svg)
+
+Box = [18,72]×[32,96]; stem `M26 32v64`; 45° wings from junction (40,64) with tips at
+(66.34, 37.66) / (66.34, 90.34) — cap corners land exactly on the box edges:
+(60.69, 32) + (72, 43.31) for the upper wing, (60.69, 96) + (72, 84.69) for the lower.
+Bar `M83 88h20` (3-unit gap from the box).
+Verified with a box-overlay render: 2 contact points per wing, zero protrusion.
+
+### R13. `iterations/mono-k-touch-long.svg` — Touch, longer bar h24
+
+![mono-k-touch-long](iterations/mono-k-touch-long.svg)
+
+Same K shifted left (box [16,70]×[32,96]); bar `M83 88h24` — longer, like R7's cursor.
+
 ## Notes for implementation
 
 - Whichever design is picked, it replaces `public/favicon.svg` (referenced in
