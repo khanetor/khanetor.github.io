@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="28" />
+  <path
+    d="M40 34v60M84 34 48 68l38 26"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="15"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <style>
+    rect {
+      fill: #006cac;
+    }
+    @media (prefers-color-scheme: dark) {
+      rect {
+        fill: #ff6b01;
+      }
+    }
+  </style>
+</svg>
