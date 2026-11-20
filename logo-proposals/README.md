@@ -46,6 +46,49 @@ A transparent-background **K** with an accent-colored period ("K."), in the adap
 foreground color. Minimal, matches the current favicon's monochrome style, and — like
 `badge-k` — survives 16 px well.
 
+## Iterations on `mono-k` (round 2)
+
+Five refinements of proposal 4 — still transparent background, adaptive monochrome K
+plus one accent element:
+
+### R1. `iterations/mono-k-round.svg` — Round K.
+
+![mono-k-round](iterations/mono-k-round.svg)
+
+Rounded-cap K with a baseline accent dot, respaced so the dot no longer touches the
+lower arm (the main flaw of v1). Balanced proportions; clear from 16 px up.
+
+### R2. `iterations/mono-k-angular.svg` — Angular K.
+
+![mono-k-angular](iterations/mono-k-angular.svg)
+
+Butt caps + miter joins, with a square accent block aligned to the baseline. Sharp,
+geometric, editorial; the most legible of the set at 16 px.
+
+### R3. `iterations/mono-k-ring.svg` — K in a ring.
+
+![mono-k-ring](iterations/mono-k-ring.svg)
+
+K and dot enclosed in a thin adaptive ring. Elegant at 32 px and up; weakest at 16 px.
+
+### R4. `iterations/mono-k-node.svg` — Node K.
+
+![mono-k-node](iterations/mono-k-node.svg)
+
+The accent disc sits on the K's arm junction instead of beside it, making the accent
+the "joint" of the letter. Distinctive and stable; reads well from 16 px up.
+
+### R5. `iterations/mono-k-thin.svg` — Thin K.
+
+![mono-k-thin](iterations/mono-k-thin.svg)
+
+Lighter 10-unit stroke on a taller K. Refined at large sizes but blurs at 16 px —
+likely too light for a favicon.
+
+Verified by rendering every variant at 256/160/32/16 px in both light and dark themes
+on white and dark backgrounds. 16 px legibility ranking: **angular ≈ round > node >
+ring > thin**.
+
 ## Notes for implementation
 
 - Whichever design is picked, it replaces `public/favicon.svg` (referenced in
