@@ -40,7 +40,7 @@ Today every app owns its own channel into your attention: badges, banners, push,
 The OS just transports them. The result is a thousand little slot machines.
 
 The concept flips it: the OS owns the notification channel, and apps _request_ attention
-through a structured protocol. The home screen is notifications-first, with three views:
+through a structured protocol. The home screen is notifications-first, with four screens:
 
 - **Now** — the AI-prioritized surface: a "what matters now" summary with suggested actions,
   items sorted by deadline, and a "filed for you" section showing the economics in action
@@ -50,12 +50,15 @@ through a structured protocol. The home screen is notifications-first, with thre
   login alert that cannot be deferred), due dates on every item, decaying urgency ratings.
 - **Schedule** — notifications placed on your timeline by deadline, with live items (a
   delivery window) updating their own slots and quiet days shown as quiet.
+- **Media** — the OS-level now-playing screen: transport controls, artwork, and the app's own
+  branding (icon, accent color), for any app — native or web — that registers a media session
+  through the SDK.
 
 <figure>
   <svg
-    viewBox="0 0 960 400"
+    viewBox="0 0 1280 400"
     role="img"
-    aria-label="Mockup of the three home-screen views: Now, Inbox, Schedule"
+    aria-label="Mockup of the home-screen screens: Now, Inbox, Schedule, Media"
     xmlns="http://www.w3.org/2000/svg"
   >
     <style>text { font-family: system-ui, sans-serif; }</style>
@@ -135,11 +138,36 @@ through a structured protocol. The home screen is notifications-first, with thre
       <text x="684" y="286" font-size="9" fill="#8a857a">Notifications are placed on your timeline by</text>
       <text x="684" y="300" font-size="9" fill="#8a857a">deadline; quiet days are shown as quiet.</text>
     </g>
+    <!-- Phone 4: Media -->
+    <g>
+      <rect x="980" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
+      <rect x="1080" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
+      <text x="1120" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Media</text>
+      <rect x="1004" y="84" width="232" height="120" rx="12" fill="#e8e2d2" />
+      <text x="1120" y="156" text-anchor="middle" font-size="44" fill="#b0a88f">&#9834;</text>
+      <rect x="1004" y="212" width="118" height="18" rx="9" fill="#e8f0ea" />
+      <text x="1063" y="225" text-anchor="middle" font-size="8" fill="#2f6f4f">via Spotify &#10003; verified</text>
+      <text x="1004" y="252" font-size="11" font-weight="600" fill="#2b2925">Song title</text>
+      <text x="1004" y="267" font-size="9" fill="#6b675e">Artist — Album</text>
+      <rect x="1004" y="278" width="232" height="4" rx="2" fill="#e5dfd0" />
+      <rect x="1004" y="278" width="90" height="4" rx="2" fill="#2f6f4f" />
+      <text x="1004" y="292" font-size="8" fill="#8a857a">1:12</text>
+      <text x="1236" y="292" text-anchor="end" font-size="8" fill="#8a857a">3:45</text>
+      <circle cx="1080" cy="322" r="16" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="1080" y="326" text-anchor="middle" font-size="11" fill="#2b2925">&#9198;</text>
+      <circle cx="1120" cy="322" r="18" fill="#2f6f4f" />
+      <text x="1120" y="327" text-anchor="middle" font-size="12" fill="#ffffff">&#9654;</text>
+      <circle cx="1160" cy="322" r="16" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="1160" y="326" text-anchor="middle" font-size="11" fill="#2b2925">&#9197;</text>
+      <text x="1004" y="356" font-size="8" fill="#8a857a">OS controls any registered media session,</text>
+      <text x="1004" y="368" font-size="8" fill="#8a857a">also from lock screen and notification lane</text>
+    </g>
   </svg>
   <figcaption class="text-center">
-    The three home-screen views — Now, Inbox, Schedule — as a static rendering of the interactive
-    mockup from the original discussion, with the quota mechanics and example senders (the OP Bank
-    security lane, a live Posti delivery window, an over-quota Zalando card) wired in.
+    The four home-screen screens — Now, Inbox, Schedule, Media — as a static rendering of the
+    interactive mockup from the original discussion, with the quota mechanics, example senders
+    (the OP Bank security lane, a live Posti delivery window, an over-quota Zalando card), and a
+    media session (Spotify) wired in.
   </figcaption>
 </figure>
 
@@ -148,6 +176,17 @@ senders (banks, government, health services) get a higher tier and a badge, secu
 items are never deferrable, and everything else decays. The design principle is **calm by
 default** — information density is not the goal; calm control is. Windows Phone proved that
 notification-first can be right and still feel wrong; the missing piece was the quota layer.
+
+Media gets the same treatment, because a portable device is personal and music usually is. The
+fourth screen is a **now-playing surface owned by the OS**: any app — native or web — that
+registers a [W3C Media Session](https://www.w3.org/TR/mediasession/) through the SDK gets
+transport controls, artwork, and its branding rendered in the media tab and lock screen, while
+the app keeps its own UI; media focus and background playback go through the same quota broker.
+The web tier implements Media Session too, and that is also the YouTube story: Google is unlikely
+to ever ship a native app for a rival OS — no Google Maps and no official YouTube app is a large
+part of how Windows Phone died — so instead we make the _web_ experience first-class: YouTube in
+our web tier gets OS media controls, background-playback policy, and picture-in-picture, with the
+DMA's web distribution making that a legitimate channel.
 
 ## Apps: distributed like web apps, without the store as a gate
 
@@ -289,8 +328,24 @@ black box), and brokers access through the same capability broker as notificatio
   per-task with explicit consent, through a verifiable private-compute tier (attestation,
   published images — the PCC model), default off.
 
-One broker, three resources: attention, apps, intelligence — each with per-app limits,
-verified trust tiers, and calm-by-default behavior.
+One broker, three resources — attention, apps, intelligence — each with per-app limits,
+verified trust tiers, and calm-by-default behavior; and the same consent-and-limits philosophy
+for your profile (next section).
+
+## Personalization that stays personal
+
+Spotify-style recommendations are where on-device AI and an open profile standard combine. Today
+services profile you in their data centers and the profile is theirs; here the profile is yours.
+The OS ships a **portable private profile**: an open, user-controlled store — a
+[Solid](https://solidproject.org/) pod or EUDI-wallet-style verifiable attributes — that lives
+wherever _you_ choose (self-hosted, or a provider you pick, like a password manager), encrypted,
+exportable, and movable between providers. Services can ask consented questions and read only
+the attributes you permit, per app and per purpose; they cannot build a shadow profile, because
+the profile never leaves your control and every read is logged and revocable. Personalization
+itself then runs on-device: the System AI Service computes recommendations against your local
+profile, so "personalized" means personal — not a model of you sitting in someone else's data
+center. Spotify can ask "what mood are you in?" with your consent; it cannot quietly infer and
+store it.
 
 ## Why the EU has no OS, and why this can't wait for demand
 
