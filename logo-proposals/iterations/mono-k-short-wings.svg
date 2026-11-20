@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <path
+    d="M22 32v64M55.8 42.2 32 66l25.2 21"
+    fill="none"
+    stroke-width="16"
+    stroke-linecap="butt"
+    stroke-linejoin="miter"
+  />
+  <path
+    class="accent"
+    d="M84 88h22"
+    fill="none"
+    stroke-width="16"
+    stroke-linecap="round"
+  />
+  <style>
+    path {
+      stroke: #282728;
+    }
+    path.accent {
+      stroke: #006cac;
+    }
+    @media (prefers-color-scheme: dark) {
+      path {
+        stroke: #eaedf3;
+      }
+      path.accent {
+        stroke: #ff6b01;
+      }
+    }
+  </style>
+</svg>

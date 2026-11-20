@@ -129,6 +129,29 @@ Clean at 16 px and up.
 Same shortened-wing K inside a literal square frame (8-unit stroke), accent bar to the
 right of the frame. The most explicit "boxed" look; slightly busier at 16 px.
 
+## Iterations on `mono-k` (round 5 — same wing angles, shorter wings)
+
+Round 4 rotated the wings to fit a box; feedback was to keep R7's angles exactly and
+drop the box. These variants shorten the wings **along the same diagonal directions**
+(direction vectors scaled, so angles are identical to R7) — the tips simply stop
+shorter, so nothing protrudes past the stem's top/bottom:
+
+### R10. `iterations/mono-k-short-wings.svg` — Short wings — **recommended**
+
+![mono-k-short-wings](iterations/mono-k-short-wings.svg)
+
+R7's K with wing tips at 70% of their length along the original diagonals
+(upper Δ 0.7·(−34,34), lower Δ 0.7·(36,30)); R7's long accent bar kept. Wing cap
+corners now sit at y≈36.5/93.1, inside the stem's 32–96 — no protrusion, same angles.
+Recognizable at 16 px.
+
+### R11. `iterations/mono-k-shorter-wings.svg` — Shorter wings
+
+![mono-k-shorter-wings](iterations/mono-k-shorter-wings.svg)
+
+Wings at 50% length (Δ 0.5·(−34,34) / 0.5·(36,30)), bar nudged left to keep centering.
+More compact, but the K reads less clearly at 16 px.
+
 ## Notes for implementation
 
 - Whichever design is picked, it replaces `public/favicon.svg` (referenced in
