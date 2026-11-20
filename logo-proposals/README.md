@@ -89,6 +89,26 @@ Verified by rendering every variant at 256/160/32/16 px in both light and dark t
 on white and dark backgrounds. 16 px legibility ranking: **angular ≈ round > node >
 ring > thin**.
 
+## Iterations on `mono-k` (round 3)
+
+Combining R2's angular K with a **rounded accent bar** (the dot stretched out like the
+cursor line in `terminal.svg`):
+
+### R6. `iterations/mono-k-cursor.svg` — Cursor K. (recommended)
+
+![mono-k-cursor](iterations/mono-k-cursor.svg)
+
+Angular K (butt caps, miter joins) + a round-capped accent bar on the baseline, bottom
+aligned with the K. Reads as "K" + cursor/period; clean gap to the lower arm, balanced
+centering, recognizable at 16 px in both themes.
+
+### R7. `iterations/mono-k-cursor-long.svg` — longer bar
+
+![mono-k-cursor-long](iterations/mono-k-cursor-long.svg)
+
+Same as R6 with a longer bar (closer to `terminal.svg`'s cursor). More terminal-like,
+but the longer bar shifts the visual center right — R6 balances better.
+
 ## Notes for implementation
 
 - Whichever design is picked, it replaces `public/favicon.svg` (referenced in
