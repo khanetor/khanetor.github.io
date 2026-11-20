@@ -99,42 +99,65 @@ shouldn't copy them wholesale:
   — alternative marketplaces, sideloading, and web distribution on iOS in the EU — is the
   regulatory tailwind that makes "store optional" legally established in our target market.
 
-### App quality without a gate: review as a badge, not a gate
+## App quality in an open store: a badge, not a gate
 
-A store gate means only reviewed apps can install (Apple's model: no review, no distribution,
-and a lapsed developer fee removes your apps). Our store is a **badge, not a gate**: anyone can
-distribute, and review only adds trust signals. The one line that keeps it that way:
-**unverified apps stay fully visible and installable — labeled "unverified", never hidden or
-demoted to invisibility.** The only hard block is a failed malware scan, which is appealable.
+Gates leak, so we design for openness. The DMA already forces sideloading, alternative
+marketplaces, and web distribution in the EU — and Apple's own notarization-only alternative
+stores let prohibited apps through (the "Hot Tub" case), while Apple rejected 22,000 submissions
+in 2025 for hidden or undocumented features that only appear after approval. Open distribution
+is the regulatory and technical future; the design question is how to make harm hard and
+visible, not how to pretend exclusion works.
 
-The quality stack, layered so that each layer doesn't depend on the store:
+**Badge, not a gate.** A gate excludes: only reviewed apps can install, and a lapsed fee removes
+them (Apple's model). A badge ranks and labels: anyone can distribute, and review only adds
+trust signals. The one rule that keeps ours a badge: **unverified apps stay fully visible and
+installable — labeled "unverified", never hidden or demoted to invisibility.** The only hard
+block is a failed malware scan, which is appealable.
 
-- **Free security floor for every app, regardless of source:** signature plus an automated
-  notarization-style scan (malware, private APIs, entitlements, declared-capability vs.
-  actual-behavior checks), and the sandbox/capability broker, which limits what any app can do
-  even if something slips through.
-- **Reproducible builds + published source as a badge requirement** (the
-  [F-Droid](https://f-droid.org/docs/Reproducible_Builds/) model): the shipped Hermes bytecode
-  must rebuild bit-for-bit from the published source, so the community can audit any app
-  without trusting the reviewer.
-- **AI-agent review of 100% of submissions** — feasible for us precisely because apps are
-  inspectable bytecode with a declared capability manifest: static checks, update diffing, and
-  sandboxed dynamic runs where an agent clicks through the app while network calls are watched.
-- **A small maintainer group on a risk-stratified sample** — new publishers, flagged apps,
-  high-download apps, sensitive categories (finance, health, kids), and all appeals — plus
-  random audits. Volunteers handle triage and reproducible-build verification; a paid core
-  makes final calls (the Linux-kernel model). Volume makes this tractable: our wedge-market
-  submission volume is orders of magnitude below Apple's 9.1M/year. Review logs and rejection
-  reasons are public, so the community can audit the reviewers too.
-- **Identity via eIDAS 2.0 / national eID** (free, government-issued EUDI wallets by end-2026)
-  instead of a paid D-U-N-S-style check: stronger accountability at zero cost.
+**1. A universal security floor, free for every app.** Every package is signed and passes an
+automated notarization-style scan (malware signatures, private APIs, entitlements,
+declared-capability vs. actual-behavior) — and because apps are bytecode bundles, the OS
+auto-diffs and re-scans **every update**, catching bait-and-switch mechanically. On top of that,
+the sandbox and capability broker mean a malicious app can't do much even if it slips through:
+dangerous capabilities (SMS, contacts, accessibility services, device admin, installing other
+apps) are off by default and granted per app, and notifications, AI, and background execution
+all pass through the quota broker.
 
-**Fees:** distribution, signing, the automated scan, and listing are free. The **annual fee
+**2. Trust is earned through the badge — and auditable by anyone.** The verified-publisher badge
+requires published source and a reproducible build (the
+[F-Droid](https://f-droid.org/docs/Reproducible_Builds/) model): the shipped Hermes bytecode must
+rebuild bit-for-bit from source, so the community can audit any app without trusting the
+reviewer. AI agents review 100% of submissions — practical here because apps are inspectable
+bytecode with a declared capability manifest: static checks, update diffs, and sandboxed
+dynamic runs where an agent clicks through the app while its network calls are watched. A small
+maintainer group then reviews a risk-stratified sample — new publishers, flagged apps,
+high-download apps, sensitive categories (finance, health, kids), and every appeal — plus
+random audits; volunteers handle triage and build verification, a paid core makes final calls.
+Review logs and rejection reasons are public, so the community can audit the reviewers too.
+Identity comes from eIDAS 2.0 / national eID (free, government-issued EUDI wallets) rather than a
+paid D-U-N-S-style check — stronger accountability at zero cost. Volume is on our side: our
+wedge-market submission count is orders of magnitude below Apple's 9.1M a year.
+
+**3. Vulnerable users get a per-account gate, not a global one.** Safeguarded and child accounts
+default to **verified-only installs**, with age-appropriate content ratings enforced plus screen
+time and capability restrictions. Age assurance uses the EUDI wallet's attribute attestations —
+selective disclosure can prove someone is over 13/18 without revealing identity or birthdate,
+which is exactly what eIDAS 2.0 was built for. Kids-category and user-generated-content
+moderation rules (Apple's guidelines 1.1/1.2 are a good reference bar) are enforced in badge
+review.
+
+**Fees.** Distribution, signing, the automated scan, and listing are free. The **annual fee
 (per developer account, not per app)** exists only for the **verified-publisher badge** — it
-pays the maintainers and the AI review infrastructure. It buys a service, not the right to
-exist on the platform, and there is no commission on payments (0%, as the DMA already forces
-external payments). Two tiers: free/community-reviewed (no badge) and paid/verified (badge,
-faster review, discovery priority, higher capability quotas).
+pays the maintainers and the AI review infrastructure. It buys a service, not the right to exist
+on the platform, and there is no commission on payments (0%; the DMA already forces external
+payments). Two tiers: free/community-reviewed (no badge) and paid/verified (badge, faster
+review, discovery priority, higher capability quotas).
+
+**The honest tradeoff.** An open store will contain more scams and low-effort apps than Apple's —
+that is the price of no gate. The harm is kept low not by prevention but by the floor, labels,
+ranking, safeguarded accounts, and fast takedown (kill switch, public takedown log, one-tap
+reporting). Shipping openness without those safeguards would be irresponsible; shipping them is
+the design.
 
 ## AI: an OS service with quotas, private by default
 
