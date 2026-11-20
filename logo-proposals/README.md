@@ -109,6 +109,26 @@ centering, recognizable at 16 px in both themes.
 Same as R6 with a longer bar (closer to `terminal.svg`'s cursor). More terminal-like,
 but the longer bar shifts the visual center right — R6 balances better.
 
+## Iterations on `mono-k` (round 4 — "boxed" K)
+
+R7's wings protruded above/below the stem. These variants shorten the wings so the K
+fits inside a square, keeping R7's long cursor bar:
+
+### R8. `iterations/mono-k-boxed.svg` — Boxed K (no frame)
+
+![mono-k-boxed](iterations/mono-k-boxed.svg)
+
+Wing tips pulled in to y=40/88 so the whole K fits a 64×64 box (x 14–78, y 32–96);
+long accent bar unchanged. Reads as a contained, "boxed" K without drawing the box.
+Clean at 16 px and up.
+
+### R9. `iterations/mono-k-boxed-frame.svg` — Boxed K with frame
+
+![mono-k-boxed-frame](iterations/mono-k-boxed-frame.svg)
+
+Same shortened-wing K inside a literal square frame (8-unit stroke), accent bar to the
+right of the frame. The most explicit "boxed" look; slightly busier at 16 px.
+
 ## Notes for implementation
 
 - Whichever design is picked, it replaces `public/favicon.svg` (referenced in
