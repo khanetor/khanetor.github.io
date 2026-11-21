@@ -29,7 +29,7 @@ I was a Microsoft employee while Windows Phone was being pushed, and I've been t
   </figcaption>
 </figure>
 
-This post is the concept I've been developing over a long series of discussions: a phone OS where the **OS owns the attention layer**, apps are **distributed like web apps** (no store as a gate), and **AI is an OS service, shared fairly, private by default** — all enforced by one broker with per-app fair shares and verified trust tiers.
+**TL;DR:** this post is a concept for a phone OS where the **OS owns the attention layer**, apps are **distributed like web apps** (no store as a gate), and **AI is an OS service, shared fairly, private by default**. All of it runs through one **capability broker** — a single OS service every app must go through, which grants permissions and enforces per-app fair shares and verified trust tiers.
 
 ## The core idea: the OS owns notifications
 
@@ -90,6 +90,24 @@ The mechanics that make it work are quotas, not vibes: each sender gets a budget
 
 Media gets the same treatment, because a portable device is personal and music usually is. The fourth screen is a **now-playing surface owned by the OS**: any app — native or web — that registers a [W3C Media Session](https://www.w3.org/TR/mediasession/) through the SDK gets transport controls, artwork, and its branding rendered in the media tab and lock screen, while the app keeps its own UI; media focus and background playback go through the same quota broker. The web tier implements Media Session too, and that is also the YouTube story: Google is unlikely to ever ship a native app for a rival OS — no Google Maps and no official YouTube app is a large part of how Windows Phone died — so instead we make the _web_ experience first-class: YouTube in our web tier gets OS media controls, background-playback policy, and picture-in-picture, with the DMA's web distribution making that a legitimate channel.
 
+## Why the EU has no OS, and why this can't wait for demand
+
+Sanctions worked for China because they created a forced shortage that local industry could fill, with state coordination and a billion-user market. The EU has none of that: US software is not just available but free and excellent, so the demand never arises; manufacturing died with Nokia/Ericsson; capital and procurement are fragmented into 27 regimes; and the EU's instinct is to regulate the foreign platform (DMA, GDPR) rather than build its own — regulation has never once produced a European product. The security umbrella removes the last shred of urgency: Europe only thinks about being cut off when Washington hints at it.
+
+The strategic consequence: **you cannot wait for the demand to arise — the concept has to create its own small, artificial shortage.** That's what the wedge market is: a small market where our layer is the default and the alternatives are demonstrably worse. And the EU's regulatory reflex is the ally to exploit: DMA sideloading and default-choice screens are real cracks in the Google ecosystem, and "digital sovereignty you can hold" is fundable from EU sovereignty budgets.
+
+## Go-to-market
+
+Enter through a small market's must-have apps first — in Finland that's concentrated and institutionally motivated: bank apps (OP/Nordea), Kanta health, Suomi.fi government services, Posti/Matkahuolto shipping, payments, then messaging (WhatsApp is the genuinely hard one). That same list is the sender-conversion list for the notification protocol in both variants below. Then partner with a real OEM — **big enough to ship volume, small enough to need a story**. HMD/Nokia is the natural cultural fit; Vivo/Honor have the hardware but are structurally committed to their own skins. Skip Sailfish/Jolla-style software-only plays (a decade proves they don't move the market) and skip pure Android overlays ("if it's optional, why bother" — opt-in attention management has a ceiling of enthusiasts; it has to be OEM-default).
+
+On the Google question it's binary: shipping the Play Store requires full GMS certification, and you can't have "Play Store but our notification channel" on the same device. So: **Variant B first** — a Google-certified device where our layer is the default home/notification surface and a structured sender protocol enters from the side (verified senders get richer rendering and quota priority; everything else gets AI-parsed fallback); **Variant A as a second product line** in Finland/Nordics — a de-Googled device plus a curated app wedge, where the institutional apps run as PWAs or "email plus a secure action link". The de-Googled version without the wedge is just a worse phone; with the wedge, it's the sovereign version.
+
+The honest risk in the OEM route: the OEM owns the customer, not you. If the device sells poorly you're dropped in one cycle; if it sells well, the OEM (or Google, via licensing pressure) captures the value. The mitigation is structural: make the protocol and the association the asset, the OEM merely the first licensee — so switching OEMs doesn't restart from zero.
+
+## Why we could win
+
+Three moats, none of which require being bigger than Apple or Google. **OEM-default exclusivity**: attention features only matter as the default surface, and a mid-tier OEM needs a story — we are that story, contractually the first licensee. **The protocol and the verified-sender network**: once banks, Kanta, and Posti adopt the structured sender protocol, switching costs rise for every later app and every later OEM — the network is the asset, not the hardware. **Regulation**: the DMA already forces sideloading, alternative stores, and web distribution in the EU, so the "store optional" model rides the law instead of fighting it, and EU sovereignty budgets can fund the wedge. The honest gap: Apple or Google could copy the notification layer — but shipping it as an OEM-default surface conflicts with their own store economics, which is exactly the space we occupy.
+
 ## Apps: distributed like web apps, without the store as a gate
 
 The web's distribution model is the part mobile got wrong: a URL is the distribution, deploys are atomic, and every user is on the latest version after a refresh. App stores give you review, discovery, and trust badges — but also review delays, 15–30% fees, and a client base fragmented across many installed versions, which makes backward compatibility and API versioning a permanent chore.
@@ -100,7 +118,11 @@ This is feasible today, and there are existing projects that prove each piece �
 
 - **Why not QuickApps/MiniApps**: install-free and always-latest, yes — but they're web-tech hybrids (JS logic + webview UI) with per-vendor dialects, standardized by a W3C working group that closed in 2026, and in Europe only Huawei devices ship the framework. Adopting it would tie a European-sovereignty OS to a Chinese-OEM-controlled format with PWA's richness ceiling. We borrow the packaging/lifecycle _concept_, not the runtime. (For the record, the W3C MiniApps work lives under the [MiniApp white paper](https://www.w3.org/TR/mini-app-white-paper/) and the [OW2 Quick App Initiative](https://quick-app-initiative.ow2.io/page/context/).)
 - **Why not just PWA**: since we're building our own OS, platform quirks like iOS's missing Web Bluetooth/NFC aren't the point — the point is depth of integration. HTML in a webview can't do tight hardware and system integration (Bluetooth, NFC, background execution, OS-level notification rendering) without a growing pile of permission prompts. PWA stays as the fallback/web tier, not the main one.
-- **What to build on**: **React Native as an out-of-tree platform** on a Linux-based OS. Developers already know JS/React — asking them to learn Rust, QML, or Dart would kill adoption. RN's New Architecture (Fabric + JSI + TurboModules, default since 0.76) was explicitly designed to make [out-of-tree platforms](https://reactnative.dev/docs/out-of-tree-platforms) maintainable — react-native-windows, -macos, -web and [react-native-skia](https://github.com/Shopify/react-native-skia) (Linux/macOS) prove the seams. Apps ship **Hermes bytecode bundles** loaded from a URL, which _is_ the web-like distribution model; rendering goes through **Skia/Graphite** (via react-native-skia, now on the WebGPU-based Graphite backend) so there's one GPU path instead of per-widget native views; OS capabilities (camera, NFC, push, background) are exposed once as TurboModules through the capability broker; and **Wasm/WASI ([WASI-NN](https://github.com/WebAssembly/wasi-nn))** covers sandboxed logic. The EU's [DMA](https://digital-markets-act.ec.europa.eu/developer-portal/app-distribution_en) — alternative marketplaces, sideloading, and web distribution on iOS in the EU — is the regulatory tailwind that makes "store optional" legally established in our target market.
+- **What to build on**: **React Native as an out-of-tree platform** on a Linux-based OS — developers already know JS/React, and asking them to learn Rust, QML, or Dart would kill adoption.
+  - RN's New Architecture (Fabric + JSI + TurboModules, default since 0.76) was explicitly designed to make [out-of-tree platforms](https://reactnative.dev/docs/out-of-tree-platforms) maintainable — react-native-windows, -macos, -web and [react-native-skia](https://github.com/Shopify/react-native-skia) (Linux/macOS) prove the seams.
+  - Apps ship **Hermes bytecode bundles** loaded from a URL — that _is_ the web-like distribution model; rendering goes through **Skia/Graphite** (react-native-skia, now on the WebGPU-based Graphite backend), so there's one GPU path instead of per-widget native views.
+  - OS capabilities (camera, NFC, push, background) are exposed once as TurboModules through the capability broker; **Wasm/WASI ([WASI-NN](https://github.com/WebAssembly/wasi-nn))** covers sandboxed logic.
+  - The EU's [DMA](https://digital-markets-act.ec.europa.eu/developer-portal/app-distribution_en) — alternative marketplaces, sideloading, and web distribution on iOS in the EU — is the regulatory tailwind that makes "store optional" legally established in our target market.
 
 ## App quality in an open store: a badge, not a gate
 
@@ -137,30 +159,17 @@ One broker, three resources — attention, apps, intelligence — each with per-
 
 Spotify-style recommendations are where on-device AI and an open profile standard combine. Today services profile you in their data centers and the profile is theirs; here the profile is yours. The OS ships a **portable private profile**: an open, user-controlled store — a [Solid](https://solidproject.org/) pod or EUDI-wallet-style verifiable attributes — that lives wherever _you_ choose (self-hosted, or a provider you pick, like a password manager), encrypted, exportable, and movable between providers. Services can ask consented questions and read only the attributes you permit, per app and per purpose; they cannot build a shadow profile, because the profile never leaves your control and every read is logged and revocable. Personalization itself then runs on-device: the System AI Service computes recommendations against your local profile, so "personalized" means personal — not a model of you sitting in someone else's data center. Spotify can ask "what mood are you in?" with your consent; it cannot quietly infer and store it.
 
-## Why the EU has no OS, and why this can't wait for demand
-
-Sanctions worked for China because they created a forced shortage that local industry could fill, with state coordination and a billion-user market. The EU has none of that: US software is not just available but free and excellent, so the demand never arises; manufacturing died with Nokia/Ericsson; capital and procurement are fragmented into 27 regimes; and the EU's instinct is to regulate the foreign platform (DMA, GDPR) rather than build its own — regulation has never once produced a European product. The security umbrella removes the last shred of urgency: Europe only thinks about being cut off when Washington hints at it.
-
-The strategic consequence: **you cannot wait for the demand to arise — the concept has to create its own small, artificial shortage.** That's what the wedge market is: a small market where our layer is the default and the alternatives are demonstrably worse. And the EU's regulatory reflex is the ally to exploit: DMA sideloading and default-choice screens are real cracks in the Google ecosystem, and "digital sovereignty you can hold" is fundable from EU sovereignty budgets.
-
-## Go-to-market
-
-Enter through a small market's must-have apps first — in Finland that's concentrated and institutionally motivated: bank apps (OP/Nordea), Kanta health, Suomi.fi government services, Posti/Matkahuolto shipping, payments, then messaging (WhatsApp is the genuinely hard one). That same list is the sender-conversion list for the notification protocol in both variants below. Then partner with a real OEM — **big enough to ship volume, small enough to need a story**. HMD/Nokia is the natural cultural fit; Vivo/Honor have the hardware but are structurally committed to their own skins. Skip Sailfish/Jolla-style software-only plays (a decade proves they don't move the market) and skip pure Android overlays ("if it's optional, why bother" — opt-in attention management has a ceiling of enthusiasts; it has to be OEM-default).
-
-On the Google question it's binary: shipping the Play Store requires full GMS certification, and you can't have "Play Store but our notification channel" on the same device. So: **Variant B first** — a Google-certified device where our layer is the default home/notification surface and a structured sender protocol enters from the side (verified senders get richer rendering and quota priority; everything else gets AI-parsed fallback); **Variant A as a second product line** in Finland/Nordics — a de-Googled device plus a curated app wedge, where the institutional apps run as PWAs or "email plus a secure action link". The de-Googled version without the wedge is just a worse phone; with the wedge, it's the sovereign version.
-
-The honest risk in the OEM route: the OEM owns the customer, not you. If the device sells poorly you're dropped in one cycle; if it sells well, the OEM (or Google, via licensing pressure) captures the value. The mitigation is structural: make the protocol and the association the asset, the OEM merely the first licensee — so switching OEMs doesn't restart from zero.
-
 ## Risks
 
-| Risk                                   | Mitigation                                                                                           |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| OEM dependence / capture               | Protocol-first licensing; multiple OEM candidates from day one                                       |
-| App chicken-and-egg                    | Finland wedge list: convert banks, Kanta, Posti first — a handful of entities covers daily necessity |
-| Google licensing pressure on Variant B | Ship Variant A in the EU where DMA cracks exist; keep protocol open                                  |
-| Version/compat tail                    | Web-like atomic distribution; OS-owned capability interface with shims                               |
-| AI abuse (hogging, battery drain)      | Fair-share limits + thermal/battery guards in the broker; per-app kill switch; audit log             |
-| Privacy backlash                       | On-device by default, no training on user data, verifiable PCC for opt-in escalation                 |
+| Risk                                   | Mitigation                                                                                                                |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| OEM dependence / capture               | Protocol-first licensing; multiple OEM candidates from day one                                                            |
+| App chicken-and-egg                    | Finland wedge list: convert banks, Kanta, Posti first — a handful of entities covers daily necessity                      |
+| Google licensing pressure on Variant B | Ship Variant A in the EU where DMA cracks exist; keep protocol open                                                       |
+| Version/compat tail                    | Web-like atomic distribution; OS-owned capability interface with shims                                                    |
+| AI abuse (hogging, battery drain)      | Fair-share limits + thermal/battery guards in the broker; per-app kill switch; audit log                                  |
+| Privacy backlash                       | On-device by default, no training on user data, verifiable PCC for opt-in escalation                                      |
+| Execution: RN out-of-tree port cost    | Biggest engineering item — budget a small dedicated core team; Skia-rendering route keeps scope to the core component set |
 
 ## Where this goes next
 
