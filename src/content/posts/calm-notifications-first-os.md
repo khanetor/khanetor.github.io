@@ -56,7 +56,7 @@ through a structured protocol. The home screen is notifications-first, with four
 
 <figure>
   <svg
-    viewBox="0 0 1280 400"
+    viewBox="0 0 1280 640"
     role="img"
     aria-label="Mockup of the home-screen screens: Now, Inbox, Schedule, Media"
     xmlns="http://www.w3.org/2000/svg"
@@ -64,112 +64,120 @@ through a structured protocol. The home screen is notifications-first, with four
     <style>text { font-family: system-ui, sans-serif; }</style>
     <!-- Phone 1: Now -->
     <g>
-      <rect x="20" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
-      <rect x="120" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
-      <text x="160" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Now</text>
-      <rect x="44" y="80" width="232" height="24" rx="12" fill="#efe9da" />
-      <rect x="48" y="83" width="54" height="18" rx="9" fill="#2f6f4f" />
-      <text x="75" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Now</text>
-      <text x="133" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
-      <text x="191" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
-      <text x="249" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
-      <rect x="44" y="116" width="232" height="64" rx="10" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="56" y="136" font-size="11" font-weight="600" fill="#2b2925">What matters now</text>
-      <text x="56" y="151" font-size="9" fill="#6b675e">2 actions suggested</text>
-      <rect x="56" y="158" width="86" height="16" rx="8" fill="#2f6f4f" />
-      <text x="99" y="169" text-anchor="middle" font-size="8" fill="#ffffff">Pay invoice</text>
-      <rect x="148" y="158" width="80" height="16" rx="8" fill="#e8e2d2" />
-      <text x="188" y="169" text-anchor="middle" font-size="8" fill="#2b2925">Track Posti</text>
-      <text x="44" y="200" font-size="10" font-weight="600" fill="#2b2925">By deadline</text>
-      <rect x="44" y="208" width="232" height="26" rx="8" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="54" y="225" font-size="9" fill="#2b2925">Helen invoice — due Fri 17:00</text>
-      <rect x="44" y="240" width="232" height="26" rx="8" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="54" y="257" font-size="9" fill="#2b2925">Posti delivery — live 14:00–16:00</text>
-      <rect x="44" y="272" width="232" height="26" rx="8" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="54" y="289" font-size="9" fill="#2b2925">Mimmi — 2 messages</text>
-      <text x="44" y="318" font-size="10" font-weight="600" fill="#8a857a">Filed for you</text>
-      <text x="54" y="334" font-size="9" fill="#8a857a">Zalando — blocked (over quota)</text>
-      <text x="54" y="350" font-size="9" fill="#8a857a">Vero — filed to next week · expired removed</text>
+      <rect x="20" y="20" width="280" height="600" rx="36" fill="#fdfbf6" stroke="#d9d2c0" />
+      <rect x="120" y="32" width="80" height="12" rx="6" fill="#e5dfd0" />
+      <text x="160" y="76" text-anchor="middle" font-size="17" font-weight="600" fill="#2b2925">Now</text>
+      <rect x="44" y="92" width="232" height="28" rx="14" fill="#efe9da" />
+      <rect x="48" y="95" width="54" height="20" rx="10" fill="#2f6f4f" />
+      <text x="75" y="109" text-anchor="middle" font-size="10" fill="#ffffff">Now</text>
+      <text x="133" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
+      <text x="191" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <text x="249" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
+      <rect x="44" y="136" width="232" height="84" rx="12" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="56" y="160" font-size="11" font-weight="600" fill="#2b2925">What matters now</text>
+      <text x="56" y="178" font-size="9" fill="#6b675e">2 actions suggested</text>
+      <rect x="56" y="190" width="96" height="20" rx="10" fill="#2f6f4f" />
+      <text x="104" y="203" text-anchor="middle" font-size="9" fill="#ffffff">Pay invoice</text>
+      <rect x="160" y="190" width="88" height="20" rx="10" fill="#e8e2d2" />
+      <text x="204" y="203" text-anchor="middle" font-size="9" fill="#2b2925">Track Posti</text>
+      <text x="44" y="244" font-size="10" font-weight="600" fill="#2b2925">By deadline</text>
+      <rect x="44" y="256" width="232" height="44" rx="10" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="54" y="274" font-size="10" fill="#2b2925">Helen invoice</text>
+      <text x="54" y="290" font-size="9" fill="#8a857a">due Fri 17:00 · payable</text>
+      <rect x="44" y="312" width="232" height="44" rx="10" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="54" y="330" font-size="10" fill="#2b2925">Posti delivery</text>
+      <text x="54" y="346" font-size="9" fill="#8a857a">live window 14:00–16:00</text>
+      <rect x="44" y="368" width="232" height="44" rx="10" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="54" y="386" font-size="10" fill="#2b2925">Mimmi</text>
+      <text x="54" y="402" font-size="9" fill="#8a857a">2 messages · today</text>
+      <text x="44" y="436" font-size="10" font-weight="600" fill="#8a857a">Filed for you</text>
+      <text x="54" y="456" font-size="9" fill="#8a857a">Zalando — blocked (over quota)</text>
+      <text x="54" y="476" font-size="9" fill="#8a857a">Vero — filed to next week</text>
+      <text x="54" y="496" font-size="9" fill="#8a857a">Expired alert — removed</text>
+      <rect x="120" y="604" width="80" height="6" rx="3" fill="#e5dfd0" />
     </g>
     <!-- Phone 2: Inbox -->
     <g>
-      <rect x="340" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
-      <rect x="440" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
-      <text x="480" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Inbox</text>
-      <rect x="364" y="80" width="232" height="24" rx="12" fill="#efe9da" />
-      <text x="395" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
-      <rect x="426" y="83" width="54" height="18" rx="9" fill="#2f6f4f" />
-      <text x="453" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Inbox</text>
-      <text x="511" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
-      <text x="569" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
-      <rect x="364" y="116" width="232" height="40" rx="10" fill="#fbeae8" stroke="#e5b8b3" />
-      <text x="376" y="133" font-size="9" font-weight="600" fill="#8f1d14">OP Bank ✓ verified — new login</text>
-      <text x="376" y="147" font-size="8" fill="#8f1d14">Security-critical — cannot be deferred</text>
-      <rect x="364" y="164" width="232" height="30" rx="8" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="374" y="177" font-size="9" fill="#2b2925">Kanta ✓ — appointment reminder</text>
-      <text x="374" y="189" font-size="8" fill="#8a857a">due tomorrow · urgency high</text>
-      <rect x="364" y="200" width="232" height="30" rx="8" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="374" y="213" font-size="9" fill="#2b2925">Nordea ✓ — card notice</text>
-      <text x="374" y="225" font-size="8" fill="#8a857a">due in 4 days · urgency decaying</text>
-      <rect x="364" y="236" width="232" height="30" rx="8" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="374" y="249" font-size="9" fill="#2b2925">Suomi.fi — tax decision ready</text>
-      <text x="374" y="261" font-size="8" fill="#8a857a">due Fri · government sender</text>
-      <text x="364" y="290" font-size="9" fill="#8a857a">Every item shows its due date and a decaying</text>
-      <text x="364" y="304" font-size="9" fill="#8a857a">urgency rating; verified senders get a badge.</text>
+      <rect x="340" y="20" width="280" height="600" rx="36" fill="#fdfbf6" stroke="#d9d2c0" />
+      <rect x="440" y="32" width="80" height="12" rx="6" fill="#e5dfd0" />
+      <text x="480" y="76" text-anchor="middle" font-size="17" font-weight="600" fill="#2b2925">Inbox</text>
+      <rect x="364" y="92" width="232" height="28" rx="14" fill="#efe9da" />
+      <text x="395" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
+      <rect x="426" y="95" width="54" height="20" rx="10" fill="#2f6f4f" />
+      <text x="453" y="109" text-anchor="middle" font-size="10" fill="#ffffff">Inbox</text>
+      <text x="511" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <text x="569" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
+      <rect x="364" y="136" width="232" height="56" rx="12" fill="#fbeae8" stroke="#e5b8b3" />
+      <text x="376" y="158" font-size="10" font-weight="600" fill="#8f1d14">OP Bank ✓ verified — new login</text>
+      <text x="376" y="176" font-size="9" fill="#8f1d14">Security-critical — cannot be deferred</text>
+      <rect x="364" y="208" width="232" height="48" rx="10" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="374" y="228" font-size="10" fill="#2b2925">Kanta ✓ — appointment reminder</text>
+      <text x="374" y="244" font-size="9" fill="#8a857a">due tomorrow · urgency high</text>
+      <rect x="364" y="268" width="232" height="48" rx="10" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="374" y="288" font-size="10" fill="#2b2925">Nordea ✓ — card notice</text>
+      <text x="374" y="304" font-size="9" fill="#8a857a">due in 4 days · urgency decaying</text>
+      <rect x="364" y="328" width="232" height="48" rx="10" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="374" y="348" font-size="10" fill="#2b2925">Suomi.fi — tax decision ready</text>
+      <text x="374" y="364" font-size="9" fill="#8a857a">due Fri · government sender</text>
+      <text x="364" y="408" font-size="9" fill="#8a857a">Every item shows its due date and a decaying</text>
+      <text x="364" y="426" font-size="9" fill="#8a857a">urgency rating; verified senders get a badge.</text>
+      <rect x="440" y="604" width="80" height="6" rx="3" fill="#e5dfd0" />
     </g>
     <!-- Phone 3: Schedule -->
     <g>
-      <rect x="660" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
-      <rect x="760" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
-      <text x="800" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Schedule</text>
-      <rect x="684" y="80" width="232" height="24" rx="12" fill="#efe9da" />
-      <text x="715" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
-      <text x="773" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
-      <rect x="804" y="83" width="54" height="18" rx="9" fill="#2f6f4f" />
-      <text x="831" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Schedule</text>
-      <text x="889" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
-      <text x="684" y="122" font-size="10" font-weight="600" fill="#2b2925">Today</text>
-      <rect x="684" y="130" width="232" height="30" rx="8" fill="#e8f0ea" stroke="#bcd6c6" />
-      <text x="694" y="143" font-size="9" fill="#2b2925">14:00–16:00 Posti delivery (live)</text>
-      <text x="694" y="155" font-size="8" fill="#2f6f4f">slot updates itself</text>
-      <rect x="684" y="166" width="232" height="30" rx="8" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="694" y="179" font-size="9" fill="#2b2925">17:00 Helen invoice due</text>
-      <text x="694" y="191" font-size="8" fill="#8a857a">reminder placed by deadline</text>
-      <text x="684" y="222" font-size="10" font-weight="600" fill="#2b2925">Saturday</text>
-      <rect x="684" y="230" width="232" height="30" rx="8" fill="#f1ede1" stroke="#e2dcc9" />
-      <text x="694" y="248" font-size="9" fill="#8a857a">Quiet day — nothing scheduled</text>
-      <text x="684" y="286" font-size="9" fill="#8a857a">Notifications are placed on your timeline by</text>
-      <text x="684" y="300" font-size="9" fill="#8a857a">deadline; quiet days are shown as quiet.</text>
+      <rect x="660" y="20" width="280" height="600" rx="36" fill="#fdfbf6" stroke="#d9d2c0" />
+      <rect x="760" y="32" width="80" height="12" rx="6" fill="#e5dfd0" />
+      <text x="800" y="76" text-anchor="middle" font-size="17" font-weight="600" fill="#2b2925">Schedule</text>
+      <rect x="684" y="92" width="232" height="28" rx="14" fill="#efe9da" />
+      <text x="715" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
+      <text x="773" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
+      <rect x="804" y="95" width="54" height="20" rx="10" fill="#2f6f4f" />
+      <text x="831" y="109" text-anchor="middle" font-size="10" fill="#ffffff">Schedule</text>
+      <text x="889" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
+      <text x="684" y="140" font-size="10" font-weight="600" fill="#2b2925">Today</text>
+      <rect x="684" y="152" width="232" height="48" rx="10" fill="#e8f0ea" stroke="#bcd6c6" />
+      <text x="694" y="172" font-size="10" fill="#2b2925">14:00–16:00 Posti delivery (live)</text>
+      <text x="694" y="188" font-size="9" fill="#2f6f4f">slot updates itself</text>
+      <rect x="684" y="212" width="232" height="48" rx="10" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="694" y="232" font-size="10" fill="#2b2925">17:00 Helen invoice due</text>
+      <text x="694" y="248" font-size="9" fill="#8a857a">reminder placed by deadline</text>
+      <text x="684" y="288" font-size="10" font-weight="600" fill="#2b2925">Saturday</text>
+      <rect x="684" y="300" width="232" height="40" rx="10" fill="#f1ede1" stroke="#e2dcc9" />
+      <text x="694" y="324" font-size="9" fill="#8a857a">Quiet day — nothing scheduled</text>
+      <text x="684" y="368" font-size="9" fill="#8a857a">Notifications are placed on your timeline by</text>
+      <text x="684" y="386" font-size="9" fill="#8a857a">deadline; quiet days are shown as quiet.</text>
+      <rect x="760" y="604" width="80" height="6" rx="3" fill="#e5dfd0" />
     </g>
     <!-- Phone 4: Media -->
     <g>
-      <rect x="980" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
-      <rect x="1080" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
-      <text x="1120" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Media</text>
-      <rect x="1004" y="80" width="232" height="24" rx="12" fill="#efe9da" />
-      <text x="1035" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
-      <text x="1093" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
-      <text x="1151" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
-      <rect x="1182" y="83" width="54" height="18" rx="9" fill="#2f6f4f" />
-      <text x="1209" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Media</text>
-      <rect x="1004" y="112" width="232" height="110" rx="12" fill="#e8e2d2" />
-      <text x="1120" y="180" text-anchor="middle" font-size="40" fill="#b0a88f">&#9834;</text>
-      <rect x="1004" y="230" width="118" height="18" rx="9" fill="#e8f0ea" />
-      <text x="1063" y="243" text-anchor="middle" font-size="8" fill="#2f6f4f">via Spotify &#10003; verified</text>
-      <text x="1004" y="262" font-size="11" font-weight="600" fill="#2b2925">Song title</text>
-      <text x="1004" y="277" font-size="9" fill="#6b675e">Artist — Album</text>
-      <rect x="1004" y="288" width="232" height="4" rx="2" fill="#e5dfd0" />
-      <rect x="1004" y="288" width="90" height="4" rx="2" fill="#2f6f4f" />
-      <text x="1004" y="302" font-size="8" fill="#8a857a">1:12</text>
-      <text x="1236" y="302" text-anchor="end" font-size="8" fill="#8a857a">3:45</text>
-      <circle cx="1080" cy="332" r="16" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="1080" y="336" text-anchor="middle" font-size="11" fill="#2b2925">&#9198;</text>
-      <circle cx="1120" cy="332" r="18" fill="#2f6f4f" />
-      <text x="1120" y="337" text-anchor="middle" font-size="12" fill="#ffffff">&#9654;</text>
-      <circle cx="1160" cy="332" r="16" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="1160" y="336" text-anchor="middle" font-size="11" fill="#2b2925">&#9197;</text>
-      <text x="1004" y="362" font-size="8" fill="#8a857a">OS controls any registered media session,</text>
-      <text x="1004" y="374" font-size="8" fill="#8a857a">also from lock screen and notification lane</text>
+      <rect x="980" y="20" width="280" height="600" rx="36" fill="#fdfbf6" stroke="#d9d2c0" />
+      <rect x="1080" y="32" width="80" height="12" rx="6" fill="#e5dfd0" />
+      <text x="1120" y="76" text-anchor="middle" font-size="17" font-weight="600" fill="#2b2925">Media</text>
+      <rect x="1004" y="92" width="232" height="28" rx="14" fill="#efe9da" />
+      <text x="1035" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
+      <text x="1093" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
+      <text x="1151" y="109" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <rect x="1182" y="95" width="54" height="20" rx="10" fill="#2f6f4f" />
+      <text x="1209" y="109" text-anchor="middle" font-size="10" fill="#ffffff">Media</text>
+      <rect x="1004" y="136" width="232" height="200" rx="16" fill="#e8e2d2" />
+      <text x="1120" y="248" text-anchor="middle" font-size="64" fill="#b0a88f">&#9834;</text>
+      <rect x="1004" y="352" width="126" height="22" rx="11" fill="#e8f0ea" />
+      <text x="1067" y="367" text-anchor="middle" font-size="9" fill="#2f6f4f">via Spotify &#10003; verified</text>
+      <text x="1004" y="402" font-size="12" font-weight="600" fill="#2b2925">Song title</text>
+      <text x="1004" y="420" font-size="10" fill="#6b675e">Artist — Album</text>
+      <rect x="1004" y="440" width="232" height="5" rx="2.5" fill="#e5dfd0" />
+      <rect x="1004" y="440" width="120" height="5" rx="2.5" fill="#2f6f4f" />
+      <text x="1004" y="458" font-size="9" fill="#8a857a">1:12</text>
+      <text x="1236" y="458" text-anchor="end" font-size="9" fill="#8a857a">3:45</text>
+      <circle cx="1080" cy="500" r="18" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="1080" y="505" text-anchor="middle" font-size="13" fill="#2b2925">&#9198;</text>
+      <circle cx="1120" cy="500" r="20" fill="#2f6f4f" />
+      <text x="1120" y="506" text-anchor="middle" font-size="14" fill="#ffffff">&#9654;</text>
+      <circle cx="1160" cy="500" r="18" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="1160" y="505" text-anchor="middle" font-size="13" fill="#2b2925">&#9197;</text>
+      <text x="1004" y="556" font-size="9" fill="#8a857a">OS controls any registered media session,</text>
+      <text x="1004" y="572" font-size="9" fill="#8a857a">also from lock screen and notification lane</text>
+      <rect x="1080" y="604" width="80" height="6" rx="3" fill="#e5dfd0" />
     </g>
   </svg>
   <figcaption class="text-center">
