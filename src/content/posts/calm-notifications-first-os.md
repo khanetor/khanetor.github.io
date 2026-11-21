@@ -68,10 +68,11 @@ through a structured protocol. The home screen is notifications-first, with four
       <rect x="120" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
       <text x="160" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Now</text>
       <rect x="44" y="80" width="232" height="24" rx="12" fill="#efe9da" />
-      <rect x="48" y="83" width="72" height="18" rx="9" fill="#2f6f4f" />
-      <text x="84" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Now</text>
-      <text x="160" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
-      <text x="236" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <rect x="48" y="83" width="54" height="18" rx="9" fill="#2f6f4f" />
+      <text x="75" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Now</text>
+      <text x="133" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
+      <text x="191" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <text x="249" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
       <rect x="44" y="116" width="232" height="64" rx="10" fill="#ffffff" stroke="#e2dcc9" />
       <text x="56" y="136" font-size="11" font-weight="600" fill="#2b2925">What matters now</text>
       <text x="56" y="151" font-size="9" fill="#6b675e">2 actions suggested</text>
@@ -96,10 +97,11 @@ through a structured protocol. The home screen is notifications-first, with four
       <rect x="440" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
       <text x="480" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Inbox</text>
       <rect x="364" y="80" width="232" height="24" rx="12" fill="#efe9da" />
-      <text x="404" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
-      <rect x="444" y="83" width="72" height="18" rx="9" fill="#2f6f4f" />
-      <text x="480" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Inbox</text>
-      <text x="556" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <text x="395" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
+      <rect x="426" y="83" width="54" height="18" rx="9" fill="#2f6f4f" />
+      <text x="453" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Inbox</text>
+      <text x="511" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <text x="569" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
       <rect x="364" y="116" width="232" height="40" rx="10" fill="#fbeae8" stroke="#e5b8b3" />
       <text x="376" y="133" font-size="9" font-weight="600" fill="#8f1d14">OP Bank ✓ verified — new login</text>
       <text x="376" y="147" font-size="8" fill="#8f1d14">Security-critical — cannot be deferred</text>
@@ -121,10 +123,11 @@ through a structured protocol. The home screen is notifications-first, with four
       <rect x="760" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
       <text x="800" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Schedule</text>
       <rect x="684" y="80" width="232" height="24" rx="12" fill="#efe9da" />
-      <text x="724" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
-      <text x="800" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
-      <rect x="840" y="83" width="72" height="18" rx="9" fill="#2f6f4f" />
-      <text x="876" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Schedule</text>
+      <text x="715" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
+      <text x="773" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
+      <rect x="804" y="83" width="54" height="18" rx="9" fill="#2f6f4f" />
+      <text x="831" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Schedule</text>
+      <text x="889" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Media</text>
       <text x="684" y="122" font-size="10" font-weight="600" fill="#2b2925">Today</text>
       <rect x="684" y="130" width="232" height="30" rx="8" fill="#e8f0ea" stroke="#bcd6c6" />
       <text x="694" y="143" font-size="9" fill="#2b2925">14:00–16:00 Posti delivery (live)</text>
@@ -143,24 +146,30 @@ through a structured protocol. The home screen is notifications-first, with four
       <rect x="980" y="20" width="280" height="360" rx="28" fill="#fdfbf6" stroke="#d9d2c0" />
       <rect x="1080" y="30" width="80" height="10" rx="5" fill="#e5dfd0" />
       <text x="1120" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#2b2925">Media</text>
-      <rect x="1004" y="84" width="232" height="120" rx="12" fill="#e8e2d2" />
-      <text x="1120" y="156" text-anchor="middle" font-size="44" fill="#b0a88f">&#9834;</text>
-      <rect x="1004" y="212" width="118" height="18" rx="9" fill="#e8f0ea" />
-      <text x="1063" y="225" text-anchor="middle" font-size="8" fill="#2f6f4f">via Spotify &#10003; verified</text>
-      <text x="1004" y="252" font-size="11" font-weight="600" fill="#2b2925">Song title</text>
-      <text x="1004" y="267" font-size="9" fill="#6b675e">Artist — Album</text>
-      <rect x="1004" y="278" width="232" height="4" rx="2" fill="#e5dfd0" />
-      <rect x="1004" y="278" width="90" height="4" rx="2" fill="#2f6f4f" />
-      <text x="1004" y="292" font-size="8" fill="#8a857a">1:12</text>
-      <text x="1236" y="292" text-anchor="end" font-size="8" fill="#8a857a">3:45</text>
-      <circle cx="1080" cy="322" r="16" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="1080" y="326" text-anchor="middle" font-size="11" fill="#2b2925">&#9198;</text>
-      <circle cx="1120" cy="322" r="18" fill="#2f6f4f" />
-      <text x="1120" y="327" text-anchor="middle" font-size="12" fill="#ffffff">&#9654;</text>
-      <circle cx="1160" cy="322" r="16" fill="#ffffff" stroke="#e2dcc9" />
-      <text x="1160" y="326" text-anchor="middle" font-size="11" fill="#2b2925">&#9197;</text>
-      <text x="1004" y="356" font-size="8" fill="#8a857a">OS controls any registered media session,</text>
-      <text x="1004" y="368" font-size="8" fill="#8a857a">also from lock screen and notification lane</text>
+      <rect x="1004" y="80" width="232" height="24" rx="12" fill="#efe9da" />
+      <text x="1035" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Now</text>
+      <text x="1093" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Inbox</text>
+      <text x="1151" y="96" text-anchor="middle" font-size="10" fill="#6b675e">Schedule</text>
+      <rect x="1182" y="83" width="54" height="18" rx="9" fill="#2f6f4f" />
+      <text x="1209" y="96" text-anchor="middle" font-size="10" fill="#ffffff">Media</text>
+      <rect x="1004" y="112" width="232" height="110" rx="12" fill="#e8e2d2" />
+      <text x="1120" y="180" text-anchor="middle" font-size="40" fill="#b0a88f">&#9834;</text>
+      <rect x="1004" y="230" width="118" height="18" rx="9" fill="#e8f0ea" />
+      <text x="1063" y="243" text-anchor="middle" font-size="8" fill="#2f6f4f">via Spotify &#10003; verified</text>
+      <text x="1004" y="262" font-size="11" font-weight="600" fill="#2b2925">Song title</text>
+      <text x="1004" y="277" font-size="9" fill="#6b675e">Artist — Album</text>
+      <rect x="1004" y="288" width="232" height="4" rx="2" fill="#e5dfd0" />
+      <rect x="1004" y="288" width="90" height="4" rx="2" fill="#2f6f4f" />
+      <text x="1004" y="302" font-size="8" fill="#8a857a">1:12</text>
+      <text x="1236" y="302" text-anchor="end" font-size="8" fill="#8a857a">3:45</text>
+      <circle cx="1080" cy="332" r="16" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="1080" y="336" text-anchor="middle" font-size="11" fill="#2b2925">&#9198;</text>
+      <circle cx="1120" cy="332" r="18" fill="#2f6f4f" />
+      <text x="1120" y="337" text-anchor="middle" font-size="12" fill="#ffffff">&#9654;</text>
+      <circle cx="1160" cy="332" r="16" fill="#ffffff" stroke="#e2dcc9" />
+      <text x="1160" y="336" text-anchor="middle" font-size="11" fill="#2b2925">&#9197;</text>
+      <text x="1004" y="362" font-size="8" fill="#8a857a">OS controls any registered media session,</text>
+      <text x="1004" y="374" font-size="8" fill="#8a857a">also from lock screen and notification lane</text>
     </g>
   </svg>
   <figcaption class="text-center">
