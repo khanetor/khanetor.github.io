@@ -71,9 +71,9 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <rect x="120" y="599" width="80" height="5" rx="2.5" fill="#dcd8cc" />
       <rect x="46" y="152" width="228" height="112" rx="22" fill="#2b2b28" />
       <text x="62" y="170" font-size="8.5" fill="#a8a69b" letter-spacing="1.2">WHAT MATTERS NOW</text>
-      <text x="62" y="186" font-size="11.5" fill="#f6f4ef">Your electricity invoice (€84.20) is due Friday.</text>
-      <text x="62" y="200" font-size="11.5" fill="#f6f4ef">Two packages arrive today, and Mimmi asked about</text>
-      <text x="62" y="214" font-size="11.5" fill="#f6f4ef">Thursday's badminton. Everything else is quiet.</text>
+      <text x="62" y="186" font-size="11" fill="#f6f4ef">Your electricity invoice (€84.20)</text>
+      <text x="62" y="200" font-size="11" fill="#f6f4ef">is due Friday. Two packages arrive</text>
+      <text x="62" y="214" font-size="11" fill="#f6f4ef">today. Mimmi asked about badminton.</text>
       <rect x="62" y="228" width="52" height="20" rx="10" fill="#3f3e39" />
       <text x="88.0" y="241" text-anchor="middle" font-size="9.5" fill="#f6f4ef">Pay now</text>
       <rect x="122" y="228" width="78" height="20" rx="10" fill="#3f3e39" />
@@ -97,7 +97,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="94" y="364" font-size="10" font-weight="600" fill="#2b2b28">Posti</text>
       <rect x="216" y="354" width="50" height="14" rx="7" fill="#eee9dd" />
       <text x="241.0" y="364" text-anchor="middle" font-size="8" fill="#6b6a64">verified</text>
-      <text x="94" y="378" font-size="11" fill="#2b2b28">2 packages out for delivery, today 12–15</text>
+      <text x="94" y="378" font-size="11" fill="#2b2b28">2 packages arriving today 12–15</text>
       <text x="94" y="389" font-size="9" fill="#6b6a64">Live · updates its own slot</text>
       <rect x="46" y="398" width="228" height="48" rx="18" fill="#fffdf8" />
       <rect x="46" y="398" width="3" height="48" fill="#7a8b6f" />
@@ -106,13 +106,13 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="94" y="416" font-size="10" font-weight="600" fill="#2b2b28">Mimmi</text>
       <rect x="218" y="406" width="48" height="14" rx="7" fill="#eee9dd" />
       <text x="242.0" y="416" text-anchor="middle" font-size="8" fill="#6b6a64">contact</text>
-      <text x="94" y="430" font-size="11" fill="#2b2b28">Still on for badminton Thursday 19:00?</text>
+      <text x="94" y="430" font-size="11" fill="#2b2b28">Badminton Thu 19:00 — still on?</text>
       <text x="94" y="441" font-size="9" fill="#6b6a64">No deadline · optional, suggest answer</text>
       <text x="52" y="466" font-size="8.5" fill="#8a887f" letter-spacing="1.2">FILED FOR YOU<tspan letter-spacing="0" fill="#b0aea2"> · never interrupts</tspan></text>
       <rect x="46" y="474" width="228" height="46" rx="16" fill="#edeadf" />
-      <text x="58" y="488" font-size="9.5" fill="#6b6a64">Archived quietly: Zalando blocked (12 pushes, over</text>
-      <text x="58" y="500" font-size="9.5" fill="#6b6a64">quota), Vero filed to 30 Nov, HSL alert expired,</text>
-      <text x="58" y="512" font-size="9.5" fill="#6b6a64">Yle digest summarized in 1 line.</text>
+      <text x="58" y="488" font-size="9.5" fill="#6b6a64">Archived quietly: Zalando blocked (12</text>
+      <text x="58" y="500" font-size="9.5" fill="#6b6a64">pushes, over quota), Vero filed to 30 Nov,</text>
+      <text x="58" y="512" font-size="9.5" fill="#6b6a64">HSL alert expired, Yle digest in 1 line.</text>
     </g>
     <g id="phone-inbox">
       <rect x="340" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
@@ -141,7 +141,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="414" y="188" font-size="10" font-weight="600" fill="#2b2b28">OP Bank</text>
       <rect x="522" y="178" width="64" height="14" rx="7" fill="#eee9dd" />
       <text x="554.0" y="188" text-anchor="middle" font-size="8" fill="#6b6a64">security lane</text>
-      <text x="414" y="202" font-size="11" fill="#2b2b28">New login from a new device. Was this you?</text>
+      <text x="414" y="202" font-size="11" fill="#2b2b28">New login from new device. You?</text>
       <text x="414" y="213" font-size="9" fill="#6b6a64">Due now · cannot be deferred</text>
       <rect x="366" y="226" width="228" height="48" rx="18" fill="#fffdf8" />
       <rect x="366" y="226" width="3" height="48" fill="#d19a3f" />
@@ -177,7 +177,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <rect x="522" y="402" width="64" height="14" rx="7" fill="#eee9dd" />
       <text x="554.0" y="412" text-anchor="middle" font-size="8" fill="#6b6a64">over quota</text>
       <text x="414" y="426" font-size="11" fill="#2b2b28">Black Friday: up to −70%…</text>
-      <text x="414" y="437" font-size="9" fill="#6b6a64">Optional · digest only · urgency decaying</text>
+      <text x="414" y="437" font-size="9" fill="#6b6a64">Optional · digest only · decaying</text>
       <text x="366" y="458" font-size="9" fill="#8a887f">Every item shows its due date and a decaying</text>
       <text x="366" y="471" font-size="9" fill="#8a887f">urgency rating; verified senders get a badge.</text>
     </g>
@@ -223,11 +223,11 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <rect x="720" y="362" width="208" height="40" rx="14" fill="#fffdf8" />
       <rect x="720" y="362" width="3" height="40" fill="#d19a3f" />
       <text x="734" y="377" font-size="8.5" fill="#8a887f">Kanta · reminder</text>
-      <text x="734" y="391" font-size="11" fill="#2b2b28">Prescription renewal window opens</text>
+      <text x="734" y="391" font-size="11" fill="#2b2b28">Prescription renewal opens</text>
       <text x="712" y="434" text-anchor="end" font-size="10" fill="#8a887f">Nov 30</text>
       <rect x="720" y="410" width="208" height="40" rx="14" fill="#edeadf" stroke="#c5c1b2" stroke-dasharray="3 3" />
       <text x="734" y="425" font-size="8.5" fill="#8a887f">Vero · auto-filed</text>
-      <text x="734" y="439" font-size="11" fill="#6b6a64">Tax reminder (in archive, not urgent)</text>
+      <text x="734" y="439" font-size="11" fill="#6b6a64">Tax reminder (archived)</text>
       <text x="686" y="470" font-size="9" fill="#8a887f">Notifications are placed on your timeline by</text>
       <text x="686" y="483" font-size="9" fill="#8a887f">deadline; quiet days are shown as quiet.</text>
     </g>
