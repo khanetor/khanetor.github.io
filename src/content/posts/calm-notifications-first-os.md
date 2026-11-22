@@ -55,8 +55,8 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
     aria-label="Mockup of the home-screen screens: Now, Inbox, Schedule, Media"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <style>text { font-family: system-ui, sans-serif; } .mock-tab { cursor: pointer; }</style>
-    <g id="phone-now">
+    <style>text { font-family: system-ui, sans-serif; }</style>
+    <g>
       <rect x="20" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
       <rect x="32" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
       <text x="50" y="52" font-size="10" fill="#8a887f">9:41</text>
@@ -65,10 +65,10 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="50" y="104" font-size="11" fill="#8a887f">Calm mode · 3 things need you today</text>
       <rect x="32" y="112" width="256" height="28" rx="14" fill="#e9e6dd" />
       <rect x="38" y="115" width="58" height="22" rx="11" fill="#2b2b28" />
-      <text x="67" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="now">Now</text>
-      <text x="129" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
-      <text x="191" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
-      <text x="253" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <text x="67" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef">Now</text>
+      <text x="129" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Inbox</text>
+      <text x="191" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Schedule</text>
+      <text x="253" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Media</text>
       <text x="160" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
       <rect x="32" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
       <text x="64" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
@@ -121,7 +121,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="58" y="500" font-size="9.5" fill="#6b6a64">pushes, over quota), Vero filed to 30 Nov,</text>
       <text x="58" y="512" font-size="9.5" fill="#6b6a64">HSL alert expired, Yle digest in 1 line.</text>
     </g>
-    <g id="phone-inbox">
+    <g>
       <rect x="340" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
       <rect x="352" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
       <text x="370" y="52" font-size="10" fill="#8a887f">9:41</text>
@@ -129,11 +129,11 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="370" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
       <text x="370" y="104" font-size="11" fill="#8a887f">Calm mode · 4 items, 1 needs you now</text>
       <rect x="352" y="112" width="256" height="28" rx="14" fill="#e9e6dd" />
-      <text x="387" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
+      <text x="387" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Now</text>
       <rect x="420" y="115" width="58" height="22" rx="11" fill="#2b2b28" />
-      <text x="449" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="inbox">Inbox</text>
-      <text x="511" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
-      <text x="573" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <text x="449" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef">Inbox</text>
+      <text x="511" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Schedule</text>
+      <text x="573" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Media</text>
       <text x="480" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
       <rect x="352" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
       <text x="384" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
@@ -189,7 +189,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="366" y="458" font-size="9" fill="#8a887f">Every item shows its due date and a decaying</text>
       <text x="366" y="471" font-size="9" fill="#8a887f">urgency rating; verified senders get a badge.</text>
     </g>
-    <g id="phone-schedule">
+    <g>
       <rect x="660" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
       <rect x="672" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
       <text x="690" y="52" font-size="10" fill="#8a887f">9:41</text>
@@ -197,11 +197,11 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="690" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
       <text x="690" y="104" font-size="11" fill="#8a887f">Calm mode · attention schedule</text>
       <rect x="672" y="112" width="256" height="28" rx="14" fill="#e9e6dd" />
-      <text x="707" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
-      <text x="769" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
+      <text x="707" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Now</text>
+      <text x="769" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Inbox</text>
       <rect x="802" y="115" width="58" height="22" rx="11" fill="#2b2b28" />
-      <text x="831" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="schedule">Schedule</text>
-      <text x="893" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <text x="831" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef">Schedule</text>
+      <text x="893" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Media</text>
       <text x="800" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
       <rect x="672" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
       <text x="704" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
@@ -239,7 +239,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="686" y="470" font-size="9" fill="#8a887f">Notifications are placed on your timeline by</text>
       <text x="686" y="483" font-size="9" fill="#8a887f">deadline; quiet days are shown as quiet.</text>
     </g>
-    <g id="phone-media">
+    <g>
       <rect x="980" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
       <rect x="992" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
       <text x="1010" y="52" font-size="10" fill="#8a887f">9:41</text>
@@ -247,11 +247,11 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="1010" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
       <text x="1010" y="104" font-size="11" fill="#8a887f">Calm mode · now playing</text>
       <rect x="992" y="112" width="256" height="28" rx="14" fill="#e9e6dd" />
-      <text x="1027" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
-      <text x="1089" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
-      <text x="1151" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
+      <text x="1027" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Now</text>
+      <text x="1089" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Inbox</text>
+      <text x="1151" y="129" text-anchor="middle" font-size="11" fill="#8a887f">Schedule</text>
       <rect x="1184" y="115" width="58" height="22" rx="11" fill="#2b2b28" />
-      <text x="1213" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="media">Media</text>
+      <text x="1213" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef">Media</text>
       <text x="1120" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
       <rect x="992" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
       <text x="1024" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
@@ -276,32 +276,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <circle cx="1164" cy="458" r="17" fill="#fffdf8" stroke="#e2dcc9" />
       <text x="1164" y="463" text-anchor="middle" font-size="12" fill="#2b2b28">&#9197;</text>
     </g>
-  </svg> <figcaption class="text-center"> The four home-screen screens — Now, Inbox, Schedule, Media — click a tab in any phone to focus that screen centered (click again to show all four), with the quota mechanics, example senders (the OP Bank security lane, a live Posti delivery window, an over-quota Zalando card), and a media session (Spotify) wired in. </figcaption> </figure>
-
-<script>
-  const screens = ["now", "inbox", "schedule", "media"];
-  const centers = { now: 160, inbox: 480, schedule: 800, media: 1120 };
-  let active = null;
-  document.querySelectorAll(".mock-tab").forEach((el) => {
-    el.addEventListener("click", () => {
-      const s = el.getAttribute("data-screen");
-      active = active === s ? null : s;
-      screens.forEach((p) => {
-        const g = document.getElementById("phone-" + p);
-        if (!g) return;
-        if (!active) {
-          g.style.display = "";
-          g.removeAttribute("transform");
-        } else if (active === p) {
-          g.style.display = "";
-          g.setAttribute("transform", "translate(" + (640 - centers[p]) + ",0)");
-        } else {
-          g.style.display = "none";
-        }
-      });
-    });
-  });
-</script>
+  </svg> <figcaption class="text-center"> The four home-screen screens — Now, Inbox, Schedule, Media — four static screens side by side, with the quota mechanics, example senders (the OP Bank security lane, a live Posti delivery window, an over-quota Zalando card), and a media session (Spotify) wired in. </figcaption> </figure>
 
 The mechanics that make it work are quotas, not vibes: each sender gets a budget, verified senders (banks, government, health services) get a higher tier and a badge, security-critical items are never deferrable, and everything else decays. The design principle is **calm by default** — information density is not the goal; calm control is. Windows Phone proved that notification-first can be right and still feel wrong; the missing piece was the quota layer.
 
