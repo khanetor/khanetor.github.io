@@ -5,7 +5,6 @@ title: "A calm, notifications-first phone OS: a concept"
 slug: calm-notifications-first-os
 featured: false
 draft: false
-# ogImage: "Black and gray digital device" by Torsten Dettlaff — Pexels photo #193003 (https://www.pexels.com/photo/193003/), Pexels License: free for commercial use, attribution not required (credited here anyway)
 ogImage: https://images.pexels.com/photos/193003/pexels-photo-193003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 tags:
   - mobile
