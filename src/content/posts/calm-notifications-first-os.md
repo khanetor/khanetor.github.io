@@ -57,11 +57,12 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="270" y="52" text-anchor="end" font-size="10" fill="#8a887f">&#9646;&#9646; &#9646; 84%</text>
       <text x="50" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
       <text x="50" y="104" font-size="11" fill="#8a887f">Calm mode · 3 things need you today</text>
-      <rect x="50" y="118" width="50" height="22" rx="11" fill="#2b2b28" />
-      <text x="75" y="133" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="now">Now</text>
-      <text x="131" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
-      <text x="187" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
-      <text x="243" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <rect x="32" y="112" width="256" height="28" rx="14" fill="#e9e6dd" />
+      <rect x="38" y="115" width="58" height="22" rx="11" fill="#2b2b28" />
+      <text x="67" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="now">Now</text>
+      <text x="129" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
+      <text x="191" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
+      <text x="253" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
       <text x="160" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
       <rect x="32" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
       <text x="64" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
@@ -74,12 +75,12 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="62" y="186" font-size="11" fill="#f6f4ef">Your electricity invoice (€84.20)</text>
       <text x="62" y="200" font-size="11" fill="#f6f4ef">is due Friday. Two packages arrive</text>
       <text x="62" y="214" font-size="11" fill="#f6f4ef">today. Mimmi asked about badminton.</text>
-      <rect x="62" y="228" width="52" height="20" rx="10" fill="#3f3e39" />
-      <text x="88.0" y="241" text-anchor="middle" font-size="9.5" fill="#f6f4ef">Pay now</text>
-      <rect x="122" y="228" width="78" height="20" rx="10" fill="#3f3e39" />
-      <text x="161.0" y="241" text-anchor="middle" font-size="9.5" fill="#f6f4ef">Remind me Thu</text>
-      <rect x="208" y="228" width="80" height="20" rx="10" fill="#3f3e39" />
-      <text x="248.0" y="241" text-anchor="middle" font-size="9.5" fill="#f6f4ef">Quiet the rest</text>
+      <rect x="62" y="228" width="46" height="20" rx="10" fill="#3f3e39" />
+      <text x="85" y="241" text-anchor="middle" font-size="9" fill="#f6f4ef">Pay now</text>
+      <rect x="116" y="228" width="70" height="20" rx="10" fill="#3f3e39" />
+      <text x="151" y="241" text-anchor="middle" font-size="9" fill="#f6f4ef">Remind me Thu</text>
+      <rect x="194" y="228" width="72" height="20" rx="10" fill="#3f3e39" />
+      <text x="230" y="241" text-anchor="middle" font-size="9" fill="#f6f4ef">Quiet the rest</text>
       <text x="52" y="284" font-size="8.5" fill="#8a887f" letter-spacing="1.2">NEEDS YOU SOON<tspan letter-spacing="0" fill="#b0aea2"> · sorted by deadline</tspan></text>
       <rect x="46" y="294" width="228" height="48" rx="18" fill="#fffdf8" />
       <rect x="46" y="294" width="3" height="48" fill="#d19a3f" />
@@ -121,11 +122,12 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="590" y="52" text-anchor="end" font-size="10" fill="#8a887f">&#9646;&#9646; &#9646; 84%</text>
       <text x="370" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
       <text x="370" y="104" font-size="11" fill="#8a887f">Calm mode · 4 items, 1 needs you now</text>
-      <text x="395" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
-      <rect x="426" y="118" width="50" height="22" rx="11" fill="#2b2b28" />
-      <text x="451" y="133" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="inbox">Inbox</text>
-      <text x="507" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
-      <text x="563" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <rect x="352" y="112" width="256" height="28" rx="14" fill="#e9e6dd" />
+      <text x="387" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
+      <rect x="420" y="115" width="58" height="22" rx="11" fill="#2b2b28" />
+      <text x="449" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="inbox">Inbox</text>
+      <text x="511" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
+      <text x="573" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
       <text x="480" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
       <rect x="352" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
       <text x="384" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
@@ -188,11 +190,12 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="910" y="52" text-anchor="end" font-size="10" fill="#8a887f">&#9646;&#9646; &#9646; 84%</text>
       <text x="690" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
       <text x="690" y="104" font-size="11" fill="#8a887f">Calm mode · attention schedule</text>
-      <text x="715" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
-      <text x="771" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
-      <rect x="802" y="118" width="50" height="22" rx="11" fill="#2b2b28" />
-      <text x="827" y="133" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="schedule">Schedule</text>
-      <text x="883" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <rect x="672" y="112" width="256" height="28" rx="14" fill="#e9e6dd" />
+      <text x="707" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
+      <text x="769" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
+      <rect x="802" y="115" width="58" height="22" rx="11" fill="#2b2b28" />
+      <text x="831" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="schedule">Schedule</text>
+      <text x="893" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
       <text x="800" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
       <rect x="672" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
       <text x="704" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
@@ -200,13 +203,12 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="832" y="575" text-anchor="middle" font-size="18">&#128506;&#65039;</text>
       <text x="896" y="575" text-anchor="middle" font-size="18">&#9881;&#65039;</text>
       <rect x="760" y="599" width="80" height="5" rx="2.5" fill="#dcd8cc" />
-      <text x="692" y="160" font-size="8.5" fill="#8a887f" letter-spacing="1.2">ATTENTION SCHEDULE<tspan letter-spacing="0" fill="#b0aea2"> · placed by deadline</tspan></text>
       <text x="712" y="194" text-anchor="end" font-size="10" fill="#8a887f">12–15</text>
       <rect x="720" y="170" width="208" height="40" rx="14" fill="#fffdf8" />
       <rect x="720" y="170" width="3" height="40" fill="#7a8b6f" />
       <text x="734" y="185" font-size="8.5" fill="#8a887f">Posti · live</text>
       <text x="734" y="199" font-size="11" fill="#2b2b28">2 packages arriving</text>
-      <text x="712" y="242" text-anchor="end" font-size="10" fill="#8a887f">Fri 17:00</text>
+      <text x="712" y="242" text-anchor="end" font-size="10" fill="#8a887f">17:00</text>
       <rect x="720" y="218" width="208" height="40" rx="14" fill="#fffdf8" />
       <rect x="720" y="218" width="3" height="40" fill="#c05b4d" />
       <text x="734" y="233" font-size="8.5" fill="#8a887f">Helen Electricity · due</text>
@@ -238,11 +240,12 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="1230" y="52" text-anchor="end" font-size="10" fill="#8a887f">&#9646;&#9646; &#9646; 84%</text>
       <text x="1010" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
       <text x="1010" y="104" font-size="11" fill="#8a887f">Calm mode · now playing</text>
-      <text x="1035" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
-      <text x="1091" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
-      <text x="1147" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
-      <rect x="1178" y="118" width="50" height="22" rx="11" fill="#2b2b28" />
-      <text x="1203" y="133" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="media">Media</text>
+      <rect x="992" y="112" width="256" height="28" rx="14" fill="#e9e6dd" />
+      <text x="1027" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
+      <text x="1089" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
+      <text x="1151" y="129" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
+      <rect x="1184" y="115" width="58" height="22" rx="11" fill="#2b2b28" />
+      <text x="1213" y="129" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="media">Media</text>
       <text x="1120" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
       <rect x="992" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
       <text x="1024" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
