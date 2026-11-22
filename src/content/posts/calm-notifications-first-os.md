@@ -50,44 +50,224 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
     xmlns="http://www.w3.org/2000/svg"
   >
     <style>text { font-family: system-ui, sans-serif; } .mock-tab { cursor: pointer; }</style>
-    <!-- Phone 1: Now -->
     <g id="phone-now">
-      <rect x="20" y="20" width="280" height="600" rx="36" fill="#fdfbf6" stroke="#d9d2c0" />
-      <rect x="120" y="32" width="80" height="12" rx="6" fill="#e5dfd0" />
-      <text x="160" y="70" text-anchor="middle" font-size="10" fill="#6b675e">Wed 20.11. · 09:41</text>
-      <rect x="44" y="88" width="232" height="28" rx="14" fill="#efe9da" />
-      <rect x="48" y="91" width="54" height="20" rx="10" fill="#2b2925" />
-      <text x="75" y="105" text-anchor="middle" font-size="10" fill="#ffffff" class="mock-tab" data-screen="now">Now</text>
-      <text x="133" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="inbox">Inbox</text>
-      <text x="191" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="schedule">Schedule</text>
-      <text x="249" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="media">Media</text>
-      <rect x="44" y="136" width="232" height="84" rx="12" fill="#ffffff" stroke="#e2dcc9" /><rect x="44" y="142" width="5" height="72" rx="2.5" fill="#c9e2d2" />
-      <text x="56" y="160" font-size="11" font-weight="600" fill="#2b2925">What matters right now</text>
-      <text x="56" y="178" font-size="9" fill="#6b675e">2 actions · 1 due today · 1 security alert</text>
-      <rect x="56" y="190" width="96" height="20" rx="10" fill="#2f6f4f" />
-      <text x="104" y="203" text-anchor="middle" font-size="9" fill="#ffffff">Pay invoice</text>
-      <rect x="160" y="190" width="88" height="20" rx="10" fill="#e8e2d2" />
-      <text x="204" y="203" text-anchor="middle" font-size="9" fill="#2b2925">Track Posti</text>
-      <text x="44" y="244" font-size="10" font-weight="600" fill="#2b2925">By deadline</text>
-      <rect x="44" y="256" width="232" height="44" rx="10" fill="#ffffff" stroke="#e2dcc9" />
-      <rect x="44" y="261" width="5" height="34" rx="2.5" fill="#f2e3b3" />
-      <text x="54" y="274" font-size="10" fill="#2b2925">Helen invoice</text>
-      <text x="54" y="290" font-size="9" fill="#8a857a">due Fri 17:00 · payable</text>
-      <rect x="44" y="312" width="232" height="44" rx="10" fill="#ffffff" stroke="#e2dcc9" />
-      <rect x="44" y="317" width="5" height="34" rx="2.5" fill="#c9e2d2" />
-      <text x="54" y="330" font-size="10" fill="#2b2925">Posti delivery</text>
-      <text x="54" y="346" font-size="9" fill="#8a857a">live window 14:00–16:00</text>
-      <rect x="44" y="368" width="232" height="44" rx="10" fill="#ffffff" stroke="#e2dcc9" />
-      <rect x="44" y="373" width="5" height="34" rx="2.5" fill="#ddd9d0" />
-      <text x="54" y="386" font-size="10" fill="#2b2925">Mimmi</text>
-      <text x="54" y="402" font-size="9" fill="#8a857a">2 messages · today</text>
-      <text x="44" y="436" font-size="10" font-weight="600" fill="#8a857a">Filed for you</text>
-      <text x="54" y="456" font-size="9" fill="#8a857a">Zalando — blocked (over quota)</text>
-      <text x="54" y="476" font-size="9" fill="#8a857a">Vero — filed to next week</text>
-      <text x="54" y="496" font-size="9" fill="#8a857a">Expired alert — removed</text>
-      <text x="160" y="548" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text> <rect x="44" y="554" width="36" height="36" rx="9" fill="#30d158" /><path transform="translate(52,562) scale(0.833)" fill="#ffffff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /> <rect x="109" y="554" width="36" height="36" rx="9" fill="#636366" /><path transform="translate(117,562) scale(0.833)" fill="#ffffff" d="M12 15.2c1.77 0 3.2-1.43 3.2-3.2s-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2 1.43 3.2 3.2 3.2zM9 2 7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" /> <rect x="174" y="554" width="36" height="36" rx="9" fill="#ffffff" stroke="#d1d1d6" /><path transform="translate(182,562) scale(0.833)" fill="#ff9f0a" d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" /> <rect x="239" y="554" width="36" height="36" rx="9" fill="#e5e5ea" /><path transform="translate(247,562) scale(0.833)" fill="#636366" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" /> <rect x="120" y="604" width="80" height="6" rx="3" fill="#e5dfd0" />
+      <rect x="20" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
+      <rect x="32" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
+      <text x="50" y="52" font-size="10" fill="#8a887f">9:41</text>
+      <text x="270" y="52" text-anchor="end" font-size="10" fill="#8a887f">&#9646;&#9646; &#9646; 84%</text>
+      <text x="50" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
+      <text x="50" y="104" font-size="11" fill="#8a887f">Calm mode · 3 things need you today</text>
+      <rect x="50" y="118" width="50" height="22" rx="11" fill="#2b2b28" />
+      <text x="75" y="133" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="now">Now</text>
+      <text x="131" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
+      <text x="187" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
+      <text x="243" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <text x="160" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
+      <rect x="32" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
+      <text x="64" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
+      <text x="128" y="575" text-anchor="middle" font-size="18">&#128247;</text>
+      <text x="192" y="575" text-anchor="middle" font-size="18">&#128506;&#65039;</text>
+      <text x="256" y="575" text-anchor="middle" font-size="18">&#9881;&#65039;</text>
+      <rect x="120" y="599" width="80" height="5" rx="2.5" fill="#dcd8cc" />
+      <rect x="46" y="152" width="228" height="112" rx="22" fill="#2b2b28" />
+      <text x="62" y="170" font-size="8.5" fill="#a8a69b" letter-spacing="1.2">WHAT MATTERS NOW</text>
+      <text x="62" y="186" font-size="11.5" fill="#f6f4ef">Your electricity invoice (€84.20) is due Friday.</text>
+      <text x="62" y="200" font-size="11.5" fill="#f6f4ef">Two packages arrive today, and Mimmi asked about</text>
+      <text x="62" y="214" font-size="11.5" fill="#f6f4ef">Thursday's badminton. Everything else is quiet.</text>
+      <rect x="62" y="228" width="52" height="20" rx="10" fill="#3f3e39" />
+      <text x="88.0" y="241" text-anchor="middle" font-size="9.5" fill="#f6f4ef">Pay now</text>
+      <rect x="122" y="228" width="78" height="20" rx="10" fill="#3f3e39" />
+      <text x="161.0" y="241" text-anchor="middle" font-size="9.5" fill="#f6f4ef">Remind me Thu</text>
+      <rect x="208" y="228" width="80" height="20" rx="10" fill="#3f3e39" />
+      <text x="248.0" y="241" text-anchor="middle" font-size="9.5" fill="#f6f4ef">Quiet the rest</text>
+      <text x="52" y="284" font-size="8.5" fill="#8a887f" letter-spacing="1.2">NEEDS YOU SOON<tspan letter-spacing="0" fill="#b0aea2"> · sorted by deadline</tspan></text>
+      <rect x="46" y="294" width="228" height="48" rx="18" fill="#fffdf8" />
+      <rect x="46" y="294" width="3" height="48" fill="#d19a3f" />
+      <rect x="56" y="303" width="30" height="30" rx="9" fill="#efc9c0" />
+      <text x="71" y="323" text-anchor="middle" font-size="14">&#9889;</text>
+      <text x="94" y="312" font-size="10" font-weight="600" fill="#2b2b28">Helen Electricity</text>
+      <rect x="216" y="302" width="50" height="14" rx="7" fill="#eee9dd" />
+      <text x="241.0" y="312" text-anchor="middle" font-size="8" fill="#6b6a64">verified</text>
+      <text x="94" y="326" font-size="11" fill="#2b2b28">Invoice for October, €84.20</text>
+      <text x="94" y="337" font-size="9" fill="#6b6a64">Due Fri 20 Nov 17:00 · auto-scheduled</text>
+      <rect x="46" y="346" width="228" height="48" rx="18" fill="#fffdf8" />
+      <rect x="46" y="346" width="3" height="48" fill="#d19a3f" />
+      <rect x="56" y="355" width="30" height="30" rx="9" fill="#dfe6d4" />
+      <text x="71" y="375" text-anchor="middle" font-size="14">&#128230;</text>
+      <text x="94" y="364" font-size="10" font-weight="600" fill="#2b2b28">Posti</text>
+      <rect x="216" y="354" width="50" height="14" rx="7" fill="#eee9dd" />
+      <text x="241.0" y="364" text-anchor="middle" font-size="8" fill="#6b6a64">verified</text>
+      <text x="94" y="378" font-size="11" fill="#2b2b28">2 packages out for delivery, today 12–15</text>
+      <text x="94" y="389" font-size="9" fill="#6b6a64">Live · updates its own slot</text>
+      <rect x="46" y="398" width="228" height="48" rx="18" fill="#fffdf8" />
+      <rect x="46" y="398" width="3" height="48" fill="#7a8b6f" />
+      <rect x="56" y="407" width="30" height="30" rx="9" fill="#e3d9c0" />
+      <text x="71" y="427" text-anchor="middle" font-size="14">&#127938;</text>
+      <text x="94" y="416" font-size="10" font-weight="600" fill="#2b2b28">Mimmi</text>
+      <rect x="218" y="406" width="48" height="14" rx="7" fill="#eee9dd" />
+      <text x="242.0" y="416" text-anchor="middle" font-size="8" fill="#6b6a64">contact</text>
+      <text x="94" y="430" font-size="11" fill="#2b2b28">Still on for badminton Thursday 19:00?</text>
+      <text x="94" y="441" font-size="9" fill="#6b6a64">No deadline · optional, suggest answer</text>
+      <text x="52" y="466" font-size="8.5" fill="#8a887f" letter-spacing="1.2">FILED FOR YOU<tspan letter-spacing="0" fill="#b0aea2"> · never interrupts</tspan></text>
+      <rect x="46" y="474" width="228" height="46" rx="16" fill="#edeadf" />
+      <text x="58" y="488" font-size="9.5" fill="#6b6a64">Archived quietly: Zalando blocked (12 pushes, over</text>
+      <text x="58" y="500" font-size="9.5" fill="#6b6a64">quota), Vero filed to 30 Nov, HSL alert expired,</text>
+      <text x="58" y="512" font-size="9.5" fill="#6b6a64">Yle digest summarized in 1 line.</text>
     </g>
-    <!-- Phone 2: Inbox --> <g id="phone-inbox"> <rect x="340" y="20" width="280" height="600" rx="36" fill="#fdfbf6" stroke="#d9d2c0" /> <rect x="440" y="32" width="80" height="12" rx="6" fill="#e5dfd0" /> <text x="480" y="70" text-anchor="middle" font-size="10" fill="#6b675e">Wed 20.11. · 12:05</text> <rect x="364" y="88" width="232" height="28" rx="14" fill="#efe9da" /> <text x="395" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="now">Now</text> <rect x="426" y="91" width="54" height="20" rx="10" fill="#2b2925" /> <text x="453" y="105" text-anchor="middle" font-size="10" fill="#ffffff" class="mock-tab" data-screen="inbox">Inbox</text> <text x="511" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="schedule">Schedule</text> <text x="569" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="media">Media</text> <rect x="364" y="136" width="232" height="56" rx="12" fill="#ffffff" stroke="#e2dcc9" /><rect x="364" y="142" width="5" height="44" rx="2.5" fill="#f0c9c5" /> <text x="376" y="158" font-size="10" font-weight="600" fill="#8f1d14">OP Bank ✓ verified — new login</text> <text x="376" y="176" font-size="9" fill="#8f1d14">Security-critical — cannot be deferred</text> <rect x="364" y="208" width="232" height="48" rx="10" fill="#ffffff" stroke="#e2dcc9" /><rect x="364" y="214" width="5" height="36" rx="2.5" fill="#f2e3b3" /> <text x="374" y="228" font-size="10" fill="#2b2925">Kanta ✓ — appointment reminder</text> <text x="374" y="244" font-size="9" fill="#8a857a">due tomorrow · urgency high</text> <rect x="364" y="268" width="232" height="48" rx="10" fill="#ffffff" stroke="#e2dcc9" /><rect x="364" y="274" width="5" height="36" rx="2.5" fill="#ddd9d0" /> <text x="374" y="288" font-size="10" fill="#2b2925">Nordea ✓ — card notice</text> <text x="374" y="304" font-size="9" fill="#8a857a">due in 4 days · urgency decaying</text> <rect x="364" y="328" width="232" height="48" rx="10" fill="#ffffff" stroke="#e2dcc9" /><rect x="364" y="334" width="5" height="36" rx="2.5" fill="#c9d8ee" /> <text x="374" y="348" font-size="10" fill="#2b2925">Suomi.fi — tax decision ready</text> <text x="374" y="364" font-size="9" fill="#8a857a">due Fri · government sender</text> <text x="364" y="408" font-size="9" fill="#8a857a">Every item shows its due date and a decaying</text> <text x="364" y="426" font-size="9" fill="#8a857a">urgency rating; verified senders get a badge.</text> <text x="480" y="548" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text> <rect x="364" y="554" width="36" height="36" rx="9" fill="#30d158" /><path transform="translate(372,562) scale(0.833)" fill="#ffffff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /> <rect x="429" y="554" width="36" height="36" rx="9" fill="#636366" /><path transform="translate(437,562) scale(0.833)" fill="#ffffff" d="M12 15.2c1.77 0 3.2-1.43 3.2-3.2s-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2 1.43 3.2 3.2 3.2zM9 2 7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" /> <rect x="494" y="554" width="36" height="36" rx="9" fill="#ffffff" stroke="#d1d1d6" /><path transform="translate(502,562) scale(0.833)" fill="#ff9f0a" d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" /> <rect x="559" y="554" width="36" height="36" rx="9" fill="#e5e5ea" /><path transform="translate(567,562) scale(0.833)" fill="#636366" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" /> <rect x="440" y="604" width="80" height="6" rx="3" fill="#e5dfd0" /> </g> <!-- Phone 3: Schedule --> <g id="phone-schedule"> <rect x="660" y="20" width="280" height="600" rx="36" fill="#fdfbf6" stroke="#d9d2c0" /> <rect x="760" y="32" width="80" height="12" rx="6" fill="#e5dfd0" /> <text x="800" y="70" text-anchor="middle" font-size="10" fill="#6b675e">Wed 20.11. · 17:22</text> <rect x="684" y="88" width="232" height="28" rx="14" fill="#efe9da" /> <text x="715" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="now">Now</text> <text x="773" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="inbox">Inbox</text> <rect x="804" y="91" width="54" height="20" rx="10" fill="#2b2925" /> <text x="831" y="105" text-anchor="middle" font-size="10" fill="#ffffff" class="mock-tab" data-screen="schedule">Schedule</text> <text x="889" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="media">Media</text> <text x="684" y="140" font-size="10" font-weight="600" fill="#2b2925">Today</text> <text x="684" y="174" font-size="9" fill="#6b675e">14:00</text> <rect x="716" y="152" width="200" height="48" rx="10" fill="#e8f0ea" stroke="#bcd6c6" /><rect x="716" y="158" width="5" height="36" rx="2.5" fill="#c9e2d2" /> <text x="730" y="172" font-size="10" fill="#2b2925">Posti delivery (live)</text> <text x="730" y="188" font-size="9" fill="#2f6f4f">window 14:00–16:00 · updates itself</text> <text x="684" y="234" font-size="9" fill="#6b675e">17:00</text> <rect x="716" y="212" width="200" height="48" rx="10" fill="#ffffff" stroke="#e2dcc9" /><rect x="716" y="218" width="5" height="36" rx="2.5" fill="#f2e3b3" /> <text x="730" y="232" font-size="10" fill="#2b2925">Helen invoice due</text> <text x="730" y="248" font-size="9" fill="#8a857a">reminder placed by deadline</text> <text x="684" y="288" font-size="10" font-weight="600" fill="#2b2925">Saturday</text> <text x="684" y="324" font-size="9" fill="#6b675e">Sat</text> <rect x="716" y="300" width="200" height="40" rx="10" fill="#f1ede1" stroke="#e2dcc9" /> <text x="730" y="324" font-size="9" fill="#8a857a">Quiet day — nothing scheduled</text> <text x="684" y="368" font-size="9" fill="#8a857a">Notifications are placed on your timeline by</text> <text x="684" y="386" font-size="9" fill="#8a857a">deadline; quiet days are shown as quiet.</text> <text x="800" y="548" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text> <rect x="684" y="554" width="36" height="36" rx="9" fill="#30d158" /><path transform="translate(692,562) scale(0.833)" fill="#ffffff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /> <rect x="749" y="554" width="36" height="36" rx="9" fill="#636366" /><path transform="translate(757,562) scale(0.833)" fill="#ffffff" d="M12 15.2c1.77 0 3.2-1.43 3.2-3.2s-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2 1.43 3.2 3.2 3.2zM9 2 7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" /> <rect x="814" y="554" width="36" height="36" rx="9" fill="#ffffff" stroke="#d1d1d6" /><path transform="translate(822,562) scale(0.833)" fill="#ff9f0a" d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" /> <rect x="879" y="554" width="36" height="36" rx="9" fill="#e5e5ea" /><path transform="translate(887,562) scale(0.833)" fill="#636366" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" /> <rect x="760" y="604" width="80" height="6" rx="3" fill="#e5dfd0" /> </g> <!-- Phone 4: Media --> <g id="phone-media"> <rect x="980" y="20" width="280" height="600" rx="36" fill="#fdfbf6" stroke="#d9d2c0" /> <rect x="1080" y="32" width="80" height="12" rx="6" fill="#e5dfd0" /> <text x="1120" y="70" text-anchor="middle" font-size="10" fill="#6b675e">Wed 20.11. · 21:10</text> <rect x="1004" y="88" width="232" height="28" rx="14" fill="#efe9da" /> <text x="1035" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="now">Now</text> <text x="1093" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="inbox">Inbox</text> <text x="1151" y="105" text-anchor="middle" font-size="10" fill="#6b675e" class="mock-tab" data-screen="schedule">Schedule</text> <rect x="1182" y="91" width="54" height="20" rx="10" fill="#2b2925" /> <text x="1209" y="105" text-anchor="middle" font-size="10" fill="#ffffff" class="mock-tab" data-screen="media">Media</text> <rect x="1004" y="136" width="232" height="200" rx="16" fill="#e8e2d2" /> <text x="1120" y="248" text-anchor="middle" font-size="64" fill="#b0a88f">&#9834;</text> <rect x="1004" y="352" width="76" height="22" rx="11" fill="#e8f0ea" /> <text x="1042" y="367" text-anchor="middle" font-size="9" fill="#2f6f4f">via Spotify</text> <text x="1004" y="402" font-size="12" font-weight="600" fill="#2b2925">Song title</text> <text x="1004" y="420" font-size="10" fill="#6b675e">Artist — Album</text> <rect x="1004" y="440" width="232" height="5" rx="2.5" fill="#e5dfd0" /> <rect x="1004" y="440" width="120" height="5" rx="2.5" fill="#2f6f4f" /> <text x="1004" y="458" font-size="9" fill="#8a857a">1:12</text> <text x="1236" y="458" text-anchor="end" font-size="9" fill="#8a857a">3:45</text> <circle cx="1080" cy="500" r="18" fill="#ffffff" stroke="#e2dcc9" /> <text x="1080" y="505" text-anchor="middle" font-size="13" fill="#2b2925">&#9198;</text> <circle cx="1120" cy="500" r="20" fill="#2f6f4f" /> <text x="1120" y="506" text-anchor="middle" font-size="14" fill="#ffffff">&#9654;</text> <circle cx="1160" cy="500" r="18" fill="#ffffff" stroke="#e2dcc9" /> <text x="1160" y="505" text-anchor="middle" font-size="13" fill="#2b2925">&#9197;</text> <text x="1120" y="548" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text> <rect x="1004" y="554" width="36" height="36" rx="9" fill="#30d158" /><path transform="translate(1012,562) scale(0.833)" fill="#ffffff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /> <rect x="1069" y="554" width="36" height="36" rx="9" fill="#636366" /><path transform="translate(1077,562) scale(0.833)" fill="#ffffff" d="M12 15.2c1.77 0 3.2-1.43 3.2-3.2s-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2 1.43 3.2 3.2 3.2zM9 2 7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" /> <rect x="1134" y="554" width="36" height="36" rx="9" fill="#ffffff" stroke="#d1d1d6" /><path transform="translate(1142,562) scale(0.833)" fill="#ff9f0a" d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" /> <rect x="1199" y="554" width="36" height="36" rx="9" fill="#e5e5ea" /><path transform="translate(1207,562) scale(0.833)" fill="#636366" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" /> <rect x="1080" y="604" width="80" height="6" rx="3" fill="#e5dfd0" /> </g> </svg> <figcaption class="text-center"> The four home-screen screens — Now, Inbox, Schedule, Media — click a tab in any phone to focus that screen centered (click again to show all four), with the quota mechanics, example senders (the OP Bank security lane, a live Posti delivery window, an over-quota Zalando card), and a media session (Spotify) wired in. </figcaption> </figure>
+    <g id="phone-inbox">
+      <rect x="340" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
+      <rect x="352" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
+      <text x="370" y="52" font-size="10" fill="#8a887f">9:41</text>
+      <text x="590" y="52" text-anchor="end" font-size="10" fill="#8a887f">&#9646;&#9646; &#9646; 84%</text>
+      <text x="370" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
+      <text x="370" y="104" font-size="11" fill="#8a887f">Calm mode · 4 items, 1 needs you now</text>
+      <text x="395" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
+      <rect x="426" y="118" width="50" height="22" rx="11" fill="#2b2b28" />
+      <text x="451" y="133" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="inbox">Inbox</text>
+      <text x="507" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
+      <text x="563" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <text x="480" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
+      <rect x="352" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
+      <text x="384" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
+      <text x="448" y="575" text-anchor="middle" font-size="18">&#128247;</text>
+      <text x="512" y="575" text-anchor="middle" font-size="18">&#128506;&#65039;</text>
+      <text x="576" y="575" text-anchor="middle" font-size="18">&#9881;&#65039;</text>
+      <rect x="440" y="599" width="80" height="5" rx="2.5" fill="#dcd8cc" />
+      <text x="372" y="160" font-size="8.5" fill="#8a887f" letter-spacing="1.2">TODAY<tspan letter-spacing="0" fill="#b0aea2"> · 1 security-critical</tspan></text>
+      <rect x="366" y="170" width="228" height="48" rx="18" fill="#fffdf8" />
+      <rect x="366" y="170" width="3" height="48" fill="#c05b4d" />
+      <rect x="376" y="179" width="30" height="30" rx="9" fill="#efc9c0" />
+      <text x="391" y="199" text-anchor="middle" font-size="14">&#127974;</text>
+      <text x="414" y="188" font-size="10" font-weight="600" fill="#2b2b28">OP Bank</text>
+      <rect x="522" y="178" width="64" height="14" rx="7" fill="#eee9dd" />
+      <text x="554.0" y="188" text-anchor="middle" font-size="8" fill="#6b6a64">security lane</text>
+      <text x="414" y="202" font-size="11" fill="#2b2b28">New login from a new device. Was this you?</text>
+      <text x="414" y="213" font-size="9" fill="#6b6a64">Due now · cannot be deferred</text>
+      <rect x="366" y="226" width="228" height="48" rx="18" fill="#fffdf8" />
+      <rect x="366" y="226" width="3" height="48" fill="#d19a3f" />
+      <rect x="376" y="235" width="30" height="30" rx="9" fill="#e3d9c0" />
+      <text x="391" y="255" text-anchor="middle" font-size="14">&#127973;</text>
+      <text x="414" y="244" font-size="10" font-weight="600" fill="#2b2b28">Kanta</text>
+      <rect x="536" y="234" width="50" height="14" rx="7" fill="#eee9dd" />
+      <text x="561.0" y="244" text-anchor="middle" font-size="8" fill="#6b6a64">verified</text>
+      <text x="414" y="258" font-size="11" fill="#2b2b28">Appointment reminder</text>
+      <text x="414" y="269" font-size="9" fill="#6b6a64">Due tomorrow · urgency high</text>
+      <rect x="366" y="282" width="228" height="48" rx="18" fill="#fffdf8" />
+      <rect x="366" y="282" width="3" height="48" fill="#d19a3f" />
+      <rect x="376" y="291" width="30" height="30" rx="9" fill="#dfe6d4" />
+      <text x="391" y="311" text-anchor="middle" font-size="14">&#128179;</text>
+      <text x="414" y="300" font-size="10" font-weight="600" fill="#2b2b28">Nordea</text>
+      <rect x="536" y="290" width="50" height="14" rx="7" fill="#eee9dd" />
+      <text x="561.0" y="300" text-anchor="middle" font-size="8" fill="#6b6a64">verified</text>
+      <text x="414" y="314" font-size="11" fill="#2b2b28">Card notice</text>
+      <text x="414" y="325" font-size="9" fill="#6b6a64">Due in 4 days · urgency decaying</text>
+      <rect x="366" y="338" width="228" height="48" rx="18" fill="#fffdf8" />
+      <rect x="366" y="338" width="3" height="48" fill="#6f7f8b" />
+      <rect x="376" y="347" width="30" height="30" rx="9" fill="#e0e0e0" />
+      <text x="391" y="367" text-anchor="middle" font-size="14">&#127963;&#65039;</text>
+      <text x="414" y="356" font-size="10" font-weight="600" fill="#2b2b28">Suomi.fi</text>
+      <rect x="524" y="346" width="62" height="14" rx="7" fill="#eee9dd" />
+      <text x="555.0" y="356" text-anchor="middle" font-size="8" fill="#6b6a64">government</text>
+      <text x="414" y="370" font-size="11" fill="#2b2b28">Tax decision ready</text>
+      <text x="414" y="381" font-size="9" fill="#6b6a64">Due Fri · government sender</text>
+      <rect x="366" y="394" width="228" height="48" rx="18" fill="#fffdf8" opacity="0.68" />
+      <rect x="376" y="403" width="30" height="30" rx="9" fill="#e0e0e0" />
+      <text x="391" y="423" text-anchor="middle" font-size="14">&#128717;&#65039;</text>
+      <text x="414" y="412" font-size="10" font-weight="600" fill="#2b2b28">Zalando</text>
+      <rect x="522" y="402" width="64" height="14" rx="7" fill="#eee9dd" />
+      <text x="554.0" y="412" text-anchor="middle" font-size="8" fill="#6b6a64">over quota</text>
+      <text x="414" y="426" font-size="11" fill="#2b2b28">Black Friday: up to −70%…</text>
+      <text x="414" y="437" font-size="9" fill="#6b6a64">Optional · digest only · urgency decaying</text>
+      <text x="366" y="458" font-size="9" fill="#8a887f">Every item shows its due date and a decaying</text>
+      <text x="366" y="471" font-size="9" fill="#8a887f">urgency rating; verified senders get a badge.</text>
+    </g>
+    <g id="phone-schedule">
+      <rect x="660" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
+      <rect x="672" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
+      <text x="690" y="52" font-size="10" fill="#8a887f">9:41</text>
+      <text x="910" y="52" text-anchor="end" font-size="10" fill="#8a887f">&#9646;&#9646; &#9646; 84%</text>
+      <text x="690" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
+      <text x="690" y="104" font-size="11" fill="#8a887f">Calm mode · attention schedule</text>
+      <text x="715" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
+      <text x="771" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
+      <rect x="802" y="118" width="50" height="22" rx="11" fill="#2b2b28" />
+      <text x="827" y="133" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="schedule">Schedule</text>
+      <text x="883" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="media">Media</text>
+      <text x="800" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
+      <rect x="672" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
+      <text x="704" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
+      <text x="768" y="575" text-anchor="middle" font-size="18">&#128247;</text>
+      <text x="832" y="575" text-anchor="middle" font-size="18">&#128506;&#65039;</text>
+      <text x="896" y="575" text-anchor="middle" font-size="18">&#9881;&#65039;</text>
+      <rect x="760" y="599" width="80" height="5" rx="2.5" fill="#dcd8cc" />
+      <text x="692" y="160" font-size="8.5" fill="#8a887f" letter-spacing="1.2">ATTENTION SCHEDULE<tspan letter-spacing="0" fill="#b0aea2"> · placed by deadline</tspan></text>
+      <text x="712" y="194" text-anchor="end" font-size="10" fill="#8a887f">12–15</text>
+      <rect x="720" y="170" width="208" height="40" rx="14" fill="#fffdf8" />
+      <rect x="720" y="170" width="3" height="40" fill="#7a8b6f" />
+      <text x="734" y="185" font-size="8.5" fill="#8a887f">Posti · live</text>
+      <text x="734" y="199" font-size="11" fill="#2b2b28">2 packages arriving</text>
+      <text x="712" y="242" text-anchor="end" font-size="10" fill="#8a887f">Fri 17:00</text>
+      <rect x="720" y="218" width="208" height="40" rx="14" fill="#fffdf8" />
+      <rect x="720" y="218" width="3" height="40" fill="#c05b4d" />
+      <text x="734" y="233" font-size="8.5" fill="#8a887f">Helen Electricity · due</text>
+      <text x="734" y="247" font-size="11" fill="#2b2b28">Pay invoice, €84.20</text>
+      <text x="712" y="290" text-anchor="end" font-size="10" fill="#8a887f">Thu 19</text>
+      <rect x="720" y="266" width="208" height="40" rx="14" fill="#fffdf8" />
+      <rect x="720" y="266" width="3" height="40" fill="#6f7f8b" />
+      <text x="734" y="281" font-size="8.5" fill="#8a887f">Mimmi · suggested</text>
+      <text x="734" y="295" font-size="11" fill="#2b2b28">Badminton, if you confirm</text>
+      <text x="712" y="338" text-anchor="end" font-size="10" fill="#8a887f">Sat</text>
+      <rect x="720" y="314" width="208" height="40" rx="14" fill="#edeadf" stroke="#c5c1b2" stroke-dasharray="3 3" />
+      <text x="734" y="338" font-size="11" fill="#6b6a64">Quiet day — nothing scheduled</text>
+      <text x="712" y="386" text-anchor="end" font-size="10" fill="#8a887f">Mon 23</text>
+      <rect x="720" y="362" width="208" height="40" rx="14" fill="#fffdf8" />
+      <rect x="720" y="362" width="3" height="40" fill="#d19a3f" />
+      <text x="734" y="377" font-size="8.5" fill="#8a887f">Kanta · reminder</text>
+      <text x="734" y="391" font-size="11" fill="#2b2b28">Prescription renewal window opens</text>
+      <text x="712" y="434" text-anchor="end" font-size="10" fill="#8a887f">Nov 30</text>
+      <rect x="720" y="410" width="208" height="40" rx="14" fill="#edeadf" stroke="#c5c1b2" stroke-dasharray="3 3" />
+      <text x="734" y="425" font-size="8.5" fill="#8a887f">Vero · auto-filed</text>
+      <text x="734" y="439" font-size="11" fill="#6b6a64">Tax reminder (in archive, not urgent)</text>
+      <text x="686" y="470" font-size="9" fill="#8a887f">Notifications are placed on your timeline by</text>
+      <text x="686" y="483" font-size="9" fill="#8a887f">deadline; quiet days are shown as quiet.</text>
+    </g>
+    <g id="phone-media">
+      <rect x="980" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
+      <rect x="992" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
+      <text x="1010" y="52" font-size="10" fill="#8a887f">9:41</text>
+      <text x="1230" y="52" text-anchor="end" font-size="10" fill="#8a887f">&#9646;&#9646; &#9646; 84%</text>
+      <text x="1010" y="86" font-size="23" font-weight="600" fill="#2b2b28" letter-spacing="-0.5">Tuesday 17 Nov</text>
+      <text x="1010" y="104" font-size="11" fill="#8a887f">Calm mode · now playing</text>
+      <text x="1035" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="now">Now</text>
+      <text x="1091" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="inbox">Inbox</text>
+      <text x="1147" y="133" text-anchor="middle" font-size="11" fill="#8a887f" class="mock-tab" data-screen="schedule">Schedule</text>
+      <rect x="1178" y="118" width="50" height="22" rx="11" fill="#2b2b28" />
+      <text x="1203" y="133" text-anchor="middle" font-size="11" fill="#f6f4ef" class="mock-tab" data-screen="media">Media</text>
+      <text x="1120" y="532" text-anchor="middle" font-size="10" fill="#8a857a">&#8593;</text>
+      <rect x="992" y="540" width="256" height="56" rx="20" fill="#f6f4ef" stroke="#e5e1d6" />
+      <text x="1024" y="575" text-anchor="middle" font-size="18">&#9742;&#65039;</text>
+      <text x="1088" y="575" text-anchor="middle" font-size="18">&#128247;</text>
+      <text x="1152" y="575" text-anchor="middle" font-size="18">&#128506;&#65039;</text>
+      <text x="1216" y="575" text-anchor="middle" font-size="18">&#9881;&#65039;</text>
+      <rect x="1080" y="599" width="80" height="5" rx="2.5" fill="#dcd8cc" />
+      <rect x="1006" y="152" width="228" height="170" rx="18" fill="#e8e2d2" />
+      <text x="1120" y="252" text-anchor="middle" font-size="56" fill="#b0a88f">&#9834;</text>
+      <rect x="1006" y="332" width="76" height="22" rx="11" fill="#e8f0ea" />
+      <text x="1044" y="347" text-anchor="middle" font-size="9" fill="#2f6f4f">via Spotify</text>
+      <text x="1006" y="376" font-size="13" font-weight="600" fill="#2b2b28">Song title</text>
+      <text x="1006" y="393" font-size="10.5" fill="#6b6a64">Artist — Album</text>
+      <rect x="1006" y="408" width="228" height="5" rx="2.5" fill="#e5dfd0" />
+      <rect x="1006" y="408" width="114" height="5" rx="2.5" fill="#2b2b28" />
+      <text x="1006" y="424" font-size="8.5" fill="#8a857a">1:12</text>
+      <text x="1234" y="424" text-anchor="end" font-size="8.5" fill="#8a857a">3:45</text>
+      <circle cx="1076" cy="458" r="17" fill="#fffdf8" stroke="#e2dcc9" />
+      <text x="1076" y="463" text-anchor="middle" font-size="12" fill="#2b2b28">&#9198;</text>
+      <circle cx="1120" cy="458" r="19" fill="#2b2b28" />
+      <text x="1120" y="463" text-anchor="middle" font-size="13" fill="#f6f4ef">&#9654;</text>
+      <circle cx="1164" cy="458" r="17" fill="#fffdf8" stroke="#e2dcc9" />
+      <text x="1164" y="463" text-anchor="middle" font-size="12" fill="#2b2b28">&#9197;</text>
+    </g>
+  </svg> <figcaption class="text-center"> The four home-screen screens — Now, Inbox, Schedule, Media — click a tab in any phone to focus that screen centered (click again to show all four), with the quota mechanics, example senders (the OP Bank security lane, a live Posti delivery window, an over-quota Zalando card), and a media session (Spotify) wired in. </figcaption> </figure>
 
 <script>
   const screens = ["now", "inbox", "schedule", "media"];
