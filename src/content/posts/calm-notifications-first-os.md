@@ -5,7 +5,7 @@ title: "A calm, notifications-first phone OS: a concept"
 slug: calm-notifications-first-os
 featured: false
 draft: false
-ogImage: ../../assets/images/calm-os-og.png
+ogImage: https://images.pexels.com/photos/193003/pexels-photo-193003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 tags:
   - mobile
   - os
@@ -59,6 +59,19 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
     xmlns="http://www.w3.org/2000/svg"
   >
     <style>text { font-family: system-ui, sans-serif; }</style>
+    <defs>
+      <clipPath id="cc-now1"><rect x="46" y="294" width="228" height="48" rx="18" /></clipPath>
+      <clipPath id="cc-now2"><rect x="46" y="346" width="228" height="48" rx="18" /></clipPath>
+      <clipPath id="cc-now3"><rect x="46" y="398" width="228" height="48" rx="18" /></clipPath>
+      <clipPath id="cc-inbox1"><rect x="366" y="170" width="228" height="48" rx="18" /></clipPath>
+      <clipPath id="cc-inbox2"><rect x="366" y="226" width="228" height="48" rx="18" /></clipPath>
+      <clipPath id="cc-inbox3"><rect x="366" y="282" width="228" height="48" rx="18" /></clipPath>
+      <clipPath id="cc-inbox4"><rect x="366" y="338" width="228" height="48" rx="18" /></clipPath>
+      <clipPath id="cc-cal1"><rect x="720" y="170" width="208" height="40" rx="14" /></clipPath>
+      <clipPath id="cc-cal2"><rect x="720" y="218" width="208" height="40" rx="14" /></clipPath>
+      <clipPath id="cc-cal3"><rect x="720" y="266" width="208" height="40" rx="14" /></clipPath>
+      <clipPath id="cc-cal4"><rect x="720" y="362" width="208" height="40" rx="14" /></clipPath>
+    </defs>
     <g>
       <rect x="20" y="20" width="280" height="600" rx="36" fill="#1a1a18" />
       <rect x="32" y="32" width="256" height="576" rx="28" fill="#f6f4ef" />
@@ -92,7 +105,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="230" y="241" text-anchor="middle" font-size="9" fill="#f6f4ef">Quiet the rest</text>
       <text x="52" y="284" font-size="8.5" fill="#8a887f" letter-spacing="1.2">NEEDS YOU SOON<tspan letter-spacing="0" fill="#b0aea2"> · sorted by deadline</tspan></text>
       <rect x="46" y="294" width="228" height="48" rx="18" fill="#fffdf8" />
-      <rect x="46" y="294" width="3" height="48" fill="#d19a3f" />
+      <rect x="46" y="294" width="3" height="48" fill="#d19a3f" clip-path="url(#cc-now1)" />
       <rect x="56" y="303" width="30" height="30" rx="9" fill="#efc9c0" />
       <text x="71" y="323" text-anchor="middle" font-size="14">&#9889;</text>
       <text x="94" y="312" font-size="10" font-weight="600" fill="#2b2b28">Helen Electricity</text>
@@ -101,7 +114,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="94" y="326" font-size="11" fill="#2b2b28">Invoice for October, €84.20</text>
       <text x="94" y="337" font-size="9" fill="#6b6a64">Due Fri 20 Nov 17:00 · auto-scheduled</text>
       <rect x="46" y="346" width="228" height="48" rx="18" fill="#fffdf8" />
-      <rect x="46" y="346" width="3" height="48" fill="#d19a3f" />
+      <rect x="46" y="346" width="3" height="48" fill="#d19a3f" clip-path="url(#cc-now2)" />
       <rect x="56" y="355" width="30" height="30" rx="9" fill="#dfe6d4" />
       <text x="71" y="375" text-anchor="middle" font-size="14">&#128230;</text>
       <text x="94" y="364" font-size="10" font-weight="600" fill="#2b2b28">Posti</text>
@@ -110,7 +123,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="94" y="378" font-size="11" fill="#2b2b28">2 packages arriving today 12–15</text>
       <text x="94" y="389" font-size="9" fill="#6b6a64">Live · updates its own slot</text>
       <rect x="46" y="398" width="228" height="48" rx="18" fill="#fffdf8" />
-      <rect x="46" y="398" width="3" height="48" fill="#7a8b6f" />
+      <rect x="46" y="398" width="3" height="48" fill="#7a8b6f" clip-path="url(#cc-now3)" />
       <rect x="56" y="407" width="30" height="30" rx="9" fill="#e3d9c0" />
       <text x="71" y="427" text-anchor="middle" font-size="14">&#127938;</text>
       <text x="94" y="416" font-size="10" font-weight="600" fill="#2b2b28">Mimmi</text>
@@ -146,7 +159,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <rect x="440" y="599" width="80" height="5" rx="2.5" fill="#dcd8cc" />
       <text x="372" y="160" font-size="8.5" fill="#8a887f" letter-spacing="1.2">TODAY<tspan letter-spacing="0" fill="#b0aea2"> · 1 security-critical</tspan></text>
       <rect x="366" y="170" width="228" height="48" rx="18" fill="#fffdf8" />
-      <rect x="366" y="170" width="3" height="48" fill="#c05b4d" />
+      <rect x="366" y="170" width="3" height="48" fill="#c05b4d" clip-path="url(#cc-inbox1)" />
       <rect x="376" y="179" width="30" height="30" rx="9" fill="#efc9c0" />
       <text x="391" y="199" text-anchor="middle" font-size="14">&#127974;</text>
       <text x="414" y="188" font-size="10" font-weight="600" fill="#2b2b28">OP Bank</text>
@@ -155,7 +168,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="414" y="202" font-size="11" fill="#2b2b28">New login from new device. You?</text>
       <text x="414" y="213" font-size="9" fill="#6b6a64">Due now · cannot be deferred</text>
       <rect x="366" y="226" width="228" height="48" rx="18" fill="#fffdf8" />
-      <rect x="366" y="226" width="3" height="48" fill="#d19a3f" />
+      <rect x="366" y="226" width="3" height="48" fill="#d19a3f" clip-path="url(#cc-inbox2)" />
       <rect x="376" y="235" width="30" height="30" rx="9" fill="#e3d9c0" />
       <text x="391" y="255" text-anchor="middle" font-size="14">&#127973;</text>
       <text x="414" y="244" font-size="10" font-weight="600" fill="#2b2b28">Kanta</text>
@@ -164,7 +177,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="414" y="258" font-size="11" fill="#2b2b28">Appointment reminder</text>
       <text x="414" y="269" font-size="9" fill="#6b6a64">Due tomorrow · urgency high</text>
       <rect x="366" y="282" width="228" height="48" rx="18" fill="#fffdf8" />
-      <rect x="366" y="282" width="3" height="48" fill="#d19a3f" />
+      <rect x="366" y="282" width="3" height="48" fill="#d19a3f" clip-path="url(#cc-inbox3)" />
       <rect x="376" y="291" width="30" height="30" rx="9" fill="#dfe6d4" />
       <text x="391" y="311" text-anchor="middle" font-size="14">&#128179;</text>
       <text x="414" y="300" font-size="10" font-weight="600" fill="#2b2b28">Nordea</text>
@@ -173,7 +186,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="414" y="314" font-size="11" fill="#2b2b28">Card notice</text>
       <text x="414" y="325" font-size="9" fill="#6b6a64">Due in 4 days · urgency decaying</text>
       <rect x="366" y="338" width="228" height="48" rx="18" fill="#fffdf8" />
-      <rect x="366" y="338" width="3" height="48" fill="#6f7f8b" />
+      <rect x="366" y="338" width="3" height="48" fill="#6f7f8b" clip-path="url(#cc-inbox4)" />
       <rect x="376" y="347" width="30" height="30" rx="9" fill="#e0e0e0" />
       <text x="391" y="367" text-anchor="middle" font-size="14">&#127963;&#65039;</text>
       <text x="414" y="356" font-size="10" font-weight="600" fill="#2b2b28">Suomi.fi</text>
@@ -214,17 +227,17 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <rect x="760" y="599" width="80" height="5" rx="2.5" fill="#dcd8cc" />
       <text x="712" y="194" text-anchor="end" font-size="10" fill="#8a887f">12–15</text>
       <rect x="720" y="170" width="208" height="40" rx="14" fill="#fffdf8" />
-      <rect x="720" y="170" width="3" height="40" fill="#7a8b6f" />
+      <rect x="720" y="170" width="3" height="40" fill="#7a8b6f" clip-path="url(#cc-cal1)" />
       <text x="734" y="185" font-size="8.5" fill="#8a887f">Posti · live</text>
       <text x="734" y="199" font-size="11" fill="#2b2b28">2 packages arriving</text>
       <text x="712" y="242" text-anchor="end" font-size="10" fill="#8a887f">17:00</text>
       <rect x="720" y="218" width="208" height="40" rx="14" fill="#fffdf8" />
-      <rect x="720" y="218" width="3" height="40" fill="#c05b4d" />
+      <rect x="720" y="218" width="3" height="40" fill="#c05b4d" clip-path="url(#cc-cal2)" />
       <text x="734" y="233" font-size="8.5" fill="#8a887f">Helen Electricity · due</text>
       <text x="734" y="247" font-size="11" fill="#2b2b28">Pay invoice, €84.20</text>
       <text x="712" y="290" text-anchor="end" font-size="10" fill="#8a887f">Thu 19</text>
       <rect x="720" y="266" width="208" height="40" rx="14" fill="#fffdf8" />
-      <rect x="720" y="266" width="3" height="40" fill="#6f7f8b" />
+      <rect x="720" y="266" width="3" height="40" fill="#6f7f8b" clip-path="url(#cc-cal3)" />
       <text x="734" y="281" font-size="8.5" fill="#8a887f">Mimmi · suggested</text>
       <text x="734" y="295" font-size="11" fill="#2b2b28">Badminton, if you confirm</text>
       <text x="712" y="338" text-anchor="end" font-size="10" fill="#8a887f">Sat</text>
@@ -232,7 +245,7 @@ The concept flips it: the OS owns the notification channel, and apps _request_ a
       <text x="734" y="338" font-size="11" fill="#6b6a64">Quiet day — nothing scheduled</text>
       <text x="712" y="386" text-anchor="end" font-size="10" fill="#8a887f">Mon 23</text>
       <rect x="720" y="362" width="208" height="40" rx="14" fill="#fffdf8" />
-      <rect x="720" y="362" width="3" height="40" fill="#d19a3f" />
+      <rect x="720" y="362" width="3" height="40" fill="#d19a3f" clip-path="url(#cc-cal4)" />
       <text x="734" y="377" font-size="8.5" fill="#8a887f">Kanta · reminder</text>
       <text x="734" y="391" font-size="11" fill="#2b2b28">Prescription renewal opens</text>
       <text x="712" y="434" text-anchor="end" font-size="10" fill="#8a887f">Nov 30</text>
