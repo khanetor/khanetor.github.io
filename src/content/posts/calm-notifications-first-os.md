@@ -18,24 +18,13 @@ description: "A concept for a notifications-first phone OS — OS-owned attentio
 
 Tuesday, 9:41. Your phone is already talking to you before you've touched it: a badge here, a banner there, a tile flipping over to show something you didn't ask for right now. Multiply that by a hundred apps and you get the modern phone. Noisy, and not by accident.
 
-I worked at [Microsoft](https://www.microsoft.com) while [Windows Phone](https://en.wikipedia.org/wiki/Windows_Phone) was being pushed, and its Start screen still haunts me. The live tiles were notification-first, arguably ahead of their time: unread counts and previews sitting on the home screen itself, no app-opening required. Look at the photo below and find the 24 on the calendar tile and the 16 on the store tile. Those are unread counts, updating live. That was the right idea.
+I worked at [Microsoft](https://www.microsoft.com) while [Windows Phone](https://en.wikipedia.org/wiki/Windows_Phone) was being pushed, and its Start screen still haunts me. The live tiles were notification-first, arguably ahead of their time: unread counts and previews sitting on the home screen itself, no app-opening required. Look at the photo below: the highlighted 25 on the Messages tile, and the 11 on the Mail tile just below it, are unread counts updating live. That was the right idea.
 
 But the bright tiles on a dark background kept me alert and stressed rather than calm. And design aside, the real killer was the app gap: there simply weren't the apps people needed. That's the lesson I keep coming back to: an OS doesn't win on vision. It wins on having the few apps that matter in the market you enter.
 
-<figure>
-  <img
-    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Nokia_Lumia_720_Home_screen.jpg/960px-Nokia_Lumia_720_Home_screen.jpg"
-    alt="Windows Phone 8.1 Start screen on a Nokia Lumia 720, with live tiles showing notification counts: 24 on the calendar tile and 16 on the store tile"
-    width="960"
-    height="1214"
-  />
-  <figcaption class="text-center">
-    Windows Phone's Start screen was notification-first: the 24 on the calendar tile and the 16 on
-    the store tile are live unread counts. Photo:
-    <a href="https://commons.wikimedia.org/wiki/File:Nokia_Lumia_720_Home_screen.jpg">Kskhh via Wikimedia Commons</a>
-    (CC BY-SA 4.0).
-  </figcaption>
-</figure>
+![Windows Phone 8.1 Start screen on a Nokia Lumia 520, with the live notification badge highlighted: 25 unread messages on the green Messages tile and 11 unread emails on the purple Mail tile below it](@/assets/images/nokia-lumia-520-start-annotated.jpg)
+
+_Windows Phone's Start screen was notification-first: the highlighted 25 on the Messages tile and the 11 on the Mail tile are live unread counts, updating on the home screen itself (the UI here is in Russian; the badges work the same in any language). Photo: [Enterely via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nokia_Lumia_520_Windows_Phone_8.1_ru.JPG), badge highlighted by the author, shared under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)._
 
 **TL;DR:** this post sketches a phone OS where the **OS owns the attention layer**. Apps request attention through a structured protocol instead of owning their own channels. Apps install from a store like today but always update like web apps, sideloading stays open, and AI runs as a shared OS service, private by default. One capability broker sits underneath all of it, granting permissions and enforcing per-app fair shares and verified trust tiers. It enters through Finland's must-have institutions with a mid-tier OEM shipping it as the default surface, because an OS wins on the few apps that matter, not on vision.
 
