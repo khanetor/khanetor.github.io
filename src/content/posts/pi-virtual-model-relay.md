@@ -77,7 +77,7 @@ If the answer meets the cutoff, Sol stays on. Otherwise, the message goes back t
 
 ## The router in code
 
-Here's the core of the virtual model, tidied a little for this post. `thinkingLevels` gives Relay its own settings. Pi shows `low` and `medium` in the picker and passes my choice to `route()`. The router decides what each level means. I use them to choose the decision model and its settings, and to set how hard Opus and Sol think. You can make them mean anything you want.
+Here's the core of the virtual model, tidied a little for this post. `thinkingLevels` gives Relay its own settings. Pi shows `low` and `medium` in the picker and passes my choice to `route()`. The router decides what each level means. I use them to choose the decision model and its settings. You can make them mean anything you want.
 
 `nextPhase()` holds the handoff rules from above. `routeTo()` looks up the chosen model in Pi's registry and returns it with a thinking level and, when applicable, the phase:
 
@@ -100,20 +100,8 @@ pi.registerVirtualModel<RouterState>({
     const state = phase === request.state?.phase ? request.state : { phase };
 
     return phase === "coding"
-      ? routeTo(
-          ctx,
-          "openai-codex",
-          "gpt-6.2-sol",
-          request.thinkingLevel,
-          state
-        )
-      : routeTo(
-          ctx,
-          "anthropic",
-          "claude-opus-5-5",
-          PLAN_LEVEL[request.thinkingLevel] ?? "high",
-          state
-        );
+      ? routeTo(ctx, "openai-codex", "gpt-6.2-sol", "low", state)
+      : routeTo(ctx, "anthropic", "claude-opus-5-5", "xhigh", state);
   },
 });
 
@@ -179,7 +167,7 @@ Relay then calls `ctx.modelRegistry.classify()` with short conversation excerpts
 
 With `medium` selected, `d3:4b` gets at most 4 seconds. Both readiness answers need 0.9, and a correction needs 0.8. These are settings, not test results. They carried over from earlier versions of the router, and I still need to recheck them on this model. A cutoff of 0.9 doesn't mean the model is right nine times out of ten.
 
-The same level also turns Opus up to `xhigh`. My `low` level uses a different decision model, a shorter time limit and looser cutoffs.
+The two models' thinking levels don't change with the picker: Opus always plans at `xhigh`, Sol always codes at `low`. My `low` level uses a different decision model, a shorter time limit and looser cutoffs.
 
 Pi waits for the decision model before it sends the real request. If Ollama is down, hits the time limit, or sends back an answer Relay can't use, I don't let that one check decide the rest of the turn. A failed readiness check keeps that request on Opus. The next check can still send the work to Sol, and so can a successful edit. A failed correction check sends the new message back to Opus.
 
