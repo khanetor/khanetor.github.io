@@ -5,6 +5,7 @@ title: "Switching models mid-task in Pi with a local decision model"
 slug: pi-virtual-model-relay
 featured: false
 draft: false
+ogImage: https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 tags:
   - ai
   - pi
@@ -14,6 +15,19 @@ description: "Using Pi's virtual model API and a small System One decision model
 ---
 
 A coding agent's work on a change usually has two parts. First it finds its way around: it reads files, works out where the change goes, maybe writes a plan. Then it writes the change. I've been trying an idea in [Pi](https://github.com/earendil-works/pi), the coding agent I use in my terminal: let Claude Opus (`claude-opus-5-5`) do the first part, let OpenAI's Sol (`gpt-6.2-sol`) do the second, and let a small local model decide when to switch. It started because I wanted to use more than one LLM provider and avoid any single model's blind spots.
+
+<figure>
+  <img
+    src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    alt="Two people look at code on a laptop while one points at a line on the screen"
+    width="1124"
+    height="750"
+  />
+  <figcaption class="text-center">
+    Photo by
+    <a href="https://www.pexels.com/photo/two-women-looking-at-the-code-at-laptop-1181263/">Christina Morillo</a>
+  </figcaption>
+</figure>
 
 Doing that switch by hand is a chore. I'd have to watch the agent read file after file just to catch the moment before it starts editing.
 
