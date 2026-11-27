@@ -1,7 +1,7 @@
 ---
 author: Kha Nguyen
 pubDatetime: 2026-11-27T19:37:09.000+07:00
-title: "One model in the picker, two phases in Pi"
+title: "Plan with one model, code with another: my relay in Pi"
 slug: pi-virtual-model-relay
 featured: false
 draft: false
@@ -10,54 +10,85 @@ tags:
   - pi
   - ollama
   - coding-agents
-description: "How I use Pi’s virtual model API and a local Ollama classifier to hand off between planning and coding in one session."
+description: "How I use Pi's virtual model API and a small decision model in Ollama to pass one coding session between a planning model and a coding model."
 ---
 
-“Make the empty state clearer.” And then, after the change: “Actually, say ‘No results’.” Those are both coding requests, but I don't want the same thing from the agent each time. The first asks it to find the right component and understand how it fits. The second is a correction to work it just did. I don't want to switch models by hand between those two messages. More importantly, I don't want to guess at the start of a task when the agent will have read enough to make the first edit.
+When I ask a coding agent to change something, the work has two parts. First the agent finds its way around: it reads files, works out where the change goes, maybe writes a plan. Then it writes the change. I use Claude Opus (`claude-opus-5-5`) for the first part and OpenAI's Sol (`gpt-6.2-sol`) for the second.
 
-So I made **Relay**, a [virtual model in Pi](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/virtual-models.md). I select `router/relay` once. Opus explores and plans, Sol writes code, and a small model running in Ollama helps decide when to pass the baton. The local model doesn't write any code. It answers a few yes-or-no questions; the router applies the rules.
+Switching between them by hand is a chore. I’d have to watch the agent read file after file just to catch the moment before it starts editing.
 
-## One selection, one conversation
+So I built **Relay**. In Pi's model picker it's a single entry, `router/relay`. Behind it, Opus plans, Sol codes, and a small model running on my own machine in [Ollama](https://ollama.com/) helps decide when to pass the baton.
 
-[Pi](https://github.com/earendil-works/pi) is the terminal coding agent I use. A model normally means the thing answering my prompt. In Pi, a _virtual_ model is an entry in the same `/model` picker, but selecting it really selects a function. I register Relay with `pi.registerVirtualModel()`, and before dispatching a request Pi calls its `route()` function. The function gets the conversation, why Pi is making the request, and the router's saved state. It returns the actual model and its thinking level.
+That small model never writes code. It only answers yes-or-no questions. Plain code makes the actual decision.
 
-Relay saves one piece of state: `phase`, either `planning` or `coding`. Pi keeps it on the session branch, so it follows the branch and survives compaction. This isn't two agents chatting or running in parallel. Sol gets the ongoing conversation, including the tool results from Opus's exploration, not a fresh prompt asking it to reconstruct the work. I still have one session and one selected model; Pi's footer can show me which underlying model answered.
+Say I'm working on a search page. The empty state is what people see when their search finds nothing. Here's how the handoffs might go:
 
-## The first handoff: before the first edit, when possible
+1. I type "Make the empty state clearer." Opus starts reading files.
+2. After a few reads, the local model says yes, this asks for a change, and yes, the agent has read enough. The next request goes to Sol, and Sol makes the edit.
+3. I type "Actually, say 'No results'." The local model calls it a small correction, so Sol keeps going.
+4. I type "Why do we have two empty-state components?" That's a new question, so it goes back to Opus.
 
-A fresh session starts on Opus (`claude-opus-5-5`). The [Jev router example](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/extensions/jev-router.ts) in Pi gave me a useful rule: a successful `edit` or `write` is a clear sign that implementation has started. The catch is that the planner has already made the first edit by the time I see that signal. I wanted Sol (`gpt-6.2-sol`) to be able to make that edit instead.
+## What a virtual model is
 
-While Relay is still planning, it can ask the decision model two questions before a follow-up request, for example after Opus has read some files:
+[Pi](https://github.com/earendil-works/pi) is the coding agent I use in my terminal. Picking a model in Pi normally means picking who answers. A [virtual model](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/virtual-models.md) looks the same in the picker, but picking it really picks a small function I wrote.
 
-1. **Did I ask for a change?** “Make the empty state clearer” is a yes. “Where does the empty state come from?” is not. Neither is “Give me a plan for changing it.”
-2. **Has the agent read enough to edit next?** The evidence is a clipped copy of my request, some text from the latest assistant message, and up to six recent tool calls from this turn. The classifier sees short call descriptions, not the full files or their tool outputs.
+One prompt can take several requests to a model. Say Opus asks to read a file. Pi runs that tool and sends the result back in another request. Relay can switch models between those two requests without waiting for me to type again.
 
-Both scores have to clear the cutoff. If they do, the next request goes to Sol, without waiting for Opus to touch a file. If they don't, Relay keeps planning. The original rule still works: if Opus gets a successful `edit` or `write` result, subsequent work can go to Sol without consulting the classifier. That also means “planning” is a routing phase, not a read-only mode.
+I register Relay with `pi.registerVirtualModel()`. Before each request, Pi calls my `route()` function with the conversation and a reason: did I just type a message, is the agent continuing after a tool ran, or is Pi doing something else? My function returns the model to use and its thinking level (how much effort to spend reasoning).
 
-## The return trip: a correction or a new task?
+`route()` can also save a small note. During the agent's work, Pi hands that note back on later requests in the same conversation, even after older messages get summarized. Relay's note holds one word: `planning` or `coding`.
 
-Once Sol takes over, Relay doesn't keep asking whether it's ready to code. The next decision comes when I send another message. Now the classifier gets short excerpts of my previous request, the end of the last assistant reply before the new message, and the new message itself. It gets one question: **Is this a small follow-up to the same change?**
+This isn't two agents talking to each other. It's one conversation. When Sol takes over, it sees what Opus read and said, tool results included. I can see which model Pi picked in the footer, without leaving the conversation.
 
-“Actually, say ‘No results’” can stay on Sol. “Why do we have two empty-state components?” should go back to Opus. I'd rather send an ambiguous correction back to the planner than have the coding phase carry straight into a new design discussion.
+## Handoff one: planning to coding
 
-## What runs locally
+I didn't invent the basic rule. Pi ships an example router, [Jev](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/extensions/jev-router.ts), that switches models after the first successful `edit` or `write` tool call. It's a reliable sign that coding has started. But by then the planning model has already made the first edit, and I wanted Sol to make it.
 
-A separate Pi extension registers `tev1:4b` and `d3:4b` as [classifier models](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/custom-provider.md), not chat models. I run both in [Ollama](https://ollama.com/). Pi already has a System One client that speaks Ollama's `/v1/systemone` protocol, so my extension reuses that client rather than parsing a chat response for a “yes.” The classifier returns structured scores, and Relay decides what counts as enough.
+So before a request that continues the same turn, like the one after a file read, Relay asks the local model two questions. It only does this while still planning and if Opus hasn’t already made a successful edit:
 
-The two thinking levels I see in Pi are really two presets:
+1. **Did I ask for a change?** "Make the empty state clearer" is a yes. "Where does the empty state come from?" is a no, and so is "Give me a plan for changing it."
+2. **Has the agent read enough to edit next?**
 
-| Relay setting | Opus thinking | Sol thinking | Local classifier | Timeout | Cutoff for each readiness score | Correction cutoff |
-| ------------- | ------------- | ------------ | ---------------- | ------- | ------------------------------- | ----------------- |
-| `low`         | `medium`      | `low`        | `tev1:4b`        | 2 s     | 0.7                             | 0.6               |
-| `medium`      | `xhigh`       | `medium`     | `d3:4b`          | 4 s     | 0.9                             | 0.8               |
+The local model gets the start of my message, a bit of what the agent last said, and up to six short tool call descriptions, like `read src/components/EmptyState.tsx`. It doesn't get the tool output.
 
-Those are settings, not benchmark results. The thresholds carried over from earlier variants; I don't treat a score of 0.9 as proof that the model is right nine times out of ten. The call also adds a wait before Pi can start the routed request. If Ollama isn't running, times out, or doesn't give Relay usable scores, the agent can still work: the router waits for a successful edit to switch to Sol and defaults to Opus on the next user message. Only the routing judgment is local; the models doing the planning, coding, and summarizing are still hosted.
+Each answer comes back as a score between 0 and 1. Both scores must meet or exceed a cutoff. If they do, the next request goes to Sol, which gets first crack at the edit. Otherwise, Opus keeps going and Relay can ask again. The Jev rule still applies: a successful `edit` or `write` moves the work to Sol without another check.
 
-## The handoff has to fit
+## Handoff two: back to planning
 
-Opus can build up more conversation than Sol can take in one request. Pi checks the context against the model Relay actually picked. If it needs to shrink the conversation, Pi does its usual [compaction](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/compaction.md): summarize older messages and keep recent ones as-is. Relay sends the summary request, which Pi marks as `direct`, to Sonnet (`claude-sonnet-5-5`) at `medium`. The original coding request still goes to Sol and the phase doesn't change.
+Once Sol is coding, Relay stops asking whether the agent is ready. The next question comes when I send a new message: is this a small follow-up to the change Sol just made?
 
-Here's the relevant bit of my settings:
+This time the local model sees the start of my previous request, the end of the agent's last reply, and the start of my new message. A wording tweak counts. So can asking to rerun a test for the same change. A new task or design question doesn’t.
+
+If the correction score meets the cutoff, Sol stays on. Otherwise, the message goes back to Opus. I'd rather have Opus handle the occasional small tweak than let the coding phase roll straight into a new design discussion.
+
+## The small model on my machine
+
+Ollama runs open models on your own computer. I use two decision models from the Ollama library, `tev1:4b` and `d3:4b`, each with about 4 billion parameters. They don't write chat replies. You give them some text and a few questions, and they return a structured answer with a score for each question.
+
+I register both models in Pi as _classifiers_: models that score answers to a specific question. Ollama has a dedicated API for this called System One. Pi already knows how to call it, so my extension reuses that code instead of trying to pull a “yes” out of a chat reply.
+
+Relay offers two thinking levels, `low` and `medium`. They don't set how hard one model thinks. Each one picks a preset:
+
+| Relay level | Opus thinks at | Sol thinks at | Local model | Time limit | Readiness cutoff (each score) | Correction cutoff |
+| ----------- | -------------- | ------------- | ----------- | ---------- | ----------------------------- | ----------------- |
+| `low`       | `medium`       | `low`         | `tev1:4b`   | 2 s        | 0.7                           | 0.6               |
+| `medium`    | `xhigh`        | `medium`      | `d3:4b`     | 4 s        | 0.9                           | 0.8               |
+
+These are settings, not test results. The cutoffs carried over from earlier versions of the router, and I still need to recheck them on these models. A cutoff of 0.9 doesn't mean the model is right nine times out of ten.
+
+Pi waits for the classifier before it sends the real request. If Ollama is down, hits the time limit, or sends back an answer Relay can't use, I don't let that one check decide the rest of the turn. A failed readiness check keeps that request on Opus. The next check can still send the work to Sol, and so can a successful edit. A failed correction check sends the new message back to Opus.
+
+Only the routing questions run locally. The planning, coding and summarizing all happen on hosted models.
+
+## When the conversation gets too big for Sol
+
+Each model can only read so much text in one request. That limit is its context window. Opus can build up a conversation that's too long to hand to Sol as-is.
+
+Pi checks against the context window of the model Relay actually picked. If the conversation is too close to that limit, Pi [compacts it](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/compaction.md): it summarizes older messages and keeps the recent ones as they are.
+
+The summary is a separate request outside the agent's normal work, which Pi marks as `direct`. Relay sends the summary request to Claude Sonnet at `medium`. The coding request still goes to Sol, and the phase doesn't change.
+
+Pi measures that window in tokens, the chunks of text a model reads. I set Relay to compact once Sol (or whichever model Pi picked) would have fewer than 68,000 tokens of room left:
 
 ```json
 {
@@ -70,6 +101,10 @@ Here's the relevant bit of my settings:
 }
 ```
 
-That reserve is headroom: Pi starts compaction when context usage exceeds the routed model's window minus 68,000 tokens. It isn't a request for a 68,000-token summary. A model switch can also lose the prompt cache, meaning the next model may have to process conversation text the previous one had cached.
+That number is breathing room, not the length of the summary. There's also a cost even if the conversation fits: when I switch models, Sol can't reuse the work Opus cached for that conversation. That's another reason I don't want them swapping back and forth after every file read.
 
-I have a separate `router/relay-plus` variant for reviews. It checks new messages for review intent first, sends reviews to Fable, and can hand an authorized fix to Sol before going back to Fable after a successful edit. Plain Relay is the version that makes the idea clearest for me: use code for the rules and the fallback, and ask the small model only for the judgments a tool result can't give me. Did I ask for an edit? Is it time to make it? Is this still the same job?
+## A variant for reviews
+
+I also have `router/relay-plus`, a separate variant that checks each new message for review intent first. A review goes to Claude Fable. If the check says the next step is an authorized fix, Relay Plus hands it to Sol (`gpt-6.1-sol` in that variant) and brings Fable back after a successful `edit` or `write`.
+
+What I like about plain Relay is that I can change the rules without changing how I ask for work. I still say “make the empty state clearer,” then “actually, say ‘No results’.” I don't have to interrupt the session to pick who's up next.
