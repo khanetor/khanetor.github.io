@@ -13,7 +13,7 @@ tags:
 description: "Using Pi's virtual model API and a small System One decision model in Ollama to pass one coding session between a planning model and a coding model."
 ---
 
-A coding agent's work on a change usually has two parts. First it finds its way around: it reads files, works out where the change goes, maybe writes a plan. Then it writes the change. I've been trying an idea in [Pi](https://github.com/earendil-works/pi), the coding agent I use in my terminal: let Claude Opus (`claude-opus-5-5`) do the first part, let OpenAI's Sol (`gpt-6.2-sol`) do the second, and let a small local model decide when to switch.
+A coding agent's work on a change usually has two parts. First it finds its way around: it reads files, works out where the change goes, maybe writes a plan. Then it writes the change. I've been trying an idea in [Pi](https://github.com/earendil-works/pi), the coding agent I use in my terminal: let Claude Opus (`claude-opus-5-5`) do the first part, let OpenAI's Sol (`gpt-6.2-sol`) do the second, and let a small local model decide when to switch. It started because I wanted to use more than one LLM provider and avoid any single model's blind spots.
 
 Doing that switch by hand is a chore. I'd have to watch the agent read file after file just to catch the moment before it starts editing.
 
@@ -63,9 +63,13 @@ If the answer meets the cutoff, Sol stays on. Otherwise, the message goes back t
 
 ## The router in code
 
-Here's the core of the virtual model. I've left the classifier and tool-result checks in helpers. `routeTo()` looks up the chosen model in Pi's registry and returns it with the thinking level and, when applicable, the phase:
+Here's the core of the virtual model, tidied a little for this post. `thinkingLevels` gives Relay its own settings. Pi shows `low` and `medium` in the picker and passes my choice to `route()`. The router decides what each level means. I use them to choose the decision model and its settings, and to set how hard Opus and Sol think. You can make them mean anything you want.
+
+`nextPhase()` holds the handoff rules from above. `routeTo()` looks up the chosen model in Pi's registry and returns it with a thinking level and, when applicable, the phase:
 
 ```ts
+type RouterState = { readonly phase: "planning" | "coding" };
+
 pi.registerVirtualModel<RouterState>({
   provider: "router",
   id: "relay",
@@ -77,21 +81,11 @@ pi.registerVirtualModel<RouterState>({
       return routeTo(ctx, "anthropic", "claude-sonnet-5-5", "medium");
     }
 
-    let state = request.state ?? { phase: "planning" };
-    if (request.reason === "user") {
-      if (state.phase === "coding" && !(await isCorrection(request, ctx))) {
-        state = { phase: "planning" };
-      }
-    } else if (
-      state.phase === "planning" &&
-      (editedThisTurn(request.messages) ||
-        (request.reason === "continuation" &&
-          (await readyToCode(request, ctx))))
-    ) {
-      state = { phase: "coding" };
-    }
+    const phase = await nextPhase(request, ctx);
+    // Returning the saved object keeps it; a new object replaces it.
+    const state = phase === request.state?.phase ? request.state : { phase };
 
-    return state.phase === "coding"
+    return phase === "coding"
       ? routeTo(
           ctx,
           "openai-codex",
@@ -108,19 +102,70 @@ pi.registerVirtualModel<RouterState>({
         );
   },
 });
+
+async function nextPhase(
+  request: ModelRouteRequest<RouterState>,
+  ctx: ExtensionContext
+) {
+  const phase = request.state?.phase ?? "planning";
+  if (request.reason === "user") {
+    return phase === "coding" && !(await isCorrection(request, ctx))
+      ? "planning"
+      : phase;
+  }
+  const startCoding =
+    phase === "planning" &&
+    (editedThisTurn(request.messages) ||
+      (request.reason === "continuation" && (await readyToCode(request, ctx))));
+  return startCoding ? "coding" : phase;
+}
 ```
 
-A new message from me (`"user"`) can only move the work back to planning. A step in the middle of a task (`"continuation"`) can only move it forward to coding. `isCorrection()` and `readyToCode()` are where the decision model comes in.
+A new message from me (`"user"`) can only move the work back to planning. While planning, a step in the middle of a task can move it forward to coding. `isCorrection()` and `readyToCode()` are where the decision model comes in.
 
 ## Asking the decision model
 
-Ollama runs open models on your own computer, and it serves decision models through a System One endpoint. Pi already ships a client for that API. So a short extension registers `d3:4b` with Pi as a _classifier_ (Pi's name for this kind of model) under an `ollama` provider, reusing that client. Nobody has to pull a "yes" out of a chat reply.
+Ollama runs open models on your own computer, and it serves decision models through a System One endpoint. Pi already ships a client for that API. Once Ollama is running locally and you've pulled `d3:4b`, you can register it with one short extension:
 
-Relay calls `ctx.modelRegistry.classify()` with those short conversation excerpts and questions. It checks that it got valid scores before using them.
+```ts
+import { builtinProviders } from "@earendil-works/pi-ai/providers/all";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
-In my setup, `d3:4b` gets at most 4 seconds. Both readiness answers need 0.9, and a correction needs 0.8. These are settings, not test results. They carried over from earlier versions of the router, and I still need to recheck them on this model. A cutoff of 0.9 doesn't mean the model is right nine times out of ten.
+export default function (pi: ExtensionAPI) {
+  // Pi's built-in System One client
+  const typesafe = builtinProviders().find(p => p.id === "typesafe")!;
 
-A virtual model's thinking levels don't have to mean "think harder". The router decides what they mean. With `medium` selected, Relay also turns Opus up to `xhigh`. If you want, a level can also pick a different decision model, a shorter time limit or looser cutoffs. I do that with `low`, but the idea works fine without it.
+  pi.registerProvider("ollama", {
+    baseUrl: "http://localhost:11434/v1",
+    apiKey: "ollama",
+    classifiers: {
+      "typesafe-system-one": {
+        classify: (model, context, options) =>
+          typesafe.classify!(model, context, options),
+      },
+    },
+    models: [
+      {
+        type: "classifier",
+        id: "d3:4b",
+        name: "d3:4b",
+        api: "typesafe-system-one",
+        input: ["text"],
+        cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+        contextWindow: 4096,
+      },
+    ],
+  });
+}
+```
+
+A _classifier_ is Pi's name for this kind of model. Pi asks a registered provider to name the code that runs its classifiers, even for a built-in API, so the extension hands each call to Pi's own System One client. The API key is a placeholder; a local Ollama doesn't need a real one.
+
+Relay then calls `ctx.modelRegistry.classify()` with short conversation excerpts and the questions. It checks that it got valid scores before using them. Nobody has to pull a "yes" out of a chat reply.
+
+With `medium` selected, `d3:4b` gets at most 4 seconds. Both readiness answers need 0.9, and a correction needs 0.8. These are settings, not test results. They carried over from earlier versions of the router, and I still need to recheck them on this model. A cutoff of 0.9 doesn't mean the model is right nine times out of ten.
+
+The same level also turns Opus up to `xhigh`. My `low` level uses a different decision model, a shorter time limit and looser cutoffs.
 
 Pi waits for the decision model before it sends the real request. If Ollama is down, hits the time limit, or sends back an answer Relay can't use, I don't let that one check decide the rest of the turn. A failed readiness check keeps that request on Opus. The next check can still send the work to Sol, and so can a successful edit. A failed correction check sends the new message back to Opus.
 
@@ -128,7 +173,7 @@ Only the routing questions run locally. The planning, coding and summarizing all
 
 ## When the conversation gets too big for Sol
 
-Each model can only read so much text in one request. That limit is its context window, measured in tokens, the chunks of text a model reads. In my Anthropic-to-OpenAI handoff, the window shrinks: Pi lists Opus at one million tokens and Sol at 500,000. If both models have similarly large windows, the switch itself is less likely to force a summary. For example, [GLM-5.2](https://huggingface.co/zai-org/GLM-5.2) and [DeepSeek V4 Pro](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro) both advertise million-token windows, though the limit you get depends on where you run them.
+Each model can only read so much text in one request. That limit is its context window, measured in tokens, the chunks of text a model reads. In my Anthropic-to-OpenAI handoff, the window shrinks: Pi lists Opus at one million tokens and Sol at 500,000. If both models have similarly large windows, the switch itself is less likely to force a summary. For example, [GLM-5.3](https://huggingface.co/zai-org/GLM-5.3) and [DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) both list million-token windows in their model configs, though the limit you get depends on where you run them.
 
 Pi checks against the context window of the model Relay actually picked. If the conversation is too close to that limit, Pi [compacts it](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/compaction.md): it summarizes older messages and keeps the recent ones as they are.
 
@@ -154,5 +199,7 @@ There's also a cost even if the conversation fits: when I switch models, Sol can
 ## Where you could take it
 
 The pattern is small: a virtual model does the routing, a decision model makes the judgment calls, and plain code owns the rules and the fallbacks. The decision model only gets the questions a tool result can't answer. Did I ask for a change? Has the agent read enough? Is this still the same job?
+
+I don't have a benchmark comparing this setup with a single model or any other split, so I'm not claiming it's optimal. It's how I've wired up my original goal of mixing LLM providers to avoid blind spots. I'm sharing it to see what people think.
 
 You don't need my exact setup. Pi's example router uses TypeSafe's hosted Jev, and Ollama has other decision models, such as Cloudflare's [Clef](https://ollama.com/library/clef). You can add phases, too. I have a variant that sends code reviews to Claude Fable and hands authorized fixes to Sol (`gpt-6.1-sol` in that variant).
