@@ -5,7 +5,7 @@ title: "Switching models mid-task in Pi with a local decision model"
 slug: pi-virtual-model-relay
 featured: false
 draft: false
-ogImage: ../../assets/images/pi-virtual-model-relay.svg
+ogImage: ../../assets/images/pi-virtual-model-relay-og.png
 tags:
   - ai
   - pi
