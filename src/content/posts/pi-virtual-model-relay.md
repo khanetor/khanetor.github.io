@@ -114,6 +114,257 @@ async function nextPhase(
 
 A new message from me (`"user"`) can only move the work back to planning. While planning, a step in the middle of a task can move it forward to coding. `isCorrection()` and `readyToCode()` are where the decision model comes in.
 
+Here are the two checks, with the settings and excerpt helpers they use (`RouterState` and `nextPhase()` are from the snippet above):
+
+```ts
+import type {
+  AssistantMessage,
+  ClassifierBoolQuestion,
+  ClassifierResult,
+  JsonObject,
+  Message,
+  ModelThinkingLevel,
+  UserMessage,
+} from "@earendil-works/pi-ai";
+import type {
+  ExtensionContext,
+  ModelRouteRequest,
+} from "@earendil-works/pi-coding-agent";
+
+// RouterState is the type from the snippet above.
+type Request = ModelRouteRequest<RouterState>;
+
+const EDIT_TOOLS = new Set(["edit", "write"]);
+
+const DECISION_PROVIDER = "ollama";
+// `medium`: d3:4b, at most 4 seconds, readiness answers need 0.9, a correction needs 0.8.
+// `low`: a different decision model, a shorter time limit, looser cutoffs.
+const DECISION_SETTINGS = {
+  low: {
+    modelId: "d3:2b",
+    timeoutMs: 2_000,
+    readyCutoff: 0.8,
+    correctionCutoff: 0.7,
+  },
+  medium: {
+    modelId: "d3:4b",
+    timeoutMs: 4_000,
+    readyCutoff: 0.9,
+    correctionCutoff: 0.8,
+  },
+} as const;
+
+function decisionSettings(level: ModelThinkingLevel) {
+  return level === "low" ? DECISION_SETTINGS.low : DECISION_SETTINGS.medium;
+}
+
+/** Whether a tool call since the last user message edited a file successfully. */
+function editedThisTurn(messages: readonly Message[]): boolean {
+  const lastUser = messages.findLastIndex(message => message.role === "user");
+  return messages
+    .slice(lastUser + 1)
+    .some(
+      message =>
+        message.role === "toolResult" &&
+        EDIT_TOOLS.has(message.toolName) &&
+        !message.isError
+    );
+}
+
+/** Asks the decision model yes-or-no questions; returns each probability, or null when any answer is missing or unusable. */
+async function askDecisionModel(
+  request: Request,
+  ctx: ExtensionContext,
+  state: JsonObject,
+  questions: Record<string, ClassifierBoolQuestion>
+): Promise<Record<string, number> | null> {
+  const settings = decisionSettings(request.thinkingLevel);
+  const model = ctx.modelRegistry.findOfType(
+    "classifier",
+    DECISION_PROVIDER,
+    settings.modelId
+  );
+  if (!model) return null;
+  const signals = [
+    request.signal,
+    AbortSignal.timeout(settings.timeoutMs),
+  ].filter((signal): signal is AbortSignal => signal !== undefined);
+  const signal = signals.length > 1 ? AbortSignal.any(signals) : signals[0];
+  let result: ClassifierResult;
+  try {
+    result = await ctx.modelRegistry.classify(
+      model,
+      { state, questions },
+      { signal }
+    );
+  } catch {
+    return null; // Ollama is down or the time limit was hit
+  }
+  if (result.stopReason !== "stop") return null;
+  const scores: Record<string, number> = {};
+  for (const key of Object.keys(questions)) {
+    const answer = result.answers[key];
+    if (
+      answer?.type !== "bool" ||
+      typeof answer.probability !== "number" ||
+      !Number.isFinite(answer.probability) ||
+      answer.probability < 0 ||
+      answer.probability > 1
+    ) {
+      return null; // an answer Relay can't use
+    }
+    scores[key] = answer.probability;
+  }
+  return scores;
+}
+
+/** While planning: has the agent read enough that the next request should go to the coding model? */
+async function readyToCode(
+  request: Request,
+  ctx: ExtensionContext
+): Promise<boolean> {
+  const settings = decisionSettings(request.thinkingLevel);
+  const scores = await askDecisionModel(
+    request,
+    ctx,
+    {
+      userRequest: lastUserText(request.messages).slice(0, 400),
+      agentLastSaid: lastAssistantText(request.messages).slice(-400),
+      recentToolCalls: toolCallDescriptions(request.messages),
+    },
+    {
+      asksForChange: {
+        type: "bool",
+        instructions:
+          "Does the user's request ask for a change to the code, rather than only asking a question or requesting a plan?",
+        criteria: {
+          true: "The user asks for a change to be made",
+          false: "The user asks a question or only wants a plan",
+        },
+      },
+      readEnough: {
+        type: "bool",
+        instructions:
+          "Given the tool calls the agent has made so far, has it read enough of the codebase to make the requested change in its next step?",
+        criteria: {
+          true: "Enough context to edit next",
+          false: "Should keep reading first",
+        },
+      },
+    }
+  );
+  return (
+    scores !== null &&
+    scores.asksForChange >= settings.readyCutoff &&
+    scores.readEnough >= settings.readyCutoff
+  );
+}
+
+/** While coding: is the new user message a small follow-up to the change the agent just made? */
+async function isCorrection(
+  request: Request,
+  ctx: ExtensionContext
+): Promise<boolean> {
+  const settings = decisionSettings(request.thinkingLevel);
+  const users = request.messages.filter(
+    (message): message is UserMessage => message.role === "user"
+  );
+  const scores = await askDecisionModel(
+    request,
+    ctx,
+    {
+      previousRequest: (users.at(-2)
+        ? textOf(users.at(-2)!.content)
+        : ""
+      ).slice(0, 400),
+      agentLastReply: lastAssistantText(request.messages).slice(-400),
+      newMessage: (users.at(-1) ? textOf(users.at(-1)!.content) : "").slice(
+        0,
+        400
+      ),
+    },
+    {
+      isCorrection: {
+        type: "bool",
+        instructions:
+          "Is the new message a small follow-up or correction to the change the agent just made, such as a wording tweak or rerunning a test for the same change, rather than a new task or a design question?",
+        criteria: {
+          true: "Small follow-up to the same change",
+          false: "New task or design question",
+        },
+      },
+    }
+  );
+  return scores !== null && scores.isCorrection >= settings.correctionCutoff;
+}
+
+function textOf(
+  content: string | readonly { type: string; text?: string }[]
+): string {
+  if (typeof content === "string") return content;
+  return content
+    .flatMap(block =>
+      block.type === "text" && typeof block.text === "string"
+        ? [block.text]
+        : []
+    )
+    .join("\n");
+}
+
+function lastUserText(messages: readonly Message[]): string {
+  const last = messages
+    .filter((message): message is UserMessage => message.role === "user")
+    .at(-1);
+  return last ? textOf(last.content) : "";
+}
+
+function lastAssistantText(messages: readonly Message[]): string {
+  const last = messages
+    .filter(
+      (message): message is AssistantMessage => message.role === "assistant"
+    )
+    .at(-1);
+  return last ? textOf(last.content) : "";
+}
+
+const ARG_KEYS = [
+  "path",
+  "filePath",
+  "file",
+  "target",
+  "command",
+  "pattern",
+  "query",
+  "url",
+];
+
+function truncate(text: string, max = 120): string {
+  return text.length > max ? text.slice(0, max) + "..." : text;
+}
+
+function summarizeArgs(args: JsonObject): string {
+  for (const key of ARG_KEYS) {
+    const value = args[key];
+    if (typeof value === "string" && value) return truncate(value);
+  }
+  return truncate(JSON.stringify(args));
+}
+
+/** Short descriptions of the tool calls made since the last user message, at most `max`, newest last. Tool output is not included. */
+function toolCallDescriptions(messages: readonly Message[], max = 6): string[] {
+  const lastUser = messages.findLastIndex(message => message.role === "user");
+  const calls: string[] = [];
+  for (const message of messages.slice(lastUser + 1)) {
+    if (message.role !== "assistant") continue;
+    for (const block of message.content) {
+      if (block.type === "toolCall")
+        calls.push(`${block.name} ${summarizeArgs(block.arguments)}`.trim());
+    }
+  }
+  return calls.slice(-max);
+}
+```
+
 ## Asking the decision model
 
 Ollama runs open models on your own computer, and it serves decision models through a System One endpoint. Pi already ships a client for that API. Once Ollama is running locally and you've pulled `d3:4b`, you can register it with one short extension:
