@@ -5,7 +5,7 @@ title: "Switching models mid-task in Pi with a local decision model"
 slug: pi-virtual-model-relay
 featured: false
 draft: false
-ogImage: https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+ogImage: ../../assets/images/pi-virtual-model-relay-og.png
 tags:
   - ai
   - pi
@@ -18,14 +18,15 @@ A coding agent's work on a change usually has two parts. First it finds its way 
 
 <figure>
   <img
-    src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-    alt="Two people look at code on a laptop while one points at a line on the screen"
-    width="1124"
-    height="750"
+    src="/assets/images/pi-virtual-model-relay.png"
+    alt="Stylized Pi terminal session routed by router/relay: the user asks to make the empty state clearer, Opus reads files while the footer shows claude-opus-5-5 planning, then the session hands off mid-task to gpt-6.2-sol for the edit, with the local d3:4b decision model scoring change 0.96 and read-enough 0.93"
+    width="1280"
+    height="720"
   />
   <figcaption class="text-center">
-    Photo by
-    <a href="https://www.pexels.com/photo/two-women-looking-at-the-code-at-laptop-1181263/">Christina Morillo</a>
+    One conversation in Pi, routed by <code>router/relay</code>: Opus (<code>claude-opus-5-5</code>)
+    plans, the local <code>d3:4b</code> decision model scores the handoff, and Sol
+    (<code>gpt-6.2-sol</code>) makes the edit. Illustration generated for this post.
   </figcaption>
 </figure>
 
@@ -53,6 +54,20 @@ I register Relay with `pi.registerVirtualModel()`. Before each request, Pi calls
 `route()` can also save a small note. During the agent's work, Pi hands that note back on later requests in the same conversation, even after older messages get summarized. Relay's note holds one word: `planning` or `coding`.
 
 This isn't two agents talking to each other. It's one conversation. When Sol takes over, it sees what Opus read and said, tool results included. I can see which model Pi picked in the footer, without leaving the conversation.
+
+<figure>
+  <img
+    src="/assets/images/pi-virtual-model-relay-diagram.png"
+    alt="Diagram of the relay: Opus on the left labeled planning, Sol on the right labeled coding, and in the middle the relay node router/relay with the local d3:4b decision model, arrows showing the conversation passing from planning to coding"
+    width="1201"
+    height="901"
+  />
+  <figcaption class="text-center">
+    The relay pattern: one conversation flows through <code>router/relay</code>, which picks Opus for
+    planning and Sol for coding, with <code>d3:4b</code> answering the yes-or-no handoff questions.
+    Illustration generated for this post.
+  </figcaption>
+</figure>
 
 ## Handoff one: planning to coding
 
