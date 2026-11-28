@@ -20,6 +20,8 @@
 
   <rect width="1280" height="720" fill="url(#bg)"/>
 
+  <g transform="translate(-12.5,-8)">
+
   <g>
     <line x1="278" y1="360" x2="520" y2="360" stroke="#252f3d" stroke-width="5" marker-end="url(#ah-252f3d)" fill="none"/>
     <line x1="758" y1="332" x2="975" y2="218" stroke="#4D9ABF" stroke-width="5" marker-end="url(#ah-4D9ABF)" fill="none"/>
@@ -51,5 +53,6 @@
     <text x="1105" y="258" font-size="24" fill="#384251" text-anchor="middle" font-weight="700">Anthropic</text>
     <text x="1105" y="568" font-size="24" fill="#384251" text-anchor="middle" font-weight="700">OpenAI</text>
     <text x="706" y="605" font-size="24" fill="#384251" text-anchor="middle" font-weight="700">systemone</text>
+  </g>
   </g>
 </svg>
