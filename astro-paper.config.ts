@@ -9,7 +9,7 @@ export default defineAstroPaperConfig({
     profile: "https://khanetor.github.io/about/",
     ogImage: "default-og.jpg",
     lang: "en",
-    timezone: "Asia/Bangkok",
+    timezone: "Europe/Helsinki",
     dir: "ltr",
   },
   posts: {
