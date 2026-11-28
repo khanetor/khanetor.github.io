@@ -5,7 +5,7 @@ title: "Switching models mid-task in Pi with a local decision model"
 slug: pi-virtual-model-relay
 featured: false
 draft: false
-ogImage: ../../assets/images/pi-virtual-model-relay-og.png
+ogImage: ../../assets/images/pi-virtual-model-relay.png
 tags:
   - ai
   - pi
@@ -16,19 +16,7 @@ description: "Using Pi's virtual model API and a small System One decision model
 
 A coding agent's work on a change usually has two parts. First it finds its way around: it reads files, works out where the change goes, maybe writes a plan. Then it writes the change. I've been trying an idea in [Pi](https://github.com/earendil-works/pi), the coding agent I use in my terminal: let Claude Opus (`claude-opus-5-5`) do the first part, let OpenAI's Sol (`gpt-6.2-sol`) do the second, and let a small local model decide when to switch. It started because I wanted to use more than one LLM provider and avoid any single model's blind spots.
 
-<figure>
-  <img
-    src="/assets/images/pi-virtual-model-relay.png"
-    alt="Stylized Pi terminal session routed by router/relay: the user asks to make the empty state clearer, Opus reads files while the footer shows claude-opus-5-5 planning, then the session hands off mid-task to gpt-6.2-sol for the edit, with the local d3:4b decision model scoring change 0.96 and read-enough 0.93"
-    width="1280"
-    height="720"
-  />
-  <figcaption class="text-center">
-    One conversation in Pi, routed by <code>router/relay</code>: Opus (<code>claude-opus-5-5</code>)
-    plans, the local <code>d3:4b</code> decision model scores the handoff, and Sol
-    (<code>gpt-6.2-sol</code>) makes the edit. Illustration generated for this post.
-  </figcaption>
-</figure>
+![Your prompt streams through relay, router/relay, which routes each request to Anthropic Opus for planning or OpenAI Sol for coding, with the local d3:4b decision model making the routing calls — illustration in pi.dev colors](@/assets/images/pi-virtual-model-relay.png)
 
 Doing that switch by hand is a chore. I'd have to watch the agent read file after file just to catch the moment before it starts editing.
 
@@ -54,20 +42,6 @@ I register Relay with `pi.registerVirtualModel()`. Before each request, Pi calls
 `route()` can also save a small note. During the agent's work, Pi hands that note back on later requests in the same conversation, even after older messages get summarized. Relay's note holds one word: `planning` or `coding`.
 
 This isn't two agents talking to each other. It's one conversation. When Sol takes over, it sees what Opus read and said, tool results included. I can see which model Pi picked in the footer, without leaving the conversation.
-
-<figure>
-  <img
-    src="/assets/images/pi-virtual-model-relay-diagram.png"
-    alt="Diagram of the relay: Opus on the left labeled planning, Sol on the right labeled coding, and in the middle the relay node router/relay with the local d3:4b decision model, arrows showing the conversation passing from planning to coding"
-    width="1201"
-    height="901"
-  />
-  <figcaption class="text-center">
-    The relay pattern: one conversation flows through <code>router/relay</code>, which picks Opus for
-    planning and Sol for coding, with <code>d3:4b</code> answering the yes-or-no handoff questions.
-    Illustration generated for this post.
-  </figcaption>
-</figure>
 
 ## Handoff one: planning to coding
 
