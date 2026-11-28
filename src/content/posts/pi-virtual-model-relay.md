@@ -16,7 +16,7 @@ description: "Using Pi's virtual model API and a small System One decision model
 
 A coding agent's work on a change usually has two parts. First it finds its way around: it reads files, works out where the change goes, maybe writes a plan. Then it writes the change. I've been trying an idea in [Pi](https://github.com/earendil-works/pi), the coding agent I use in my terminal: let Claude Opus (`claude-opus-5-5`) do the first part, let OpenAI's Sol (`gpt-6.2-sol`) do the second, and let a small local model decide when to switch. It started because I wanted to use more than one LLM provider and avoid any single model's blind spots.
 
-![Diagram in the pi.dev light theme with the Pi logo accent colors: a user icon sends one request line to the regular Pi logo labeled router, which routes planning to the Anthropic logo and coding to the OpenAI logo, with a systemone decision model on the Ollama logo below](@/assets/images/pi-virtual-model-relay.svg)
+![Diagram in the pi.dev light theme with the Pi logo accent colors: a user icon sends messages along one line to the regular Pi logo, which routes planning to the Anthropic logo and coding to the OpenAI logo, with a decision line to a systemone model on the Ollama logo below](@/assets/images/pi-virtual-model-relay.svg)
 
 Doing that switch by hand is a chore. I'd have to watch the agent read file after file just to catch the moment before it starts editing.
 
